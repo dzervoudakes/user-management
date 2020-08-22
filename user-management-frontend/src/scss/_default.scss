@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: $color-off-white;
+  font-size: 100%;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+  position: relative;
+}
+
+p,
+h1,
+h2,
+h3,
+li,
+th,
+td {
+  font-family: $font-primary;
+}
+
+h2 {
+  color: $color-dark-gray;
+  font-size: 1.25rem;
+  margin-bottom: 0.9375rem;
+}
+
+h3 {
+  color: $color-dark-gray;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+p,
+li {
+  color: $color-gray;
+  margin-bottom: 0.625rem;
+}
+
+a {
+  color: $color-cyan;
+  transition: opacity 0.2s;
+
+  &.link-purple {
+    color: $color-purple;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+code {
+  color: $color-purple;
+}
+
+.t-heavy {
+  font-weight: 700;
+}

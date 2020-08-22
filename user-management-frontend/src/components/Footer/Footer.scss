@@ -1,0 +1,16 @@
+@import '~@src/scss/_constants';
+
+.footer {
+  background: $color-dark-gray;
+  margin-top: -3.6rem;
+  padding: 1.25rem 0;
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  width: 100%;
+
+  .t-link {
+    color: $color-white;
+    margin-bottom: 0;
+  }
+}
