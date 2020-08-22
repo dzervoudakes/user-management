@@ -22,6 +22,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "4.11.0",
     "@types/uuid": "8.3.0",
     "axios": "0.20.0",
     "core-js": "3.6.5",
