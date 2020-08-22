@@ -9,7 +9,8 @@ html {
 }
 
 body,
-html {
+html,
+.main-content {
   height: 100%;
 }
 
@@ -21,7 +22,6 @@ html {
 p,
 h1,
 h2,
-h3,
 li,
 th,
 td {
@@ -34,12 +34,6 @@ h2 {
   margin-bottom: 0.9375rem;
 }
 
-h3 {
-  color: $color-dark-gray;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
 p,
 li {
   color: $color-gray;
@@ -47,22 +41,24 @@ li {
 }
 
 a {
-  color: $color-cyan;
-  transition: opacity 0.2s;
-
-  &.link-purple {
-    color: $color-purple;
-  }
+  color: $color-blue-primary;
+  text-decoration: none;
+  transition: color 0.2s;
 
   &:hover {
-    opacity: 0.6;
+    color: $color-orange;
   }
-}
-
-code {
-  color: $color-purple;
 }
 
 .t-heavy {
   font-weight: 700;
+}
+
+.main-content {
+  padding-bottom: 3.125rem;
+}
+
+.gray-rule {
+  border: $border-light-gray-dotted;
+  border-bottom: none;
 }
