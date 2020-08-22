@@ -1,4 +1,10 @@
 // Default config: https://github.com/dzervoudakes/dztools/blob/master/packages/testing/jest-config-react-typescript/jest-preset.js
 module.exports = {
-  preset: '@dztools/jest-config-react-typescript'
+  preset: '@dztools/jest-config-react-typescript',
+  coveragePathIgnorePatterns: [
+    'src/index.tsx',
+    'src/polyfills.ts',
+    'src/theme',
+    'src/types'
+  ]
 };
