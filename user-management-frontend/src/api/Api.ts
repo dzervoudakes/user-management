@@ -25,9 +25,9 @@ class Api {
     });
   }
 
-  static patch(
+  static patch<T>(
     url: string,
-    data: Record<string, unknown>,
+    data: T,
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     const { headers = {} } = options;
@@ -44,9 +44,9 @@ class Api {
     });
   }
 
-  static post(
+  static post<T>(
     url: string,
-    data: Record<string, unknown>,
+    data: T,
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     return this.request({
@@ -57,9 +57,9 @@ class Api {
     });
   }
 
-  static put(
+  static put<T>(
     url: string,
-    data: Record<string, unknown>,
+    data: T,
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     return this.request({

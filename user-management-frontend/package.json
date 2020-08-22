@@ -22,12 +22,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@types/uuid": "8.3.0",
     "axios": "0.20.0",
     "core-js": "3.6.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-router-dom": "5.2.0",
-    "regenerator-runtime": "0.13.7"
+    "regenerator-runtime": "0.13.7",
+    "uuid": "8.3.0"
   },
   "devDependencies": {
     "@dztools/eslint-config-react-typescript": "1.0.4",
