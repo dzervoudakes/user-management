@@ -7,42 +7,47 @@ import noop from 'lodash/noop';
 
 export type ToastVariant = 'error' | 'info' | 'success' | 'warning';
 
+export interface OpenToast {
+  variant: ToastVariant;
+  message: string;
+}
+
 export interface ToastContextProps {
   isToastOpen: boolean;
-  message: string;
-  variant: ToastVariant;
-  openToast: (toastVariant: ToastVariant, toastMessage: string) => void;
+  toastMessage: string;
+  toastVariant: ToastVariant;
+  openToast: ({ variant, message }: OpenToast) => void;
   closeToast: () => void;
 }
 
 export const ToastContext = createContext<ToastContextProps>({
   isToastOpen: false,
-  message: '',
-  variant: 'info',
+  toastMessage: '',
+  toastVariant: 'info',
   openToast: noop,
   closeToast: noop
 });
 
 export const ToastProvider: React.FC = ({ children }) => {
   const [isToastOpen, setIsToastOpen] = useState(false);
-  const [message, setMessage] = useState('');
-  const [variant, setVariant] = useState<ToastVariant>('info');
+  const [toastMessage, setToastMessage] = useState('');
+  const [toastVariant, setToastVariant] = useState<ToastVariant>('info');
 
-  const openToast = (toastVariant: ToastVariant, toastMessage: string): void => {
+  const openToast = ({ variant, message }: OpenToast): void => {
     setIsToastOpen(true);
-    setVariant(toastVariant);
-    setMessage(toastMessage);
+    setToastVariant(variant);
+    setToastMessage(message);
   };
 
   const closeToast = (): void => {
     setIsToastOpen(false);
-    setVariant('info');
-    setMessage('');
+    setToastVariant('info');
+    setToastMessage('');
   };
 
   return (
     <ToastContext.Provider
-      value={{ isToastOpen, message, variant, openToast, closeToast }}
+      value={{ isToastOpen, toastMessage, toastVariant, openToast, closeToast }}
     >
       {children}
     </ToastContext.Provider>

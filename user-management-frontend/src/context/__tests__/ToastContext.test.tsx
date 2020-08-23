@@ -6,13 +6,15 @@ describe('ToastContext', () => {
   const TestComponent: React.FC = () => {
     return (
       <ToastContext.Consumer>
-        {({ isToastOpen, message, variant, openToast, closeToast }) => (
+        {({ isToastOpen, toastMessage, toastVariant, openToast, closeToast }) => (
           <div>
             <div>isToastOpen: {isToastOpen.toString()}</div>
-            <div>message: {message}</div>
-            <div>variant: {variant}</div>
+            <div>message: {toastMessage}</div>
+            <div>variant: {toastVariant}</div>
             <button
-              onClick={() => openToast('warning', 'There was a warning.')}
+              onClick={() =>
+                openToast({ variant: 'warning', message: 'There was a warning.' })
+              }
               type="button"
             >
               open toast
