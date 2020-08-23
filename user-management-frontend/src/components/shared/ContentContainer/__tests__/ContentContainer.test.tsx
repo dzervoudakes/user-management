@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import ContentContainer from '..';
 
 describe('ContentContainer', () => {
-  it('renders', () => {
+  it('renders the children', () => {
     const { getByText } = render(
       <ContentContainer className="test">hello world</ContentContainer>
     );

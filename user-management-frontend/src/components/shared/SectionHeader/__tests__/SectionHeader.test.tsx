@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import SectionHeader from '..';
 
 describe('SectionHeader', () => {
-  it('renders', () => {
+  it('renders the title and description', () => {
     const { getByText } = render(
       <SectionHeader title="Title" description="Description" />
     );

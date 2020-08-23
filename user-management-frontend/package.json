@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "4.11.0",
+    "@material-ui/icons": "4.9.1",
     "@types/classnames": "2.2.10",
     "@types/lodash": "4.14.159",
     "@types/uuid": "8.3.0",
