@@ -3,30 +3,28 @@ import { render, fireEvent } from '@testing-library/react';
 import { ToastContext, ToastProvider } from '..';
 
 describe('ToastContext', () => {
-  const TestComponent: React.FC = () => {
-    return (
-      <ToastContext.Consumer>
-        {({ isToastOpen, toastMessage, toastVariant, openToast, closeToast }) => (
-          <div>
-            <div>isToastOpen: {isToastOpen.toString()}</div>
-            <div>message: {toastMessage}</div>
-            <div>variant: {toastVariant}</div>
-            <button
-              onClick={() =>
-                openToast({ variant: 'warning', message: 'There was a warning.' })
-              }
-              type="button"
-            >
-              open toast
-            </button>
-            <button onClick={closeToast} type="button">
-              close toast
-            </button>
-          </div>
-        )}
-      </ToastContext.Consumer>
-    );
-  };
+  const TestComponent: React.FC = () => (
+    <ToastContext.Consumer>
+      {({ isToastOpen, toastMessage, toastVariant, openToast, closeToast }) => (
+        <div>
+          <div>isToastOpen: {isToastOpen.toString()}</div>
+          <div>message: {toastMessage}</div>
+          <div>variant: {toastVariant}</div>
+          <button
+            onClick={() =>
+              openToast({ variant: 'warning', message: 'There was a warning.' })
+            }
+            type="button"
+          >
+            open toast
+          </button>
+          <button onClick={closeToast} type="button">
+            close toast
+          </button>
+        </div>
+      )}
+    </ToastContext.Consumer>
+  );
 
   const Wrapper: React.FC = () => (
     <ToastProvider>

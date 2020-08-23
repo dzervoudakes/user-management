@@ -11,8 +11,8 @@ describe('UserService', () => {
   const url = 'http://localhost:3000/api/users'; // @todo .env
 
   const mockUser: User = {
-    firstName: 'Foo',
-    lastName: 'Bar',
+    firstName: 'John',
+    lastName: 'Doe',
     username: 'helloworld7',
     address: '123 Fake St, Nowhere, CO 80123',
     gender: 'other',

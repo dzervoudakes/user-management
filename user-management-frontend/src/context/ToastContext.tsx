@@ -1,5 +1,5 @@
 /**
- * Handle state of reusable Toast component.
+ * Handle state of the reusable Toast component.
  * @packageDocumentation
  */
 import React, { createContext, useState } from 'react';

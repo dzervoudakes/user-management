@@ -6,14 +6,14 @@ import { useToast } from '..';
 describe('useToast', () => {
   const TestComponent: React.FC = ({ children }) => {
     const isToastOpen = false;
-    const message = 'foo';
-    const variant = 'success';
+    const toastMessage = 'Success';
+    const toastVariant = 'success';
     const openToast = jest.fn();
     const closeToast = jest.fn();
 
     return (
       <ToastContext.Provider
-        value={{ isToastOpen, message, variant, openToast, closeToast }}
+        value={{ isToastOpen, toastMessage, toastVariant, openToast, closeToast }}
       >
         {children}
       </ToastContext.Provider>
@@ -22,10 +22,10 @@ describe('useToast', () => {
 
   it('returns the current value of ToastContext', () => {
     const { result } = renderHook(() => useToast(), { wrapper: TestComponent });
-    const { isToastOpen, message, variant } = result.current;
+    const { isToastOpen, toastMessage, toastVariant } = result.current;
 
     expect(isToastOpen).toBe(false);
-    expect(message).toBe('foo');
-    expect(variant).toBe('success');
+    expect(toastMessage).toBe('Success');
+    expect(toastVariant).toBe('success');
   });
 });
