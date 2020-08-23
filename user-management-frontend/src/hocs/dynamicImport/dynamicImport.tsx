@@ -1,6 +1,11 @@
 import React, { lazy, Suspense } from 'react';
 import LoadingIndicator from '@shared/LoadingIndicator';
 
+/**
+ * HOC that dynamically imports new component bundles when needed.
+ * @packageDocumentation
+ */
+
 const dynamicImport = (ImportComponent: () => any): any => {
   const C: React.ComponentType = lazy(ImportComponent);
 

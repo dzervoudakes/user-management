@@ -23,9 +23,11 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "4.11.0",
+    "@types/classnames": "2.2.10",
     "@types/lodash": "4.14.159",
     "@types/uuid": "8.3.0",
     "axios": "0.20.0",
+    "classnames": "2.2.6",
     "core-js": "3.6.5",
     "lodash": "4.17.20",
     "react": "16.13.1",
