@@ -30,28 +30,24 @@ describe('UserContext', () => {
     }
   };
 
-  const TestComponent: React.FC = () => {
-    return (
-      <UserContext.Consumer>
-        {({ error, userList }) => (
-          <div>
-            <div>Error: {error.toString()}</div>
-            {userList.map(({ firstName }) => (
-              <div key={firstName}>{firstName}</div>
-            ))}
-          </div>
-        )}
-      </UserContext.Consumer>
-    );
-  };
+  const TestComponent: React.FC = () => (
+    <UserContext.Consumer>
+      {({ error, userList }) => (
+        <div>
+          <div>Error: {error.toString()}</div>
+          {userList.map(({ firstName }) => (
+            <div key={firstName}>{firstName}</div>
+          ))}
+        </div>
+      )}
+    </UserContext.Consumer>
+  );
 
-  const Wrapper: React.FC = () => {
-    return (
-      <UserProvider>
-        <TestComponent />
-      </UserProvider>
-    );
-  };
+  const Wrapper: React.FC = () => (
+    <UserProvider>
+      <TestComponent />
+    </UserProvider>
+  );
 
   it('provides a list of users to context consumers', async () => {
     (UserService.getUsers as any).mockImplementation(() =>
