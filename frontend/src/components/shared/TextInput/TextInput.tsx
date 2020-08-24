@@ -11,7 +11,7 @@ interface TextInputProps {
   field: FieldInputProps<string>;
 }
 
-const FormInput: React.FC<TextInputProps> = ({
+const TextInput: React.FC<TextInputProps> = ({
   error,
   label,
   required = false,
@@ -36,4 +36,4 @@ const FormInput: React.FC<TextInputProps> = ({
   );
 };
 
-export default FormInput;
+export default TextInput;
