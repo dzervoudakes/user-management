@@ -6,7 +6,15 @@ import React, { createContext, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import Api from '@src/api';
 import { UserService } from '@src/services';
-import { User } from '@src/types';
+
+export interface User {
+  address: string;
+  firstName: string;
+  gender: 'male' | 'female' | 'other';
+  id: string;
+  lastName: string;
+  username: string;
+}
 
 export interface UserContextProps {
   userList: User[];

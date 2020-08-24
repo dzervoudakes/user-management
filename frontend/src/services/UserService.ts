@@ -4,7 +4,7 @@
  */
 import { AxiosResponse, CancelTokenSource } from 'axios';
 import Api from '@src/api/Api';
-import { User } from '@src/types';
+import { User } from '@src/context';
 
 const BASE_URL = 'http://localhost:3000/api/users'; // @todo .env
 

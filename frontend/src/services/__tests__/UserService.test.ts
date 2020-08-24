@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import Api from '@src/api/Api';
-import { User } from '@src/types';
+import { User } from '@src/context';
 import { UserService } from '..';
 
 jest.mock('axios');
