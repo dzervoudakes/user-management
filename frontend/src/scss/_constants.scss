@@ -1,0 +1,44 @@
+/* stylelint-disable property-no-unknown */
+
+// fonts
+$font-primary: 'Droid Sans', sans-serif;
+
+// colors
+$color-black: #000;
+$color-blue-primary: #387bb4;
+$color-blue-secondary: #336b9b;
+$color-dark-blue: #204361;
+$color-dark-gray: #343a40;
+$color-gray: #777;
+$color-light-blue: #4085c0;
+$color-off-white: #fcfcfc;
+$color-orange: #ff881a;
+$color-red: #d21500;
+$color-super-light-gray: #e1e1e1;
+$color-white: #fff;
+
+// borders
+$border-dark-blue: 0.0625rem solid $color-dark-blue;
+$border-light-blue: 0.0625rem solid $color-light-blue;
+$border-light-gray: 0.0625rem solid $color-super-light-gray;
+$border-light-gray-dotted: 0.0625rem dotted $color-super-light-gray;
+
+// other
+$blue-bar: linear-gradient($color-blue-primary, $color-blue-secondary);
+
+// export fonts and colors for mui theme
+:export {
+  black: $color-black;
+  blueprimary: $color-blue-primary;
+  bluesecondary: $color-blue-secondary;
+  darkblue: $color-dark-blue;
+  darkgray: $color-dark-gray;
+  gray: $color-gray;
+  lightblue: $color-light-blue;
+  offwhite: $color-off-white;
+  orange: $color-orange;
+  primaryfont: $font-primary;
+  red: $color-red;
+  superlightgray: $color-super-light-gray;
+  white: $color-white;
+}
