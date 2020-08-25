@@ -3,6 +3,7 @@
  * @packageDocumentation
  */
 import axios, { AxiosResponse, AxiosRequestConfig, CancelTokenSource } from 'axios';
+import omit from 'lodash/omit';
 
 interface RequestConfigOptions extends AxiosRequestConfig {
   source?: CancelTokenSource;
@@ -11,7 +12,7 @@ interface RequestConfigOptions extends AxiosRequestConfig {
 class Api {
   static delete(url: string, options: RequestConfigOptions): Promise<AxiosResponse<any>> {
     return this.request({
-      ...options,
+      ...omit(options, ['url', 'method']),
       url,
       method: 'DELETE'
     });
@@ -19,7 +20,7 @@ class Api {
 
   static get(url: string, options: RequestConfigOptions): Promise<AxiosResponse<any>> {
     return this.request({
-      ...options,
+      ...omit(options, ['url', 'method']),
       url,
       method: 'GET'
     });
@@ -36,7 +37,7 @@ class Api {
       'Content-Type': 'application/json-patch+json'
     };
     return this.request({
-      ...options,
+      ...omit(options, ['url', 'method', 'data', 'headers']),
       url,
       method: 'PATCH',
       data,
@@ -50,7 +51,7 @@ class Api {
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     return this.request({
-      ...options,
+      ...omit(options, ['url', 'method', 'data']),
       url,
       method: 'POST',
       data
@@ -63,7 +64,7 @@ class Api {
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     return this.request({
-      ...options,
+      ...omit(options, ['url', 'method', 'data']),
       url,
       method: 'PUT',
       data
