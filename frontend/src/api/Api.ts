@@ -9,10 +9,12 @@ interface RequestConfigOptions extends AxiosRequestConfig {
   source?: CancelTokenSource;
 }
 
+const commonOmitFields = ['url', 'method', 'data'];
+
 class Api {
   static delete(url: string, options: RequestConfigOptions): Promise<AxiosResponse<any>> {
     return this.request({
-      ...omit(options, ['url', 'method']),
+      ...omit(options, commonOmitFields),
       url,
       method: 'DELETE'
     });
@@ -20,7 +22,7 @@ class Api {
 
   static get(url: string, options: RequestConfigOptions): Promise<AxiosResponse<any>> {
     return this.request({
-      ...omit(options, ['url', 'method']),
+      ...omit(options, commonOmitFields),
       url,
       method: 'GET'
     });
@@ -32,12 +34,14 @@ class Api {
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     const { headers = {} } = options;
+
     const patchHeaders = {
       ...headers,
       'Content-Type': 'application/json-patch+json'
     };
+
     return this.request({
-      ...omit(options, ['url', 'method', 'data', 'headers']),
+      ...omit(options, [...commonOmitFields, 'headers']),
       url,
       method: 'PATCH',
       data,
@@ -51,7 +55,7 @@ class Api {
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     return this.request({
-      ...omit(options, ['url', 'method', 'data']),
+      ...omit(options, commonOmitFields),
       url,
       method: 'POST',
       data
@@ -64,7 +68,7 @@ class Api {
     options: RequestConfigOptions
   ): Promise<AxiosResponse<any>> {
     return this.request({
-      ...omit(options, ['url', 'method', 'data']),
+      ...omit(options, commonOmitFields),
       url,
       method: 'PUT',
       data
