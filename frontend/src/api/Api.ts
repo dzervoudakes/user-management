@@ -5,6 +5,8 @@
 import axios, { AxiosResponse, AxiosRequestConfig, CancelTokenSource } from 'axios';
 import omit from 'lodash/omit';
 
+// @todo type ApiResponse: 'Promise<AxiosResponse<Record<string, unknown>>>' or similar
+
 interface RequestConfigOptions extends AxiosRequestConfig {
   source?: CancelTokenSource;
 }
