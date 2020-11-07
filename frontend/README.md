@@ -82,9 +82,15 @@ npm run clean
 > This application makes use of `ESLint`, `Stylelint` and `EditorConfig`. Each of these features requires
 > an extension be installed in order to work properly with IDEs and text editors such as VSCode.
 
-## Default Content Structure
+## Content Structure
+- API wrapper methods live under `./src/api`
 - Shared components live under `./src/components`
+- Application state management lives under `./src/context`
+- Higher order components live under `./src/hocs`
+- Custom hooks to retrieve and affect application state live under `./src/hooks`
 - Top-level page view components live under `./src/pages`
 - Application routes live under `./src/routes`
 - Default styles live under `./src/scss`
+- API services live under `./src/services`
+- Material UI themes live under `./src/theme`
 - The inherited Webpack config aliases `@src/*` as an absolute import path to `./src/*`

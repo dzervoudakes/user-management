@@ -14,7 +14,6 @@
     "outDir": "dist",
     "paths": {
       "@src/*": ["src/*"],
-      "@shared/*": ["src/components/shared/*"],
       "react-dom": ["@hot-loader/react-dom"]
     },
     "resolveJsonModule": true,
