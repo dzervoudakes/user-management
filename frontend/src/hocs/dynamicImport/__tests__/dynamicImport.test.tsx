@@ -3,8 +3,8 @@ import { render, waitForElementToBeRemoved } from '@testing-library/react';
 import dynamicImport from '..';
 
 describe('Shared | dynamicImport', () => {
-  const ImportedComponent = dynamicImport(() =>
-    import(/* webpackChunkName: "test" */ '../__mocks__/MockImportedComponent')
+  const ImportedComponent = dynamicImport(
+    () => import(/* webpackChunkName: "test" */ '../__mocks__/MockImportedComponent')
   );
 
   it('Loads an external component and displays a loading indicator as a fallback', async () => {

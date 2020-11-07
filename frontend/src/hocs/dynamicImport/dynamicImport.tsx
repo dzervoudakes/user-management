@@ -3,7 +3,7 @@
  * @packageDocumentation
  */
 import React, { lazy, Suspense } from 'react';
-import LoadingIndicator from '@shared/LoadingIndicator';
+import LoadingIndicator from '@src/components/LoadingIndicator';
 
 const dynamicImport = (ImportComponent: () => any): any => {
   const C: React.ComponentType = lazy(ImportComponent);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ContentContainer from '@shared/ContentContainer';
-import SectionHeader from '@shared/SectionHeader';
+import ContentContainer from '@src/components/ContentContainer';
+import SectionHeader from '@src/components/SectionHeader';
 
 const Missing: React.FC = () => (
   <ContentContainer className="missing">
