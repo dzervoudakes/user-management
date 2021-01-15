@@ -4,7 +4,7 @@ import dynamicImport from '..';
 
 describe('dynamicImport', () => {
   const ImportedComponent = dynamicImport(
-    () => import(/* webpackChunkName: "test" */ '../__mocks__/MockImportedComponent')
+    () => import(/* webpackChunkName: 'test' */ '../__mocks__/MockImportedComponent')
   );
 
   it('Loads an external component and displays a loading indicator as a fallback', async () => {
