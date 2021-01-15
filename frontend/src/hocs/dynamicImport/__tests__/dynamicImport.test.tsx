@@ -2,7 +2,7 @@ import React from 'react';
 import { render, waitForElementToBeRemoved } from '@testing-library/react';
 import dynamicImport from '..';
 
-describe('Shared | dynamicImport', () => {
+describe('dynamicImport', () => {
   const ImportedComponent = dynamicImport(
     () => import(/* webpackChunkName: "test" */ '../__mocks__/MockImportedComponent')
   );
