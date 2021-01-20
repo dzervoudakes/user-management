@@ -1,1 +1,1 @@
-export { default } from './dynamicImport';
+export * from './dynamicImport';
