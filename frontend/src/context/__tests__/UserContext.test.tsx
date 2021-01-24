@@ -50,7 +50,7 @@ describe('UserContext', () => {
   );
 
   it('provides a list of users to context consumers', async () => {
-    (UserService.getUsers as any).mockImplementation(() =>
+    (UserService.getUsers as jest.Mock).mockImplementation(() =>
       Promise.resolve(mockUsersResponse)
     );
     const { getByText } = render(<Wrapper />);
@@ -62,7 +62,7 @@ describe('UserContext', () => {
   });
 
   it('sets the error state when the call to getUsers fails', async () => {
-    (UserService.getUsers as any).mockImplementation(() => Promise.reject());
+    (UserService.getUsers as jest.Mock).mockImplementation(() => Promise.reject());
     const { getByText, queryByText } = render(<Wrapper />);
 
     await waitFor(() => getByText('Error: true'));

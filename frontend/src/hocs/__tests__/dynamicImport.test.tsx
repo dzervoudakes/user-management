@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, waitForElementToBeRemoved } from '@testing-library/react';
-import dynamicImport from '..';
+import { dynamicImport } from '..';
 
 describe('dynamicImport', () => {
   const ImportedComponent = dynamicImport(

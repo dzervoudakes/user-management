@@ -30,4 +30,66 @@
       weight: 400;
     }
   }
+
+  .desktop-menu {
+    border-right: $border-light-blue;
+    display: inline-block;
+    list-style: none;
+
+    li {
+      border: {
+        left: $border-light-blue;
+        right: $border-dark-blue;
+      }
+
+      float: left;
+      line-height: 3.125rem;
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $color-white;
+      display: inline-block;
+      line-height: 3.125rem;
+      padding: 0 1.5rem;
+      text-decoration: none;
+      transition: all 0.2s;
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+
+      &:hover,
+      &:focus {
+        background: $color-off-white;
+        color: $color-orange;
+        text-shadow: none;
+      }
+    }
+  }
+
+  .mobile-menu {
+    .list-item {
+      a {
+        color: $color-blue-primary;
+        text-decoration: none !important;
+        transition: color 0.2s;
+
+        @media screen and (prefers-reduced-motion: reduce) {
+          transition: none;
+        }
+      }
+
+      &:hover a,
+      &:focus a {
+        color: $color-orange;
+      }
+    }
+  }
+
+  .header {
+    .icon-button-container {
+      float: right;
+    }
+  }
 }
