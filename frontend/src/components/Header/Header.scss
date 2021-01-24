@@ -72,7 +72,7 @@
     .list-item {
       a {
         color: $color-blue-primary;
-        text-decoration: none !important;
+        text-decoration: none !important; // @todo
         transition: color 0.2s;
 
         @media screen and (prefers-reduced-motion: reduce) {
