@@ -39,7 +39,8 @@
     "react-responsive": "8.2.0",
     "react-router-dom": "5.2.0",
     "regenerator-runtime": "0.13.7",
-    "uuid": "8.3.2"
+    "uuid": "8.3.2",
+    "yup": "0.32.8"
   },
   "devDependencies": {
     "@dztools/eslint-config-react-typescript": "1.0.7",

@@ -1,11 +1,11 @@
 /**
- * Wrapper class for Axios that applies a custom authorization header for all requests.
+ * Wrapper class for Axios that applies the appropriate authorization header for all requests.
  * @packageDocumentation
  */
 import axios, { AxiosResponse, AxiosRequestConfig, CancelTokenSource } from 'axios';
 import omit from 'lodash/omit';
 
-// @todo type ApiResponse: 'Promise<AxiosResponse<Record<string, unknown>>>' or similar
+type ApiResponse = Promise<AxiosResponse<Record<string, unknown>>>;
 
 interface RequestConfigOptions extends AxiosRequestConfig {
   source?: CancelTokenSource;
@@ -14,7 +14,7 @@ interface RequestConfigOptions extends AxiosRequestConfig {
 const commonOmitFields = ['url', 'method', 'data'];
 
 class Api {
-  static delete(url: string, options: RequestConfigOptions): Promise<AxiosResponse<any>> {
+  static delete(url: string, options: RequestConfigOptions): ApiResponse {
     return this.request({
       ...omit(options, commonOmitFields),
       url,
@@ -22,7 +22,7 @@ class Api {
     });
   }
 
-  static get(url: string, options: RequestConfigOptions): Promise<AxiosResponse<any>> {
+  static get(url: string, options: RequestConfigOptions): ApiResponse {
     return this.request({
       ...omit(options, commonOmitFields),
       url,
@@ -30,11 +30,7 @@ class Api {
     });
   }
 
-  static patch<T>(
-    url: string,
-    data: T,
-    options: RequestConfigOptions
-  ): Promise<AxiosResponse<any>> {
+  static patch<T>(url: string, data: T, options: RequestConfigOptions): ApiResponse {
     const { headers = {} } = options;
 
     const patchHeaders = {
@@ -51,11 +47,7 @@ class Api {
     });
   }
 
-  static post<T>(
-    url: string,
-    data: T,
-    options: RequestConfigOptions
-  ): Promise<AxiosResponse<any>> {
+  static post<T>(url: string, data: T, options: RequestConfigOptions): ApiResponse {
     return this.request({
       ...omit(options, commonOmitFields),
       url,
@@ -64,11 +56,7 @@ class Api {
     });
   }
 
-  static put<T>(
-    url: string,
-    data: T,
-    options: RequestConfigOptions
-  ): Promise<AxiosResponse<any>> {
+  static put<T>(url: string, data: T, options: RequestConfigOptions): ApiResponse {
     return this.request({
       ...omit(options, commonOmitFields),
       url,
@@ -85,7 +73,7 @@ class Api {
     headers,
     responseType = 'json',
     source
-  }: RequestConfigOptions): Promise<AxiosResponse<any>> {
+  }: RequestConfigOptions): ApiResponse {
     const options: RequestConfigOptions = {
       url,
       method,

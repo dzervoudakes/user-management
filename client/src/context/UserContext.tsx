@@ -3,26 +3,31 @@
  * @packageDocumentation
  */
 import React, { createContext, useEffect, useState } from 'react';
+import noop from 'lodash/noop';
 import { AxiosResponse } from 'axios';
 import Api from '@src/api';
 import { UserService } from '@src/services';
 
+export type Gender = 'male' | 'female' | 'other';
+
 export interface User {
   address: string;
   firstName: string;
-  gender: 'male' | 'female' | 'other';
   id: string;
   lastName: string;
   username: string;
+  gender: Gender;
 }
 
 export interface UserContextProps {
   userList: User[];
+  getUsers: () => Promise<AxiosResponse> | void;
   error: boolean;
 }
 
 export const UserContext = createContext<UserContextProps>({
   userList: [],
+  getUsers: noop,
   error: false
 });
 
@@ -55,7 +60,9 @@ export const UserProvider: React.FC = ({ children }) => {
   });
 
   return (
-    <UserContext.Provider value={{ userList, error }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ userList, getUsers, error }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
