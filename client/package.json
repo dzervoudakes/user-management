@@ -18,8 +18,10 @@
     "test:verbose": "npm test -- --verbose",
     "test:watch": "npm test -- --watchAll"
   },
-  "repository": {},
-  "author": "",
+  "repository": {
+    "url": "https://github.com/dzervoudakes/user-management"
+  },
+  "author": "dzervoudakes",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "4.11.3",
