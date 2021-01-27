@@ -7,6 +7,7 @@
   height: 3.125rem;
   text-shadow: 0 -0.0625rem $color-black;
 
+  // @todo clean up all media queries to simply be 'isMobile ? true : false'
   .page-title {
     @media (max-width: 38.5rem) {
       padding-left: 1.125rem;
