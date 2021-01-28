@@ -19,7 +19,8 @@
     "test:watch": "npm test -- --watchAll"
   },
   "repository": {
-    "url": "https://github.com/dzervoudakes/user-management"
+    "type": "git",
+    "url": "git+ssh://git@github.com/dzervoudakes/user-management.git"
   },
   "author": "dzervoudakes",
   "license": "MIT",

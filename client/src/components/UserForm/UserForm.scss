@@ -1,0 +1,60 @@
+@import '~@src/scss/_constants';
+
+// @todo clean up this css a bit and fix those queries!
+
+.user-form {
+  max-width: 66.25rem;
+
+  .form-item {
+    position: relative;
+
+    @media (max-width: 50rem) {
+      width: 100%;
+    }
+
+    @media (min-width: 50.001rem) {
+      display: inline-block;
+      margin-bottom: 1rem;
+      width: 40%;
+
+      &:nth-child(even) {
+        margin-left: 1rem;
+      }
+    }
+
+    > p {
+      color: $color-red;
+      font-size: 0.75rem;
+      font-style: italic;
+
+      @media (min-width: 50.001rem) {
+        position: absolute;
+      }
+    }
+  }
+
+  .form-input {
+    vertical-align: text-bottom;
+    width: 100%;
+
+    @media (max-width: 50rem) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .submit-button {
+    @media (max-width: 50rem) {
+      margin: 1.5rem 0 0;
+      width: 100%;
+    }
+
+    @media (min-width: 50.001rem) {
+      bottom: 1.5rem;
+      margin-left: 1rem;
+      width: 40%;
+    }
+
+    vertical-align: bottom;
+  }
+}
