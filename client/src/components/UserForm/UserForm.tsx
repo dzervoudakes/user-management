@@ -114,7 +114,10 @@ const UserForm: React.FC<UserFormProps> = ({
     >
       {({ dirty, errors, values }) => (
         <>
-          <Prompt when={dirty} message="You have unsaved changes. Proceed?" />
+          <Prompt
+            when={dirty}
+            message="You have unsaved changes. Would you like to proceed?"
+          />
           <Form className="user-form">
             <div className="form-row">
               <div className="form-item">
