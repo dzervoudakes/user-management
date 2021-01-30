@@ -32,7 +32,7 @@ export const UserContext = createContext<UserContextProps>({
 });
 
 export const UserProvider: React.FC = ({ children }) => {
-  const [userList, setUserList] = useState([]);
+  const [userList, setUserList] = useState<User[]>([]);
   const [error, setError] = useState(false);
 
   const source = Api.source();
@@ -42,7 +42,7 @@ export const UserProvider: React.FC = ({ children }) => {
       const result = await UserService.getUsers(source);
       const { users } = result.data;
 
-      setUserList(users);
+      setUserList(users as User[]);
       setError(false);
       return result;
     } catch (e) {
