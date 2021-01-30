@@ -24,7 +24,7 @@ interface Values {
   gender: Gender;
 }
 
-interface UserFormProps {
+export interface UserFormProps {
   callback?: () => void;
   initialValues?: Values;
   variant?: 'create' | 'update';

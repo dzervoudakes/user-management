@@ -1,0 +1,96 @@
+@import '~@src/scss/_constants';
+
+.table-entry {
+  display: inline-block;
+  position: relative;
+
+  &:not(:first-child) {
+    padding-top: 2rem;
+  }
+
+  &:not(:last-child) {
+    padding-bottom: 2rem;
+  }
+
+  .user-icon {
+    border: $border-light-gray;
+    border-radius: 0.1875rem;
+    display: inline-block;
+    width: 8rem;
+  }
+
+  .user-info {
+    @media (min-width: 36.251rem) {
+      margin-left: 1.5rem;
+    }
+
+    border-spacing: 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .actions {
+    position: absolute;
+    right: 0;
+    top: 0.5rem;
+  }
+
+  th,
+  td {
+    text-align: left;
+  }
+
+  th {
+    color: $color-light-blue;
+    padding-bottom: 0.3125rem;
+  }
+
+  td {
+    border: {
+      bottom: $border-light-gray;
+      right: $border-light-gray;
+    }
+
+    color: $color-gray;
+    font-size: 0.8125rem;
+  }
+
+  tr {
+    &:nth-of-type(2) > td {
+      border-top: $border-light-gray;
+    }
+
+    > td:first-child {
+      background: $color-off-white;
+      border-left: $border-light-gray;
+      padding: 0.3125rem 0.9375rem 0.3125rem 0.3125rem;
+    }
+
+    > td:last-child {
+      @media (min-width: 53.75rem) {
+        min-width: 31.25rem;
+      }
+
+      padding: 0.3125rem 0.9375rem;
+    }
+  }
+}
+
+.update-user-form {
+  max-width: 66.25rem;
+  padding: 1rem 0;
+
+  .cancel-button {
+    margin-bottom: 1rem;
+
+    @media (min-width: 50.001rem) {
+      margin-left: calc(40% + 1rem);
+      width: 40%;
+    }
+
+    @media (max-width: 50rem) {
+      margin-top: 1rem;
+      width: 100%;
+    }
+  }
+}

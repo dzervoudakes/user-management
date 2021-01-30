@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { ToastProvider, Gender } from '@src/context';
 import { UserService } from '@src/services';
-import UserForm from '..';
+import UserForm, { UserFormProps } from '..';
 
 const MockSelect: React.FC = (props) => <select {...props} />;
 const mockHistoryPush = jest.fn();
@@ -38,18 +38,16 @@ describe('UserForm', () => {
     gender: 'male' as Gender,
     id: '12345'
   };
-  const MockProviders: React.FC = ({ children }) => (
+  const TestComponent: React.FC<UserFormProps> = (props) => (
     <MemoryRouter>
-      <ToastProvider>{children}</ToastProvider>
+      <ToastProvider>
+        <UserForm {...props} />
+      </ToastProvider>
     </MemoryRouter>
   );
 
   it('renders', () => {
-    const { getAllByText, getByText } = render(
-      <MockProviders>
-        <UserForm />
-      </MockProviders>
-    );
+    const { getAllByText, getByText } = render(<TestComponent />);
 
     // MUI form fields create an odd structure that doesn't work with 'getByLabelText'.
     // Furthermore, MUI creates multiple DOM nodes with the same text in it... <Sigh />
@@ -63,11 +61,7 @@ describe('UserForm', () => {
 
   it('submits user responses and creates a new user', () => {
     const spy = jest.spyOn(UserService, 'createUser');
-    const { container, getByText } = render(
-      <MockProviders>
-        <UserForm />
-      </MockProviders>
-    );
+    const { container, getByText } = render(<TestComponent />);
 
     const firstNameInput = container.querySelector('input[name="firstName"]')!;
     const lastNameInput = container.querySelector('input[name="lastName"]')!;
@@ -95,9 +89,7 @@ describe('UserForm', () => {
     const updatedUsername = 'emanning10';
     const spy = jest.spyOn(UserService, 'createUser');
     const { container, getByText } = render(
-      <MockProviders>
-        <UserForm variant="update" initialValues={payload} callback={mockCallback} />
-      </MockProviders>
+      <TestComponent variant="update" initialValues={payload} callback={mockCallback} />
     );
 
     const usernameInput = container.querySelector('input[name="username"]')!;
@@ -113,11 +105,7 @@ describe('UserForm', () => {
   });
 
   it('renders the error messaging when submitting empty responses', () => {
-    const { getByText } = render(
-      <MockProviders>
-        <UserForm />
-      </MockProviders>
-    );
+    const { getByText } = render(<TestComponent />);
 
     fireEvent.click(getByText('Submit'));
 
@@ -134,11 +122,7 @@ describe('UserForm', () => {
     UserService.createUser = jest.fn().mockImplementation(() => {
       throw new Error('there was an error');
     });
-    const { getByText } = render(
-      <MockProviders>
-        <UserForm initialValues={payload} />
-      </MockProviders>
-    );
+    const { getByText } = render(<TestComponent initialValues={payload} />);
 
     fireEvent.click(getByText('Submit'));
 
@@ -152,9 +136,7 @@ describe('UserForm', () => {
       throw new Error('there was an error');
     });
     const { getByText } = render(
-      <MockProviders>
-        <UserForm variant="update" initialValues={payload} />
-      </MockProviders>
+      <TestComponent variant="update" initialValues={payload} />
     );
 
     fireEvent.click(getByText('Submit'));
