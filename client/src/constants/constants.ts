@@ -1,3 +1,10 @@
+/**
+ * Global constants for use throughout the app.
+ * @packageDocumentation
+ */
+
 // media queries
-// eslint-disable-next-line
-export const MOBILE_WIDTH = 768; // @todo remove eslint-disable
+export const MOBILE_WIDTH = 768;
+
+// urls
+export const API_BASE_URL = 'http://localhost:3000/api';

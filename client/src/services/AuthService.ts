@@ -4,13 +4,14 @@
  */
 import { CancelTokenSource } from 'axios';
 import Api, { ApiResponse } from '@src/api/Api';
+import { API_BASE_URL } from '@src/constants';
 
 interface AuthTokenPayload {
   username: string;
   password: string;
 }
 
-const BASE_URL = 'http://localhost:3000/api/auth'; // @todo .env
+const BASE_URL = `${API_BASE_URL}/auth`;
 
 export class AuthService {
   static generateToken(data: AuthTokenPayload, source?: CancelTokenSource): ApiResponse {

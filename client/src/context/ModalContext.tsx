@@ -1,5 +1,5 @@
 /**
- * Handle state of the reusable Modal component.
+ * Handle state of the Modal component.
  * @packageDocumentation
  */
 import React, { createContext, useState } from 'react';

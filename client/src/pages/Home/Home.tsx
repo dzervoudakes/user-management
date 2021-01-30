@@ -14,57 +14,54 @@ const Home: React.FC = () => {
   const [isAdminView, setIsAdminView] = useState(false);
   const { userList: users } = useUser();
 
-  const toggleView = (): void => {
+  const toggleAdminView = (): void => {
     setIsAdminView(!isAdminView);
   };
 
   const handleKeyPress = (event: KeyboardEvent): void => {
     if (event.key === 'Enter') {
-      toggleView();
+      toggleAdminView();
     }
   };
 
-  const numUsers = users.length;
-
-  const entries =
-    numUsers > 0 ? (
-      users.map((user, index) => (
-        <Fragment key={user.id}>
-          <UserInfoTable user={user} />
-          {index !== users.indexOf(users[users.length - 1]) && (
-            <hr className="gray-rule" />
-          )}
-        </Fragment>
-      ))
-    ) : (
-      <p>
-        Let&apos;s get things started: <Link to="/new-user">click here</Link> to create a
-        user.
-      </p>
-    );
+  const entries = users.map((user, index) => (
+    <Fragment key={user.id}>
+      <UserInfoTable user={user} />
+      {index !== users.indexOf(users[users.length - 1]) && <hr className="gray-rule" />}
+    </Fragment>
+  ));
 
   return (
     <Layout className="user-list">
       <SectionHeader
         title="Current Users"
-        description={`${numUsers} user${numUsers !== 1 ? 's' : ''} found.`}
+        description={`${entries.length} user${entries.length !== 1 ? 's' : ''} found.`}
       />
-      <FormGroup classes={{ root: 'form-group' }}>
-        <FormControlLabel
-          classes={{ root: 'form-control-label' }}
-          control={
-            <Switch
-              checked={isAdminView}
-              onChange={toggleView}
-              onKeyPress={handleKeyPress}
-              value="view"
-              color="secondary"
+      {entries.length > 0 ? (
+        <>
+          <FormGroup classes={{ root: 'form-group' }}>
+            <FormControlLabel
+              classes={{ root: 'form-control-label' }}
+              control={
+                <Switch
+                  checked={isAdminView}
+                  onChange={toggleAdminView}
+                  onKeyPress={handleKeyPress}
+                  value="view"
+                  color="secondary"
+                />
+              }
+              label={`Admin mode ${isAdminView ? 'enabled' : 'disabled'}.`}
             />
-          }
-          label={`Admin mode ${isAdminView ? 'enabled' : 'disabled'}.`}
-        />
-      </FormGroup>
-      {isAdminView ? entries : <UserListTable />}
+          </FormGroup>
+          {isAdminView ? entries : <UserListTable />}
+        </>
+      ) : (
+        <p>
+          Let&apos;s get things started: <Link to="/new-user">click here</Link> to create
+          a user.
+        </p>
+      )}
     </Layout>
   );
 };

@@ -4,9 +4,10 @@
  */
 import { CancelTokenSource } from 'axios';
 import Api, { ApiResponse } from '@src/api/Api';
+import { API_BASE_URL } from '@src/constants';
 import { User } from '@src/context';
 
-const BASE_URL = 'http://localhost:3000/api/users'; // @todo .env
+const BASE_URL = `${API_BASE_URL}/users`;
 
 export class UserService {
   static getUsers(source?: CancelTokenSource): ApiResponse {

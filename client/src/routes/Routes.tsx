@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '@src/pages/Home';
-import Missing from '@src/pages/Missing';
 import { dynamicImport } from '@src/hocs';
 
 const Routes: React.FC = () => (
@@ -14,7 +13,11 @@ const Routes: React.FC = () => (
         () => import(/* webpackChunkName: 'newUser' */ '@src/pages/NewUser')
       )}
     />
-    <Route component={Missing} />
+    <Route
+      component={dynamicImport(
+        () => import(/* webpackChunkName: 'missing' */ '@src/pages/Missing')
+      )}
+    />
   </Switch>
 );
 

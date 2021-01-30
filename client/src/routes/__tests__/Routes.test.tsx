@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Routes from '..';
 
@@ -21,7 +21,9 @@ describe('Routes', () => {
       </MemoryRouter>
     );
 
-    expect(getByText('Create a User')).toBeInTheDocument();
+    waitFor(() => {
+      expect(getByText('Create a User')).toBeInTheDocument();
+    });
   });
 
   it('renders the 404 page', () => {
@@ -31,6 +33,8 @@ describe('Routes', () => {
       </MemoryRouter>
     );
 
-    expect(getByText("That's a 404")).toBeInTheDocument();
+    waitFor(() => {
+      expect(getByText("That's a 404")).toBeInTheDocument();
+    });
   });
 });

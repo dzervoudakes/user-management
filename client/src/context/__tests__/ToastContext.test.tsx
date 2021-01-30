@@ -32,7 +32,7 @@ describe('ToastContext', () => {
     </ToastProvider>
   );
 
-  it('provides the current state of the reusable toast', () => {
+  it('provides the current state of the toast', () => {
     const { getByText } = render(<Wrapper />);
 
     fireEvent.click(getByText('open toast'));

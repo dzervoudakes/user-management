@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import Api from '@src/api/Api';
 import { User } from '@src/context';
+import { API_BASE_URL } from '@src/constants';
 import { UserService } from '..';
 
 jest.mock('axios');
@@ -8,7 +9,7 @@ jest.mock('axios');
 describe('UserService', () => {
   const id = uuidv4();
   const source = undefined;
-  const url = 'http://localhost:3000/api/users'; // @todo .env
+  const url = `${API_BASE_URL}/users`;
 
   const mockUser: User = {
     firstName: 'John',

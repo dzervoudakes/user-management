@@ -37,7 +37,7 @@ describe('ModalContext', () => {
     </ModalProvider>
   );
 
-  it('provides the current state of the reusable modal', () => {
+  it('provides the current state of the modal', () => {
     const { getByText } = render(<Wrapper />);
 
     fireEvent.click(getByText('open modal'));
