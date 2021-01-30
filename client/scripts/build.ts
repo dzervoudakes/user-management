@@ -7,6 +7,10 @@ import chalk from 'chalk';
 import ora from 'ora';
 import webpackConfig from '../webpack.config';
 
+process.on('unhandledRejection', (err) => {
+  throw err;
+});
+
 const spinner = ora('Building for production...');
 spinner.start();
 
