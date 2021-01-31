@@ -6,17 +6,19 @@ services:
     image: mongo:latest
     ports:
       - 27017:27017
-    networks:
-      - dev
 
   mongo_seed:
-    container_name: mongo_seed
-    build: ./database
-    networks:
-      - dev
+    image: 'pkosiec/mongo-seeding:3.0.0'
+    environment:
+      - DROP_DATABASE=true
+      - REPLACE_ID=true
+      - DB_NAME=user-management
+      - DB_PORT=27017
+      - DB_HOST=mongo
+    volumes:
+      - $PWD/:$PWD
+    working_dir: $PWD/database
+    links:
+      - mongo
     depends_on:
       - mongo
-
-networks:
-  dev:
-    name: dev
