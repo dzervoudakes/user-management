@@ -1,8 +1,6 @@
 # User Management Frontend
 > Demo CRUD SPA made with React + TypeScript.
 
-[![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
-
 ## Build Scripts
 
 ### Install Dependencies
@@ -74,13 +72,6 @@ npm run docs
 ```
 npm run clean
 ```
-
-## Technical Requirements
-> The runtime environment for this application requires `node >= 14.6.0` and `npm >= 6.14.7`.
-
-## Configuration
-> This application makes use of `ESLint`, `Stylelint` and `EditorConfig`. Each of these features requires
-> an extension be installed in order to work properly with IDEs and text editors such as VSCode.
 
 ## Content Structure
 - API wrapper methods live under `./src/api`

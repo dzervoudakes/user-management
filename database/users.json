@@ -1,0 +1,37 @@
+[
+  {
+    "address": "112 Salamander Ave, Denver, CO 80203",
+    "firstName": "Don",
+    "gender": "male",
+    "lastName": "Johnson",
+    "username": "djohnson"
+  },
+  {
+    "address": "224 Beech St, Lakewood, CO 80228",
+    "firstName": "Lauren",
+    "gender": "female",
+    "lastName": "Jacobs",
+    "username": "ljacobs"
+  },
+  {
+    "address": "3559 Tennyson St, Denver, CO 80212",
+    "firstName": "Drake",
+    "gender": "male",
+    "lastName": "Sommers",
+    "username": "dsommers"
+  },
+  {
+    "address": "999 18th St, Denver, CO 80202",
+    "firstName": "David",
+    "gender": "male",
+    "lastName": "Berns",
+    "username": "mcfakerson"
+  },
+  {
+    "address": "981 Bellaire St, Denver, CO 80220",
+    "firstName": "Linsday",
+    "gender": "female",
+    "lastName": "Vetell",
+    "username": "lmichellevetell"
+  }
+]
