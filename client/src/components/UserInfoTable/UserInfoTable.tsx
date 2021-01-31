@@ -99,6 +99,7 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
           onClick={openDeleteModal}
           color="inherit"
           classes={{ colorInherit: 'delete-icon' }}
+          data-testid="delete-button"
         >
           <TrashIcon />
         </IconButton>
@@ -106,6 +107,7 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
           onClick={toggleEditMode}
           color="inherit"
           classes={{ colorInherit: 'edit-icon' }}
+          data-testid="edit-button"
         >
           <EditIcon />
         </IconButton>

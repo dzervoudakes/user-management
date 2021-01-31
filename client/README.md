@@ -1,5 +1,5 @@
 # User Management Frontend
-> Demo CRUD app made with React + TypeScript.
+> Demo CRUD SPA made with React + TypeScript.
 
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 

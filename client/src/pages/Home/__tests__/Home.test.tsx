@@ -38,6 +38,7 @@ describe('Home', () => {
       getUsers: noop,
       error: false
     };
+
     return (
       <MemoryRouter>
         <UserContext.Provider value={mockContext}>

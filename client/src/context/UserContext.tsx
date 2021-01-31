@@ -46,7 +46,6 @@ export const UserProvider: React.FC = ({ children }) => {
       setError(false);
       return result;
     } catch (e) {
-      /* istanbul ignore else */
       if (!Api.isCancel(e)) {
         setError(true);
       }
