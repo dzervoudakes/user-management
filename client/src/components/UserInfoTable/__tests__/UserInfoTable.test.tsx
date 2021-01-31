@@ -1,16 +1,21 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { UserProvider, ModalProvider, Gender } from '@src/context';
+import { Gender } from '@src/context';
 import { UserService } from '@src/services';
-import Api from '@src/api';
+import Providers from '@src/components/Providers';
+import Modal from '@src/components/Modal';
+import Toast from '@src/components/Toast';
 import UserInfoTable from '..';
 
 const mockSource = { cancel: jest.fn() };
 
-jest.unmock('axios');
+jest.mock('axios');
 jest.mock('@src/services/UserService');
-jest.mock('@src/api');
+jest.mock('@src/api', () => ({
+  isCancel: jest.fn().mockImplementation(() => false),
+  source: jest.fn().mockImplementation(() => mockSource)
+}));
 
 describe('UserInfoTable', () => {
   const mockUser = {
@@ -24,17 +29,18 @@ describe('UserInfoTable', () => {
 
   const TestComponent: React.FC = () => (
     <MemoryRouter>
-      <UserProvider>
-        <ModalProvider>
-          <UserInfoTable user={mockUser} />
-        </ModalProvider>
-      </UserProvider>
+      <Providers>
+        <UserInfoTable user={mockUser} />
+        <Modal />
+        <Toast />
+      </Providers>
     </MemoryRouter>
   );
 
   it('renders user information', () => {
-    const { getByText } = render(<TestComponent />);
+    const { getByText, getByAltText } = render(<TestComponent />);
 
+    expect(getByAltText('nyg10 user icon')).toBeInTheDocument();
     expect(getByText('Eli Manning')).toBeInTheDocument();
     expect(getByText('nyg10')).toBeInTheDocument();
     expect(getByText('1925 Giants Drive')).toBeInTheDocument();
@@ -53,22 +59,34 @@ describe('UserInfoTable', () => {
 
   it('deletes a user', async () => {
     const spy = jest.spyOn(UserService, 'deleteUser');
-    UserService.getUsers = jest.fn().mockImplementation(() => []);
-    Api.source = jest.fn().mockImplementation(() => mockSource);
+    UserService.getUsers = jest.fn().mockResolvedValueOnce([]);
     const { getByTestId, getByText } = render(<TestComponent />);
 
     fireEvent.click(getByTestId('delete-button'));
-    await waitFor(() => {
-      expect(getByText('Are you sure?')).toBeInTheDocument();
-      expect(
-        getByText('You are about to delete a user. This action cannot be undone.')
-      ).toBeInTheDocument();
-    });
+    expect(getByText('Are you sure?')).toBeInTheDocument();
+    expect(
+      getByText('You are about to delete a user. This action cannot be undone.')
+    ).toBeInTheDocument();
 
     fireEvent.click(getByText('Proceed'));
+    expect(spy).toHaveBeenCalledWith(mockUser.id, mockSource);
     await waitFor(() => {
-      expect(spy).toHaveBeenCalledWith(mockUser.id, mockSource);
       expect(getByText('User successfully deleted.')).toBeInTheDocument();
+    });
+  });
+
+  it('renders the error toast when the user fails to delete', async () => {
+    UserService.getUsers = jest.fn().mockResolvedValueOnce([]);
+    UserService.deleteUser = jest
+      .fn()
+      .mockRejectedValueOnce(() => new Error('there was an error'));
+    const { getByTestId, getByText } = render(<TestComponent />);
+
+    fireEvent.click(getByTestId('delete-button'));
+    fireEvent.click(getByText('Proceed'));
+
+    await waitFor(() => {
+      expect(getByText('There was an error deleting the user.')).toBeInTheDocument();
     });
   });
 });

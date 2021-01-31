@@ -119,9 +119,9 @@ describe('UserForm', () => {
   });
 
   it('renders the error toast when the user fails to create', () => {
-    UserService.createUser = jest.fn().mockImplementation(() => {
-      throw new Error('there was an error');
-    });
+    UserService.createUser = jest
+      .fn()
+      .mockRejectedValue(() => new Error('there was an error'));
     const { getByText } = render(<TestComponent initialValues={payload} />);
 
     fireEvent.click(getByText('Submit'));
@@ -132,9 +132,9 @@ describe('UserForm', () => {
   });
 
   it('renders the error toast when the user fails to update', () => {
-    UserService.updateUser = jest.fn().mockImplementation(() => {
-      throw new Error('there was an error');
-    });
+    UserService.updateUser = jest
+      .fn()
+      .mockRejectedValue(() => new Error('there was an error'));
     const { getByText } = render(
       <TestComponent variant="update" initialValues={payload} />
     );

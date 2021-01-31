@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MediaQuery from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 import EditIcon from '@material-ui/icons/EditOutlined';
 import TrashIcon from '@material-ui/icons/DeleteOutlined';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,6 +11,7 @@ import { useModal, useToast, useUser } from '@src/hooks';
 import { UserService } from '@src/services';
 import UserForm from '@src/components/UserForm';
 import Api from '@src/api';
+import { MOBILE_WIDTH } from '@src/constants';
 import './UserInfoTable.scss';
 
 interface UserInfoTableProps {
@@ -22,6 +23,7 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
   const { closeModal, openModal } = useModal();
   const { openToast } = useToast();
   const { getUsers } = useUser();
+  const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_WIDTH}px)` });
 
   const source = Api.source();
 
@@ -62,13 +64,13 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
 
   return !isEditMode ? (
     <div className="table-entry">
-      <MediaQuery query="(min-width: 36.25rem)">
+      {!isMobile && (
         <img
           className="user-icon"
-          alt="User Icon"
+          alt={`${username} user icon`}
           src={gender === 'male' || gender === 'other' ? maleIcon : femaleIcon}
         />
-      </MediaQuery>
+      )}
       <table className="user-info">
         <tbody>
           <tr>
