@@ -5,8 +5,9 @@
 import React, { createContext, useEffect, useState } from 'react';
 import noop from 'lodash/noop';
 import { AxiosResponse } from 'axios';
-import Api from '@src/api';
+import LoadingIndicator from '@src/components/LoadingIndicator';
 import { UserService } from '@src/services';
+import Api from '@src/api';
 
 export type Gender = 'male' | 'female' | 'other';
 
@@ -32,6 +33,7 @@ export const UserContext = createContext<UserContextProps>({
 });
 
 export const UserProvider: React.FC = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const [userList, setUserList] = useState<User[]>([]);
   const [error, setError] = useState(false);
 
@@ -44,23 +46,43 @@ export const UserProvider: React.FC = ({ children }) => {
 
       setUserList(users as User[]);
       setError(false);
+      setLoading(false);
       return result;
-    } catch (e) {
-      if (!Api.isCancel(e)) {
+    } catch (err) {
+      if (!Api.isCancel(err)) {
         setError(true);
+        setLoading(false);
       }
-      return e;
+      return err;
     }
   };
 
   useEffect(() => {
     getUsers();
-    return () => source.cancel();
-  });
+    return () => {
+      source.cancel();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (loading) {
+    return <LoadingIndicator />;
+  }
 
   return (
     <UserContext.Provider value={{ userList, getUsers, error }}>
-      {children}
+      {!error ? (
+        children
+      ) : (
+        <p className="home-load-error">
+          There was an unfortunate error and we were unable to retrieve the users. Luckily
+          this is merely a demo app, and this would &apos;never&apos; happen in a real
+          world situation...{' '}
+          <span role="img" aria-label="grimacing">
+            😬
+          </span>
+        </p>
+      )}
     </UserContext.Provider>
   );
 };

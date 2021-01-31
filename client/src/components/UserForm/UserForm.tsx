@@ -54,6 +54,7 @@ const UserForm: React.FC<UserFormProps> = ({
     return () => {
       source.cancel();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source]);
 
   const isUpdateVariant = variant === 'update';

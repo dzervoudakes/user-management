@@ -31,6 +31,7 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
     return () => {
       source.cancel();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source]);
 
   const { address, firstName, gender, lastName, username, id: userId } = user;
