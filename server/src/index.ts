@@ -1,8 +1,7 @@
 import dotenv from 'dotenv';
+import express from 'express';
 import { Server } from '@overnightjs/core';
 import mongoose from 'mongoose';
-import cors from 'cors';
-import bodyParser from 'body-parser';
 import chalk from 'chalk';
 import { AuthController } from './controllers';
 
@@ -12,18 +11,26 @@ class AppServer extends Server {
   constructor() {
     super();
 
-    this.app.use(cors());
-    this.app.use(bodyParser.json());
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
 
     this.setupDatabaseConnection();
     this.setupControllers();
   }
 
   private setupDatabaseConnection(): void {
-    mongoose.connect('mongodb://localhost:27017/user_management_dev', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
+    mongoose
+      .connect('mongodb://mongo:27017', {
+        dbName: 'user-management',
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      })
+      .then(() => {
+        console.log(chalk.cyan('Database connection successful.'));
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 
   private setupControllers(): void {
