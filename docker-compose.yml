@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   mongo:
-    container_name: mongo_dev
+    container_name: user_management_dev
     image: mongo:latest
     ports:
       - 27017:27017

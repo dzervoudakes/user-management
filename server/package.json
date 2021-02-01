@@ -17,14 +17,20 @@
   "author": "dzervoudakes",
   "license": "MIT",
   "dependencies": {
+    "@overnightjs/core": "1.7.5",
+    "@overnightjs/jwt": "1.2.0",
+    "body-parser": "1.19.0",
+    "chalk": "4.1.0",
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
     "express": "4.17.1",
+    "http-status-codes": "2.1.4",
     "mongoose": "5.11.14"
   },
   "devDependencies": {
-    "@dztools/eslint-config-typescript": "1.1.0",
+    "@dztools/eslint-config-typescript": "1.1.1",
     "@dztools/prettier-config": "1.0.3",
-    "@overnightjs/core": "1.7.5",
-    "@overnightjs/jwt": "1.2.0",
+    "@types/cors": "2.8.9",
     "@types/express": "4.17.11",
     "@types/express-jwt": "6.0.0",
     "@types/jsonwebtoken": "8.5.0",
