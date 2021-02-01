@@ -20,8 +20,7 @@ class AppServer extends Server {
 
   private setupDatabaseConnection(): void {
     mongoose
-      .connect('mongodb://mongo:27017', {
-        dbName: 'user-management',
+      .connect(process.env.DB_CONNECTION_STRING || '', {
         useNewUrlParser: true,
         useUnifiedTopology: true
       })

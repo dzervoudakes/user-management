@@ -22,21 +22,16 @@ _The dev environment is optimized for Mac and Unix systems, not Windows._
 
 ## Local Development
 
-### Setup the Database
+### Database and Server Setup
 
 - Ensure `Docker` is installed and running
 - From the project root, open your terminal and run `docker-compose up`
   - Seed data for `admins` and `users` should be populated in the database automatically
+  - Server dependencies will be installed automatically and then the server will boot up on `http://localhost:3000`
 
-### Setup the Server
+### Client Setup
 
-- In a second termainal, `cd` into the `server` directory and run `npm install`
-- Run `npm start`
-  - The server will be running on `http://localhost:3000`
-
-### Setup the Client
-
-- In a third terminal, `cd` into the `client` directory and run `npm install`
+- In another terminal window, `cd` into the `client` directory and run `npm install`
 - Run `npm start`
   - The application may be accessed in a web browser at `http://localhost:8080`
 
