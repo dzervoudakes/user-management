@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LoadingIndicator from '@src/components/LoadingIndicator';
 import { UserProvider, ModalProvider, ToastProvider } from '@src/context';
 import { AuthService } from '@src/services';
+import { AUTH_USERNAME, AUTH_PASSWORD } from '@src/constants';
 import Api from '@src/api';
 
 const Providers: React.FC = ({ children }) => {
@@ -16,7 +17,7 @@ const Providers: React.FC = ({ children }) => {
      */
     const getAuthToken = async (): Promise<void> => {
       try {
-        const payload = { username: 'admin', password: 'letmein' };
+        const payload = { username: AUTH_USERNAME, password: AUTH_PASSWORD };
 
         const result = await AuthService.generateToken(payload, source);
         const { token } = result.data;

@@ -1,11 +1,8 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import { Server } from '@overnightjs/core';
 import mongoose from 'mongoose';
 import chalk from 'chalk';
 import { AuthController } from './controllers';
-
-dotenv.config();
 
 class AppServer extends Server {
   constructor() {
@@ -40,10 +37,10 @@ class AppServer extends Server {
   }
 
   public start(): void {
-    const port = process.env.port || 3000;
+    const PORT = process.env.PORT || 3000;
 
-    this.app.listen(port, () => {
-      console.log(chalk.cyan(`Server running on port ${port}.`));
+    this.app.listen(PORT, () => {
+      console.log(chalk.cyan(`Server running on port ${PORT}.`));
     });
   }
 }
