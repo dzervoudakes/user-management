@@ -23,5 +23,15 @@ npm run lint
 npm run lint:fix
 ```
 
+### Build for Production
+```
+npm run build
+```
+
+### Remove All Build Directories
+```
+npm run clean
+```
+
 ## Content Structure
 - @TODO
