@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 export const UserSchema = new Schema({
   firstName: { type: String, required: true },
@@ -8,4 +8,6 @@ export const UserSchema = new Schema({
   gender: { type: String, required: true, enum: ['male', 'female', 'other'] }
 });
 
-export default UserSchema;
+export const User = model('User', UserSchema);
+
+export default User;

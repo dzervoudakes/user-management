@@ -1,2 +1,2 @@
-export * from './AdminSchema';
-export * from './UserSchema';
+export * from './Admin';
+export * from './User';

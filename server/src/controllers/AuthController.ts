@@ -1,8 +1,7 @@
 import { Response, Request } from 'express';
-import mongoose from 'mongoose';
 import StatusCodes from 'http-status-codes';
 import { Controller, Post } from '@overnightjs/core';
-import { AdminSchema } from '../models';
+import { Admin } from '../models';
 
 // @todo remove eslint lines for explicit any, specifically for Promise<any> somehow???
 
@@ -10,10 +9,9 @@ import { AdminSchema } from '../models';
 export class AuthController {
   @Post('')
   private getAll(req: Request, res: Response): any { // eslint-disable-line
-    const Admin = mongoose.model('Admin', AdminSchema);
-
     try {
       // @todo DAO layer/directory for this and User queries?
+      // https://medium.com/@matheus.alvfr/a-simple-rest-jwt-typescript-application-14961aa29ce5#3a9c
       Admin.find({}, (err, results) => {
         if (!err) {
           res.status(StatusCodes.OK).json(results);
