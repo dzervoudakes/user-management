@@ -3,7 +3,7 @@ import cors from 'cors';
 import { Server } from '@overnightjs/core';
 import mongoose from 'mongoose';
 import chalk from 'chalk';
-import { AuthController } from './controllers';
+import { AuthController, UserController } from './controllers';
 
 class AppServer extends Server {
   constructor() {
@@ -37,9 +37,9 @@ class AppServer extends Server {
 
   private setupControllers(): void {
     const authController = new AuthController();
-    // const userController = new UserController();
+    const userController = new UserController();
 
-    super.addControllers([authController]);
+    super.addControllers([authController, userController]);
   }
 
   public start(): void {
