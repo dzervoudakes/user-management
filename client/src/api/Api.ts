@@ -92,7 +92,7 @@ class Api {
     if (authToken) {
       options.headers = {
         ...headers,
-        Authorization: authToken
+        Authorization: `Bearer ${authToken}`
       };
     }
 
