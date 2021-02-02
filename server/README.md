@@ -39,8 +39,8 @@ The following environment variables are used throughout the server. Default valu
 
 | Variable             | Default                                     | Description                                                                    |
 | -------------------- | ------------------------------------------- | ------------------------------------------------------------------------------ |
+| PORT                 | `3000`                                      | The server port for web clients to interact with, i.e. `http://localhost:3000` |
 | CLIENT_ORIGIN        | `http://localhost:8080`                     | Allowed web client origin for CORS                                             |
 | DB_CONNECTION_STRING | `mongodb://mongo:27017/user-management`     | Connection string for the MongoDB instance                                     |
-| PORT                 | `3000`                                      | The server port for web clients to interact with, i.e. `http://localhost:3000` |
 | OVERNIGHT_JWT_SECRET | `my super long random string for fake auth` | Secret used by Overnight.js for JWT generation                                 |
 | OVERNIGHT_JWT_EXP    | `24h`                                       | JWT token expiration time after creation, used by Overnight.js                 |

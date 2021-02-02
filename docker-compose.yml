@@ -35,8 +35,8 @@ services:
       - PORT=3000
       - CLIENT_ORIGIN=http://localhost:8080
       - DB_CONNECTION_STRING=mongodb://mongo:27017/user-management
-      - OVERNIGHT_JWT_SECRET='my super long random string for fake auth'
-      - OVERNIGHT_JWT_EXP='24h'
+      - OVERNIGHT_JWT_SECRET="my super long random string for fake auth"
+      - OVERNIGHT_JWT_EXP=24h
     command: bash -c 'npm install && npm start'
     depends_on:
       - mongo_seed

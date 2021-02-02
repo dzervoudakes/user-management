@@ -1,26 +1,25 @@
 import { Response, Request } from 'express';
 import StatusCodes from 'http-status-codes';
 import { Controller, Post } from '@overnightjs/core';
-import { Admin } from '../models';
-
-// @todo remove eslint lines for explicit any, specifically for Promise<any> somehow???
+import { JwtManager } from '@overnightjs/jwt';
+import { AdminDao } from '../daos';
 
 @Controller('api/auth')
 export class AuthController {
+  private adminDao = new AdminDao();
+
   @Post('')
-  private getAll(req: Request, res: Response): any { // eslint-disable-line
+  private async generateToken(req: Request, res: Response): Promise<void> {
     try {
-      // @todo DAO layer/directory for this and User queries?
-      // https://medium.com/@matheus.alvfr/a-simple-rest-jwt-typescript-application-14961aa29ce5#3a9c
-      Admin.find({}, (err, results) => {
-        if (!err) {
-          res.status(StatusCodes.OK).json(results);
-        } else {
-          throw err;
-        }
-      });
+      const result = await this.adminDao.getAdmin(req.body);
+      if (result === null) {
+        res.status(StatusCodes.UNAUTHORIZED).json({ error: 'Invalid credentials.' });
+      } else {
+        const token = JwtManager.jwt(req.body);
+        res.status(StatusCodes.OK).json({ token });
+      }
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+      res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
     }
   }
 }
