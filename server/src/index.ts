@@ -21,18 +21,12 @@ class AppServer extends Server {
     this.setupControllers();
   }
 
-  private setupDatabaseConnection(): void {
-    mongoose
-      .connect(process.env.DB_CONNECTION_STRING || '', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      })
-      .then(() => {
-        console.log(chalk.cyan('Database connection successful.'));
-      })
-      .catch((err) => {
-        throw err;
-      });
+  private async setupDatabaseConnection(): Promise<void> {
+    await mongoose.connect(process.env.DB_CONNECTION_STRING || '', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    console.log(chalk.cyan('Database connection successful.'));
   }
 
   private setupControllers(): void {
