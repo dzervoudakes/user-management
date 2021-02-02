@@ -36,8 +36,10 @@ _The dev environment is optimized for Mac and Unix systems, not Windows._
   - The application may be accessed in a web browser at `http://localhost:8080`
 
 ## Technical Requirements
+
 > The runtime environment for this application requires `node >= 14.6.0` and `npm >= 6.14.7`.
 
 ## Configuration
+
 > This application makes use of `ESLint`, `Stylelint` and `EditorConfig`. Each of these features requires
 > an extension be installed in order to work properly with IDEs and text editors such as VSCode.

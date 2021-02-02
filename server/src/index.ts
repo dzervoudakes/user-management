@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { Server } from '@overnightjs/core';
 import mongoose from 'mongoose';
 import chalk from 'chalk';
@@ -10,6 +11,11 @@ class AppServer extends Server {
 
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(
+      cors({
+        origin: process.env.CLIENT_ORIGIN || ''
+      })
+    );
 
     this.setupDatabaseConnection();
     this.setupControllers();

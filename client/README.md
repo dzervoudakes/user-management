@@ -73,15 +73,13 @@ npm run docs
 npm run clean
 ```
 
-## Content Structure
-- API wrapper methods live under `./src/api`
-- Shared components live under `./src/components`
-- Application state management lives under `./src/context`
-- Higher order components live under `./src/hocs`
-- Custom hooks to retrieve and affect application state live under `./src/hooks`
-- Top-level page view components live under `./src/pages`
-- Application routes live under `./src/routes`
-- Default styles live under `./src/scss`
-- API services live under `./src/services`
-- Material UI themes live under `./src/theme`
-- The inherited Webpack config aliases `@src/*` as an absolute import path to `./src/*`
+## Environment
+
+The following environment variables are used throughout the SPA. Default values are provided via the `webpack.base.js` file in the `./build` directory.
+
+| Variable      | Default                 | Description                                            |
+| ------------- | ----------------------- | ------------------------------------------------------ |
+| NODE_ENV      | `development`           | Dictates which `webpack` bundle to use at build time   |
+| API_BASE_URL  | `http://localhost:3000` | Base origin for sending network requests               |
+| AUTH_USERNAME | `admin`                 | Fake auth user for accessing resources from the server |
+| AUTH_PASSWORD | `letmein`               | Straight forward password, because we love security ❤️  |
