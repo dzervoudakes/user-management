@@ -6,5 +6,9 @@
 // media queries
 export const MOBILE_WIDTH = 768;
 
-// urls and auth from environment
-export const { API_BASE_URL, AUTH_USERNAME, AUTH_PASSWORD } = process.env;
+// urls
+export const API_BASE_URL = process.env.API_BASE_URL || '';
+
+// auth variables from environment
+export const AUTH_USERNAME = process.env.AUTH_USERNAME || '';
+export const AUTH_PASSWORD = process.env.AUTH_PASSWORD || '';

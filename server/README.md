@@ -28,6 +28,11 @@ npm run lint:fix
 npm run build
 ```
 
+### Generate Documentation
+```
+npm run docs
+```
+
 ### Remove All Build Directories
 ```
 npm run clean
