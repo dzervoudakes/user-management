@@ -1,5 +1,3 @@
-/* stylelint-disable property-no-unknown */
-
 // fonts
 $font-primary: 'Droid Sans', sans-serif;
 
@@ -25,20 +23,3 @@ $border-light-gray-dotted: 0.0625rem dotted $color-super-light-gray;
 
 // other
 $blue-bar: linear-gradient($color-blue-primary, $color-blue-secondary);
-
-// export fonts and colors for mui theme
-:export {
-  black: $color-black;
-  blueprimary: $color-blue-primary;
-  bluesecondary: $color-blue-secondary;
-  darkblue: $color-dark-blue;
-  darkgray: $color-dark-gray;
-  gray: $color-gray;
-  lightblue: $color-light-blue;
-  offwhite: $color-off-white;
-  orange: $color-orange;
-  primaryfont: $font-primary;
-  red: $color-red;
-  superlightgray: $color-super-light-gray;
-  white: $color-white;
-}

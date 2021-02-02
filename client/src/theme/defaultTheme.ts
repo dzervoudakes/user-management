@@ -3,23 +3,22 @@
  * @packageDocumentation
  */
 import { createMuiTheme } from '@material-ui/core/styles';
-import constants from '@src/scss/_constants.scss';
 
-export const theme = createMuiTheme({
+export const defaultTheme = createMuiTheme({
   typography: {
-    fontFamily: constants.primaryfont
+    fontFamily: "'Droid Sans', sans-serif"
   },
   palette: {
     primary: {
-      main: constants.blueprimary
+      main: '#387bb4'
     },
     secondary: {
-      main: constants.orange
+      main: '#ff881a'
     },
     error: {
-      main: constants.red
+      main: '#d21500'
     }
   }
 });
 
-export default theme;
+export default defaultTheme;

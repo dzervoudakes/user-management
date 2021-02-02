@@ -1,12 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { defaultTheme } from '@src/theme';
 import App from './App';
 import './scss/style.scss';
 
 const Main: React.FC = () => (
   <Router basename="/">
-    <App />
+    <ThemeProvider theme={defaultTheme}>
+      <App />
+    </ThemeProvider>
   </Router>
 );
 
