@@ -6,7 +6,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 export const defaultTheme = createMuiTheme({
   typography: {
-    fontFamily: "'Droid Sans', sans-serif"
+    fontFamily: '"Droid Sans", sans-serif'
   },
   palette: {
     primary: {

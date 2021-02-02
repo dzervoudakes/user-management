@@ -40,3 +40,5 @@ services:
     command: bash -c 'npm install && npm start'
     depends_on:
       - mongo_seed
+
+# @todo remove 'npm install' setp above for efficiency? (update readme instructions if so)

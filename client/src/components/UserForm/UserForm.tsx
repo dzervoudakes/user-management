@@ -14,6 +14,8 @@ import { useToast, useUser } from '@src/hooks';
 import './UserForm.scss';
 
 // @todo revisit use of uuidv4 pending MongoDB stuff
+// @todo Yup validation schema doesn't seem to be working
+// @todo make sure the gender dropdown defaults to empty value
 
 interface Values {
   id: string;
