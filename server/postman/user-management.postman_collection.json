@@ -1,0 +1,312 @@
+{
+	"info": {
+		"_postman_id": "9fd4cc68-2510-4591-92ef-30af35e5b978",
+		"name": "User Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Generate Auth Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { response: resp } = pm;",
+									"const jsonData = resp.json();",
+									"const { token } = jsonData;",
+									"",
+									"pm.environment.set('authToken', token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"letmein\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Get Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { response: resp } = pm;",
+									"const jsonData = resp.json();",
+									"const { users } = jsonData;",
+									"",
+									"pm.test('users successfully retrieved', () => {",
+									"    pm.expect(resp).to.have.status(200);",
+									"    pm.expect(Array.isArray(users)).to.equal(true);",
+									"    pm.expect(users.length).to.be.greaterThan(0);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/users",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { response: resp } = pm;",
+									"const jsonData = resp.json();",
+									"const { user } = jsonData;",
+									"",
+									"pm.test('user successfully created', () => {",
+									"    pm.expect(resp).to.have.status(201);",
+									"});",
+									"",
+									"",
+									"pm.environment.set('userId', user._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"1725 Slough Ave, Scranton, PA\",\n    \"firstName\": \"Michael\",\n    \"gender\": \"male\",\n    \"lastName\": \"Scott\",\n    \"username\": \"prisonmike\"\n}\n"
+						},
+						"url": {
+							"raw": "{{domain}}/api/users",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { response: resp } = pm;",
+									"const jsonData = resp.json();",
+									"const { user } = jsonData;",
+									"",
+									"pm.test('user successfully updated', () => {",
+									"    pm.expect(resp).to.have.status(200);",
+									"    pm.expect(user.firstName).to.equal(\"Dwight\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Dwight\",\n    \"lastName\": \"Schrute\",\n    \"username\": \"bearsbeatsbattlestargalactica\",\n    \"gender\": \"male\",\n    \"address\": \"Schrute Farm\"\n}\n"
+						},
+						"url": {
+							"raw": "{{domain}}/api/users/{{userId}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { response: resp } = pm;",
+									"const jsonData = resp.json();",
+									"const { user } = jsonData;",
+									"",
+									"pm.test('user successfully retrieved', () => {",
+									"    pm.expect(resp).to.have.status(200);",
+									"    pm.expect(user.lastName).to.equal(\"Schrute\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/users/{{userId}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { response: resp } = pm;",
+									"",
+									"pm.test('user successfully deleted', () => {",
+									"    pm.expect(resp).to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/api/users/{{userId}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
