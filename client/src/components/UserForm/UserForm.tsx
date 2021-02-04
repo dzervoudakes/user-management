@@ -92,19 +92,17 @@ const UserForm: React.FC<UserFormProps> = ({
     }
   };
 
-  const validationSchema = (() => {
-    const defineValidationRoutine = (field: string): Yup.AnySchema => {
-      return Yup.string().required(`${field} is required.`).trim(`${field} is required.`);
-    };
+  const defineValidationRoutine = (field: string): Yup.AnySchema => {
+    return Yup.string().required(`${field} is required.`).trim(`${field} is required.`);
+  };
 
-    return Yup.object().shape({
-      firstName: defineValidationRoutine('First name'),
-      lastName: defineValidationRoutine('Last name'),
-      username: defineValidationRoutine('Username'),
-      address: defineValidationRoutine('Address'),
-      gender: defineValidationRoutine('Gender')
-    });
-  })();
+  const validationSchema = Yup.object().shape({
+    firstName: defineValidationRoutine('First name'),
+    lastName: defineValidationRoutine('Last name'),
+    username: defineValidationRoutine('Username'),
+    address: defineValidationRoutine('Address'),
+    gender: defineValidationRoutine('Gender')
+  });
 
   return (
     <Formik

@@ -3,6 +3,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
+import Toast from '@src/components/Toast';
 import { ToastProvider, Gender } from '@src/context';
 import { UserService } from '@src/services';
 import UserForm, { UserFormProps } from '..';
@@ -42,6 +43,7 @@ describe('UserForm', () => {
     <MemoryRouter>
       <ToastProvider>
         <UserForm {...props} />
+        <Toast />
       </ToastProvider>
     </MemoryRouter>
   );
@@ -59,7 +61,7 @@ describe('UserForm', () => {
     expect(getByText('Submit')).toBeInTheDocument();
   });
 
-  it('submits user responses and creates a new user', () => {
+  it('submits user responses and creates a new user', async () => {
     const spy = jest.spyOn(UserService, 'createUser');
     const { container, getByText } = render(<TestComponent />);
 
@@ -77,39 +79,54 @@ describe('UserForm', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(spy).toHaveBeenCalledWith(payload, source);
       expect(mockHistoryPush).toHaveBeenCalledWith('/');
       expect(getByText('User successfully created.')).toBeInTheDocument();
     });
   });
 
-  it('updates an existing user', () => {
+  it('updates an existing user', async () => {
     const mockCallback = jest.fn();
     const updatedUsername = 'emanning10';
-    const spy = jest.spyOn(UserService, 'createUser');
+    const spy = jest.spyOn(UserService, 'updateUser');
     const { container, getByText } = render(
       <TestComponent variant="update" initialValues={payload} callback={mockCallback} />
     );
 
     const usernameInput = container.querySelector('input[name="username"]')!;
-    fireEvent.change(usernameInput, { target: { value: updatedUsername } });
 
+    fireEvent.change(usernameInput, { target: { value: updatedUsername } });
     fireEvent.click(getByText('Submit'));
 
-    waitFor(() => {
-      expect(spy).toHaveBeenCalledWith({ ...payload, username: updatedUsername }, source);
+    await waitFor(() => {
+      expect(spy).toHaveBeenCalledWith(
+        '12345',
+        { ...payload, username: updatedUsername },
+        source
+      );
       expect(mockCallback).toHaveBeenCalled();
       expect(getByText('User successfully updated.')).toBeInTheDocument();
     });
   });
 
-  it('renders the error messaging when submitting empty responses', () => {
-    const { getByText } = render(<TestComponent />);
+  it('renders the error messaging when submitting empty responses', async () => {
+    const { getByText } = render(
+      <TestComponent
+        initialValues={{
+          id: '',
+          firstName: '',
+          lastName: '',
+          username: '',
+          address: '',
+          gender: 'other'
+        }}
+      />
+    );
 
     fireEvent.click(getByText('Submit'));
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(getByText('First Name is required.')).toBeInTheDocument();
       expect(getByText('Last Name is required.')).toBeInTheDocument();
       expect(getByText('Username is required.')).toBeInTheDocument();
@@ -118,7 +135,7 @@ describe('UserForm', () => {
     });
   });
 
-  it('renders the error toast when the user fails to create', () => {
+  it('renders the error toast when the user fails to create', async () => {
     UserService.createUser = jest
       .fn()
       .mockRejectedValue(() => new Error('there was an error'));
@@ -126,12 +143,12 @@ describe('UserForm', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(getByText('There was an error creating the user.')).toBeInTheDocument();
     });
   });
 
-  it('renders the error toast when the user fails to update', () => {
+  it('renders the error toast when the user fails to update', async () => {
     UserService.updateUser = jest
       .fn()
       .mockRejectedValue(() => new Error('there was an error'));
@@ -141,7 +158,7 @@ describe('UserForm', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(getByText('There was an error updating the user.')).toBeInTheDocument();
     });
   });

@@ -14,26 +14,26 @@ describe('Routes', () => {
     expect(getByText('Current Users')).toBeInTheDocument();
   });
 
-  it('renders new user page', () => {
+  it('renders new user page', async () => {
     const { getByText } = render(
       <MemoryRouter initialEntries={['/new-user']}>
         <Routes />
       </MemoryRouter>
     );
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(getByText('Create a User')).toBeInTheDocument();
     });
   });
 
-  it('renders the 404 page', () => {
+  it('renders the 404 page', async () => {
     const { getByText } = render(
       <MemoryRouter initialEntries={['/missing']}>
         <Routes />
       </MemoryRouter>
     );
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(getByText("That's a 404")).toBeInTheDocument();
     });
   });

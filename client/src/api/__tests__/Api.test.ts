@@ -28,7 +28,7 @@ describe('Api', () => {
       method: 'GET',
       params: {},
       headers: {
-        Authorization: fakeAuthToken
+        Authorization: `Bearer ${fakeAuthToken}`
       },
       responseType: 'json'
     };
