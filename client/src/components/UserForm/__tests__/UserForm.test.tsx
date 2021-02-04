@@ -8,8 +8,6 @@ import { ToastProvider, Gender } from '@src/context';
 import { UserService } from '@src/services';
 import UserForm, { UserFormProps } from '..';
 
-// @todo sigh...
-
 const MockSelect: React.FC = (props) => <select {...props} />;
 const mockHistoryPush = jest.fn();
 

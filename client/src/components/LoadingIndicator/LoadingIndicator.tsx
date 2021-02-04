@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const LoadingIndicator: React.FC = () => {
   const styles = makeStyles((theme) => ({
     progress: {
-      marginLeft: 'calc(50% - 1.25rem)',
+      marginLeft: `calc(50% - ${theme.spacing(5)}px)`,
       marginTop: theme.spacing(13)
     }
   }))();

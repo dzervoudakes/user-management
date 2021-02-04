@@ -14,8 +14,7 @@ import { useToast, useUser } from '@src/hooks';
 import './UserForm.scss';
 
 // @todo in backend, check that the 'username' doesn't exist first before creating a new user
-
-// @todo Yup validation schema doesn't seem to be working
+// @todo Yup validation schema doesn't seem to be working (fix this along with the unit tests)
 
 interface Values {
   _id: string;

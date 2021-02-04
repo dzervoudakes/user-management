@@ -19,8 +19,6 @@ const Toast: React.FC = () => {
     info: InfoIcon
   };
 
-  // @todo make sure all required colors, spacing, etc. is available in the theme
-
   const styles = makeStyles((theme) => ({
     success: {
       backgroundColor: green[600]
