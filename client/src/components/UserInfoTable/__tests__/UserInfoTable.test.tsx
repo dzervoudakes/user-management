@@ -24,7 +24,7 @@ const mockUser = {
   username: 'nyg10',
   address: '1925 Giants Drive',
   gender: 'male' as Gender,
-  id: '12345'
+  _id: '12345'
 };
 
 beforeEach(() => {
@@ -83,7 +83,7 @@ describe('UserInfoTable', () => {
     });
 
     fireEvent.click(getByText('Proceed'));
-    expect(spy).toHaveBeenCalledWith(mockUser.id, mockSource);
+    expect(spy).toHaveBeenCalledWith(mockUser._id, mockSource);
     await waitFor(() => {
       expect(getByText('User successfully deleted.')).toBeInTheDocument();
     });

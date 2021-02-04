@@ -7,7 +7,7 @@ describe('Footer', () => {
     const { getByText } = render(<Footer />);
 
     expect(
-      getByText(`Copyright © ${new Date().getFullYear()} AnonCorp`)
+      getByText(`Copyright © ${new Date().getFullYear()} MUI User Management`)
     ).toBeInTheDocument();
   });
 });

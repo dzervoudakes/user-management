@@ -19,8 +19,6 @@ html,
   position: relative;
 }
 
-// @todo try to use MUI components for all markup and reduce custom scss
-
 p,
 h1,
 h2,
@@ -57,19 +55,10 @@ a {
   }
 }
 
-.t-heavy {
-  font-weight: 700;
-}
-
 .main-content {
   padding-bottom: 3.125rem;
 }
 
 .home-load-error {
   padding: 1rem;
-}
-
-.gray-rule {
-  border: $border-light-gray-dotted;
-  border-bottom: none;
 }

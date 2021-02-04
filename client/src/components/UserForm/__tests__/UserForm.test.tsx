@@ -8,6 +8,8 @@ import { ToastProvider, Gender } from '@src/context';
 import { UserService } from '@src/services';
 import UserForm, { UserFormProps } from '..';
 
+// @todo sigh...
+
 const MockSelect: React.FC = (props) => <select {...props} />;
 const mockHistoryPush = jest.fn();
 
@@ -37,7 +39,7 @@ describe('UserForm', () => {
     username: 'nyg10',
     address: '1925 Giants Drive',
     gender: 'male' as Gender,
-    id: '12345'
+    _id: '12345'
   };
   const TestComponent: React.FC<UserFormProps> = (props) => (
     <MemoryRouter>
@@ -114,12 +116,12 @@ describe('UserForm', () => {
     const { getByText } = render(
       <TestComponent
         initialValues={{
-          id: '',
-          firstName: '',
-          lastName: '',
-          username: '',
-          address: '',
-          gender: 'other'
+          _id: (undefined as unknown) as string,
+          firstName: (undefined as unknown) as string,
+          lastName: (undefined as unknown) as string,
+          username: (undefined as unknown) as string,
+          address: (undefined as unknown) as string,
+          gender: (undefined as unknown) as Gender
         }}
       />
     );

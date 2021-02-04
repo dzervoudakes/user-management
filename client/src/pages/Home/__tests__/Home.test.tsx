@@ -18,7 +18,7 @@ describe('Home', () => {
       username: 'nyg10',
       address: '1925 Giants Drive',
       gender: 'male',
-      id: '12345'
+      _id: '12345'
     },
     {
       firstName: 'Saquon',
@@ -26,7 +26,7 @@ describe('Home', () => {
       username: 'nyg26',
       address: '2591 Giants Drive',
       gender: 'male',
-      id: '54321'
+      _id: '54321'
     }
   ] as User[];
 

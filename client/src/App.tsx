@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
+import { Container } from '@material-ui/core';
 import Providers from '@src/components/Providers';
 import Routes from '@src/routes';
 import Modal from '@src/components/Modal';

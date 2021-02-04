@@ -31,7 +31,7 @@ describe('SelectInput', () => {
       </Formik>
     );
 
-    fireEvent.change(getByDisplayValue(''), { target: { value: 'two' } });
+    fireEvent.change(getByDisplayValue('one'), { target: { value: 'two' } });
 
     expect(getByDisplayValue('two')).toBeInTheDocument();
   });

@@ -5,6 +5,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import noop from 'lodash/noop';
 import { AxiosResponse } from 'axios';
+import { Typography } from '@material-ui/core';
 import LoadingIndicator from '@src/components/LoadingIndicator';
 import { UserService } from '@src/services';
 import Api from '@src/api';
@@ -12,9 +13,9 @@ import Api from '@src/api';
 export type Gender = 'male' | 'female' | 'other';
 
 export interface User {
+  _id: string;
   address: string;
   firstName: string;
-  id: string;
   lastName: string;
   username: string;
   gender: Gender;
@@ -74,14 +75,14 @@ export const UserProvider: React.FC = ({ children }) => {
       {!error ? (
         children
       ) : (
-        <p className="home-load-error">
+        <Typography className="home-load-error">
           There was an unfortunate error and we were unable to retrieve the users. Luckily
           this is merely a demo app, and this would &apos;never&apos; happen in a real
           world situation...{' '}
           <span role="img" aria-label="grimacing">
             😬
           </span>
-        </p>
+        </Typography>
       )}
     </UserContext.Provider>
   );

@@ -28,7 +28,10 @@ module.exports = {
           'src/jest-dom.d.ts'
         ]
       }
-    ]
+    ],
+
+    // MongoDB utilizes '_id' with a dangling underscore
+    'no-underscore-dangle': OFF
   },
   settings: {
     'import/resolver': {

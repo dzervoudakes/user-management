@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import EditIcon from '@material-ui/icons/EditOutlined';
 import TrashIcon from '@material-ui/icons/DeleteOutlined';
-import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
+import { Button, IconButton } from '@material-ui/core';
 import maleIcon from '@src/assets/male-icon.png';
 import femaleIcon from '@src/assets/female-icon.png';
 import { User } from '@src/context';
@@ -32,17 +31,17 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
       source.cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [source]);
+  }, []);
 
-  const { address, firstName, gender, lastName, username, id: userId } = user;
+  const { address, firstName, gender, lastName, username, _id: userId } = user;
 
   const toggleEditMode = (): void => {
     setIsEditMode(!isEditMode);
   };
 
-  const deleteUser = async (id: string): Promise<void> => {
+  const deleteUser = async (): Promise<void> => {
     try {
-      await UserService.deleteUser(id, source);
+      await UserService.deleteUser(userId, source);
       await getUsers();
       openToast({ variant: 'success', message: 'User successfully deleted.' });
     } catch (err) {
@@ -56,8 +55,8 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
     openModal({
       title: 'Are you sure?',
       message: 'You are about to delete a user. This action cannot be undone.',
-      action: async (): Promise<void> => {
-        await deleteUser(userId);
+      action: async () => {
+        await deleteUser();
         closeModal();
       }
     });

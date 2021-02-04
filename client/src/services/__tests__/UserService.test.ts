@@ -7,7 +7,7 @@ import { UserService } from '..';
 jest.mock('axios');
 
 describe('UserService', () => {
-  const id = uuidv4();
+  const _id = uuidv4();
   const source = undefined;
   const url = `${API_BASE_URL}/users`;
 
@@ -17,7 +17,7 @@ describe('UserService', () => {
     username: 'helloworld7',
     address: '123 Fake St, Nowhere, CO 80123',
     gender: 'other',
-    id
+    _id
   };
 
   test('getUsers calls Api get method with the correct arguments', () => {
@@ -39,16 +39,16 @@ describe('UserService', () => {
   test('updateUser calls Api put method with the correct arguments', () => {
     const spy = jest.spyOn(Api, 'put');
 
-    UserService.updateUser(id, mockUser, source);
+    UserService.updateUser(_id, mockUser, source);
 
-    expect(spy).toHaveBeenCalledWith(`${url}/${id}`, mockUser, { source });
+    expect(spy).toHaveBeenCalledWith(`${url}/${_id}`, mockUser, { source });
   });
 
   test('deleteUser calls Api put method with the correct arguments', () => {
     const spy = jest.spyOn(Api, 'delete');
 
-    UserService.deleteUser(id, source);
+    UserService.deleteUser(_id, source);
 
-    expect(spy).toHaveBeenCalledWith(`${url}/${id}`, { source });
+    expect(spy).toHaveBeenCalledWith(`${url}/${_id}`, { source });
   });
 });

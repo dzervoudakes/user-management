@@ -14,7 +14,7 @@ describe('UserListTable', () => {
           username: 'nyg10',
           address: '1925 Giants Drive',
           gender: 'male',
-          id: '12345'
+          _id: '12345'
         }
       ] as User[],
       getUsers: noop,

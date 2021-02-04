@@ -14,7 +14,7 @@ describe('UserContext', () => {
           address: '123 Fake St.',
           firstName: 'John',
           gender: 'male',
-          id: uuidv4(),
+          _id: uuidv4(),
           lastName: 'Doe',
           username: 'jdoe123'
         },
@@ -22,7 +22,7 @@ describe('UserContext', () => {
           address: '456 Fake St.',
           firstName: 'Jane',
           gender: 'female',
-          id: uuidv4(),
+          _id: uuidv4(),
           lastName: 'Doe',
           username: 'jdoe456'
         }

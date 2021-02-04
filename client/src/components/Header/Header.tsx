@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import IconButton from '@material-ui/core/IconButton';
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton,
+  Typography
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { MOBILE_WIDTH } from '@src/constants';
 import './Header.scss';
 
-// @todo Typography component(s) from MUI?
 // @todo combine desktop and mobile markup into one; changing style only
+// alternative ... go 'mobile only'?
 
 const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -66,7 +69,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <h1 className="page-title">AnonCorp User Management</h1>
+      <Typography variant="h1">MUI User Management</Typography>
       {isMobile ? renderMobile() : renderDesktop()}
     </header>
   );

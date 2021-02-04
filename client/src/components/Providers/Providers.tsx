@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Typography } from '@material-ui/core';
 import LoadingIndicator from '@src/components/LoadingIndicator';
 import { UserProvider, ModalProvider, ToastProvider } from '@src/context';
 import { AuthService } from '@src/services';
@@ -51,9 +52,9 @@ const Providers: React.FC = ({ children }) => {
       </ModalProvider>
     </UserProvider>
   ) : (
-    <p className="home-load-error">
+    <Typography className="home-load-error">
       Unfortunately, we were unable to authenticate. No app for you!
-    </p>
+    </Typography>
   );
 };
 

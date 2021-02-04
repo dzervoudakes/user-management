@@ -1,10 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import { FieldInputProps } from 'formik';
+import { InputLabel, FormControl, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 
 interface SelectInputProps {
   error: string;
@@ -37,7 +35,6 @@ const SelectInput: React.FC<SelectInputProps> = ({
     >
       <InputLabel htmlFor="gender">{label}</InputLabel>
       <Select native {...field}>
-        <option value="" />
         {options}
       </Select>
     </FormControl>

@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Prompt, useHistory } from 'react-router-dom';
 import noop from 'lodash/noop';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { v4 as uuidv4 } from 'uuid';
-import Button from '@material-ui/core/Button';
+import { Button } from '@material-ui/core';
 import TextInput from '@src/components/TextInput';
 import SelectInput from '@src/components/SelectInput';
 import { UserService } from '@src/services';
@@ -13,12 +12,10 @@ import { Gender } from '@src/context';
 import { useToast, useUser } from '@src/hooks';
 import './UserForm.scss';
 
-// @todo revisit use of uuidv4 pending MongoDB stuff
 // @todo Yup validation schema doesn't seem to be working
-// @todo make sure the gender dropdown defaults to empty value
 
 interface Values {
-  id: string;
+  _id: string;
   firstName: string;
   lastName: string;
   username: string;
@@ -33,12 +30,12 @@ export interface UserFormProps {
 }
 
 const defaultInitialValues = {
-  id: '',
+  _id: '',
   firstName: '',
   lastName: '',
   username: '',
   address: '',
-  gender: 'other' as Gender
+  gender: 'male' as Gender
 };
 
 const UserForm: React.FC<UserFormProps> = ({
@@ -46,6 +43,7 @@ const UserForm: React.FC<UserFormProps> = ({
   initialValues = defaultInitialValues,
   variant = 'create'
 }) => {
+  const [unblock, setUnblock] = useState(false);
   const history = useHistory();
   const { openToast } = useToast();
   const { getUsers } = useUser();
@@ -57,17 +55,17 @@ const UserForm: React.FC<UserFormProps> = ({
       source.cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [source]);
+  }, []);
 
   const isUpdateVariant = variant === 'update';
 
   const handleSubmit = async (values: Values): Promise<void> => {
     try {
-      const payload = { ...values, id: isUpdateVariant ? values.id : uuidv4() };
-
       await (isUpdateVariant
-        ? UserService.updateUser(values.id, payload, source)
-        : UserService.createUser(payload, source));
+        ? UserService.updateUser(values._id, values, source)
+        : UserService.createUser(values, source));
+
+      setUnblock(true);
 
       await getUsers();
       await openToast({
@@ -116,7 +114,7 @@ const UserForm: React.FC<UserFormProps> = ({
       {({ dirty, errors, values }) => (
         <>
           <Prompt
-            when={dirty}
+            when={dirty && !unblock}
             message="You have unsaved changes. Would you like to proceed?"
           />
           <Form className="user-form">

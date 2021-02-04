@@ -1,8 +1,13 @@
 import React, { Fragment, useState, KeyboardEvent } from 'react';
 import { Link } from 'react-router-dom';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
+import {
+  FormGroup,
+  FormControlLabel,
+  Switch,
+  Typography,
+  Divider
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import UserInfoTable from '@src/components/UserInfoTable';
 import UserListTable from '@src/components/UserListTable';
 import Layout from '@src/components/Layout';
@@ -13,6 +18,14 @@ import './Home.scss';
 const Home: React.FC = () => {
   const [isAdminView, setIsAdminView] = useState(false);
   const { userList: users } = useUser();
+
+  const styles = makeStyles(() => ({
+    divider: {
+      backgroundColor: 'transparent',
+      border: '0.0625rem dotted #e1e1e1',
+      borderBottom: 'none'
+    }
+  }))();
 
   const toggleAdminView = (): void => {
     setIsAdminView(!isAdminView);
@@ -25,9 +38,11 @@ const Home: React.FC = () => {
   };
 
   const entries = users.map((user, index) => (
-    <Fragment key={user.id}>
+    <Fragment key={user._id}>
       <UserInfoTable user={user} />
-      {index !== users.indexOf(users[users.length - 1]) && <hr className="gray-rule" />}
+      {index !== users.indexOf(users[users.length - 1]) && (
+        <Divider className={styles.divider} />
+      )}
     </Fragment>
   ));
 
@@ -57,10 +72,10 @@ const Home: React.FC = () => {
           {isAdminView ? entries : <UserListTable />}
         </>
       ) : (
-        <p>
+        <Typography>
           Let&apos;s get things started: <Link to="/new-user">click here</Link> to create
           a user.
-        </p>
+        </Typography>
       )}
     </Layout>
   );
