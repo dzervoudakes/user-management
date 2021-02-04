@@ -30,6 +30,7 @@ export const defaultTheme = createMuiTheme({
     error: {
       main: '#d21500'
     }
+    // @todo custom colors here for '#e1e1e1' (color-super-light-gray) and '#777' (color-gray)
   }
 });
 

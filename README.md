@@ -10,7 +10,7 @@ A simple User Management interface which lists current users in the system. Admi
 Originally commissioned as a take home assessment during a job interview, I've rebuilt this project to reflect new patterns and
 technologies that I've adopted over time. Also the COVID-19 pandemic was a thing, so I had some extra time on my hands. 🦠 ⏰
 
-_**Disclaimer:** I have not tested this in Internet Explorer, nor do I really care to as this is a personal project._
+_**Disclaimer:** I have not tested this in Internet Explorer, nor do I really care to._
 
 ## Technologies Used
 
@@ -25,14 +25,18 @@ _**Disclaimer:** I have not tested this in Internet Explorer, nor do I really ca
 
 - Ensure `Docker` is installed and running
 - From the project root, open your terminal and run `docker-compose up`
-  - Seed data for `admins` and `users` should be populated in the database automatically
+  - Seed data for `admins` and `users` will be populated in the database automatically
   - Server dependencies will be installed automatically and then the server will boot up on `http://localhost:3000`
+
+The `server/README.md` provides additional information on build scripts and environment variables.
 
 ### Client Setup
 
 - In another terminal window, `cd` into the `client` directory and run `npm install`
 - Run `npm start`
   - The application may be accessed in a web browser at `http://localhost:8080`
+
+The `client/README.md` provides additional information on build scripts and environment variables.
 
 ## Technical Requirements
 

@@ -18,7 +18,7 @@ services:
       - DB_HOST=mongo
     volumes:
       - $PWD/:$PWD
-    working_dir: $PWD/database
+    working_dir: $PWD/datastore
     links:
       - mongo
     depends_on:
