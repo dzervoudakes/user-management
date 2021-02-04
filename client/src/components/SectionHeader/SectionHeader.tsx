@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import './SectionHeader.scss';
 
 interface SectionHeaderProps {
   title: string;
@@ -10,6 +9,10 @@ interface SectionHeaderProps {
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description }) => {
   const styles = makeStyles(() => ({
+    sectionHeader: {
+      borderBottom: '0.0625rem dotted #e1e1e1',
+      marginBottom: '1.5rem'
+    },
     description: {
       fontWeight: 700,
       paddingBottom: '0.25rem'
@@ -17,7 +20,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description }) => 
   }))();
 
   return (
-    <div className="section-header">
+    <div className={styles.sectionHeader}>
       <Typography variant="h2">{title}</Typography>
       <Typography className={styles.description}>{description}</Typography>
     </div>

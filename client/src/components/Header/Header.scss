@@ -4,33 +4,9 @@
   background: $blue-bar;
   box-shadow: 0 0.07rem 0.07rem rgba(0, 0, 0, 0.6);
   color: $color-white;
+  display: flex;
   height: 3.125rem;
   text-shadow: 0 -0.0625rem $color-black;
-
-  // @todo clean up all media queries to simply be 'isMobile ? true : false'
-  .page-title {
-    @media (max-width: 38.5rem) {
-      padding-left: 1.125rem;
-    }
-
-    @media (min-width: 38.501rem) {
-      border-right: $border-dark-blue;
-    }
-
-    @media (max-width: 21.25rem) {
-      font-size: 0.75rem;
-    }
-
-    // display: inline-block;
-    // line-height: 3.125rem;
-    // padding: 0 1.5rem 0 3.125rem;
-    // vertical-align: top;
-
-    // font: {
-    //   size: 1.25rem;
-    //   weight: 400;
-    // }
-  }
 
   .desktop-menu {
     border-right: $border-light-blue;
@@ -66,31 +42,6 @@
         color: $color-orange;
         text-shadow: none;
       }
-    }
-  }
-
-  .mobile-menu {
-    .list-item {
-      a {
-        color: $color-blue-primary;
-        text-decoration: none !important; // @todo
-        transition: color 0.2s;
-
-        @media screen and (prefers-reduced-motion: reduce) {
-          transition: none;
-        }
-      }
-
-      &:hover a,
-      &:focus a {
-        color: $color-orange;
-      }
-    }
-  }
-
-  .header {
-    .icon-button-container {
-      float: right;
     }
   }
 }

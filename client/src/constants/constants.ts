@@ -4,7 +4,7 @@
  */
 
 // media queries
-export const MOBILE_WIDTH = 768;
+export const MOBILE_BREAKPOINT = 768;
 
 // urls
 export const API_BASE_URL = process.env.API_BASE_URL || '';

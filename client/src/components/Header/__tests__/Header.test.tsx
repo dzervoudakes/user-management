@@ -16,7 +16,7 @@ describe('Header', () => {
       </MemoryRouter>
     );
 
-    expect(getByText('MUI User Management')).toBeInTheDocument();
+    expect(getByText('User Management')).toBeInTheDocument();
   });
 
   it('renders the desktop menu bar', () => {

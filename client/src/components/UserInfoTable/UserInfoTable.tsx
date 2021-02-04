@@ -10,7 +10,7 @@ import { useModal, useToast, useUser } from '@src/hooks';
 import { UserService } from '@src/services';
 import UserForm from '@src/components/UserForm';
 import Api from '@src/api';
-import { MOBILE_WIDTH } from '@src/constants';
+import { MOBILE_BREAKPOINT } from '@src/constants';
 import './UserInfoTable.scss';
 
 interface UserInfoTableProps {
@@ -22,7 +22,7 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
   const { closeModal, openModal } = useModal();
   const { openToast } = useToast();
   const { getUsers } = useUser();
-  const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_WIDTH}px)` });
+  const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_BREAKPOINT}px)` });
 
   const source = Api.source();
 

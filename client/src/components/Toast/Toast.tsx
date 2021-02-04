@@ -19,6 +19,9 @@ const Toast: React.FC = () => {
     info: InfoIcon
   };
 
+  // @todo apply the theme treatment to all other instances of 'makeStyles' for cleanliness and scalability
+  // @todo make sure all required colors, spacing, etc. is available
+
   const styles = makeStyles((theme) => ({
     success: {
       backgroundColor: green[600]

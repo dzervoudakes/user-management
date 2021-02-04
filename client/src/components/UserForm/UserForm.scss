@@ -1,19 +1,12 @@
 @import '~@src/scss/_constants';
 
-// @todo clean up this css a bit and fix those queries!
-// @todo utilize MUI grid instead of making custom rows
-
 .user-form {
   max-width: 66.25rem;
 
   .form-item {
     position: relative;
 
-    @media (max-width: 50rem) {
-      width: 100%;
-    }
-
-    @media (min-width: 50.001rem) {
+    @media (min-width: $mobile-breakpoint + 1px) {
       display: inline-block;
       margin-bottom: 1rem;
       width: 40%;
@@ -23,12 +16,16 @@
       }
     }
 
+    @media (max-width: $mobile-breakpoint) {
+      width: 100%;
+    }
+
     > p {
       color: $color-red;
       font-size: 0.75rem;
       font-style: italic;
 
-      @media (min-width: 50.001rem) {
+      @media (min-width: $mobile-breakpoint + 1px) {
         position: absolute;
       }
     }
@@ -38,22 +35,22 @@
     vertical-align: text-bottom;
     width: 100%;
 
-    @media (max-width: 50rem) {
+    @media (max-width: $mobile-breakpoint) {
       margin-left: 0;
       margin-right: 0;
     }
   }
 
   .submit-button {
-    @media (max-width: 50rem) {
-      margin: 1.5rem 0 0;
-      width: 100%;
-    }
-
-    @media (min-width: 50.001rem) {
+    @media (min-width: $mobile-breakpoint + 1px) {
       bottom: 1.5rem;
       margin-left: 1rem;
       width: 40%;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      margin: 1.5rem 0 0;
+      width: 100%;
     }
 
     vertical-align: bottom;

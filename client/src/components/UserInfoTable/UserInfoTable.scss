@@ -1,5 +1,7 @@
 @import '~@src/scss/_constants';
 
+// @todo utilize MUI grid instead of making custom rows ???
+
 .table-entry {
   display: inline-block;
   position: relative;
@@ -20,7 +22,7 @@
   }
 
   .user-info {
-    @media (min-width: 36.251rem) {
+    @media (min-width: $mobile-breakpoint) {
       margin-left: 1.5rem;
     }
 
@@ -67,7 +69,7 @@
     }
 
     > td:last-child {
-      @media (min-width: 53.75rem) {
+      @media (min-width: $mobile-breakpoint) {
         min-width: 31.25rem;
       }
 
@@ -83,12 +85,12 @@
   .cancel-button {
     margin-bottom: 1rem;
 
-    @media (min-width: 50.001rem) {
+    @media (min-width: $mobile-breakpoint + 1px) {
       margin-left: calc(40% + 1rem);
       width: 40%;
     }
 
-    @media (max-width: 50rem) {
+    @media (max-width: $mobile-breakpoint) {
       margin-top: 1rem;
       width: 100%;
     }

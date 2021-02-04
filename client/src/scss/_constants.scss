@@ -21,5 +21,8 @@ $border-light-blue: 0.0625rem solid $color-light-blue;
 $border-light-gray: 0.0625rem solid $color-super-light-gray;
 $border-light-gray-dotted: 0.0625rem dotted $color-super-light-gray;
 
-// other
+// gradients
 $blue-bar: linear-gradient($color-blue-primary, $color-blue-secondary);
+
+// media queries
+$mobile-breakpoint: 768px;

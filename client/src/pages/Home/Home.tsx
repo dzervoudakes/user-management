@@ -13,7 +13,6 @@ import UserListTable from '@src/components/UserListTable';
 import Layout from '@src/components/Layout';
 import SectionHeader from '@src/components/SectionHeader';
 import { useUser } from '@src/hooks';
-import './Home.scss';
 
 const Home: React.FC = () => {
   const [isAdminView, setIsAdminView] = useState(false);
@@ -24,6 +23,15 @@ const Home: React.FC = () => {
       backgroundColor: 'transparent',
       border: '0.0625rem dotted #e1e1e1',
       borderBottom: 'none'
+    },
+    formGroup: {
+      maxWidth: '16rem'
+    },
+    formControlLabel: {
+      color: '#777',
+      display: 'inline-block',
+      fontSize: '0.875rem',
+      fontStyle: 'italic'
     }
   }))();
 
@@ -47,16 +55,16 @@ const Home: React.FC = () => {
   ));
 
   return (
-    <Layout className="user-list">
+    <Layout>
       <SectionHeader
         title="Current Users"
         description={`${entries.length} user${entries.length !== 1 ? 's' : ''} found.`}
       />
       {entries.length > 0 ? (
         <>
-          <FormGroup classes={{ root: 'form-group' }}>
+          <FormGroup classes={{ root: styles.formGroup }}>
             <FormControlLabel
-              classes={{ root: 'form-control-label' }}
+              classes={{ root: styles.formControlLabel }}
               control={
                 <Switch
                   checked={isAdminView}

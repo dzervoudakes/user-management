@@ -7,15 +7,25 @@ import {
   DialogTitle,
   Button
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { useModal } from '@src/hooks';
-import './Modal.scss';
 
 const Modal: React.FC = () => {
   const { isModalOpen, modalContent, closeModal } = useModal();
   const { title, message, action } = modalContent;
 
+  const styles = makeStyles(() => ({
+    dialog: {
+      width: '100%'
+    }
+  }))();
+
   return (
-    <Dialog onBackdropClick={closeModal} open={isModalOpen} classes={{ paper: 'dialog' }}>
+    <Dialog
+      onBackdropClick={closeModal}
+      open={isModalOpen}
+      classes={{ paper: styles.dialog }}
+    >
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText>{message}</DialogContentText>

@@ -10,15 +10,27 @@ import {
   Typography
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import { MOBILE_WIDTH } from '@src/constants';
+import { makeStyles } from '@material-ui/core/styles';
+import { MOBILE_BREAKPOINT } from '@src/constants';
 import './Header.scss';
-
-// @todo combine desktop and mobile markup into one; changing style only
-// alternative ... go 'mobile only'?
 
 const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_WIDTH}px)` });
+  const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_BREAKPOINT}px)` });
+
+  const styles = makeStyles(() => ({
+    title: {
+      borderRight: isMobile ? 'none' : '0.0625rem solid #204361',
+      display: 'inline-block',
+      paddingRight: '1.5rem',
+      paddingLeft: isMobile ? '2.25rem' : '2.5rem',
+      flexGrow: isMobile ? 1 : 0,
+      verticalAlign: 'top'
+    },
+    mobileMenuButton: {
+      flot: 'right'
+    }
+  }))();
 
   const handleOpen = (): void => {
     setIsDrawerOpen(true);
@@ -47,11 +59,14 @@ const Header: React.FC = () => {
 
     return (
       <>
-        <div className="icon-button-container">
-          <IconButton onClick={handleOpen} color="inherit" data-testid="icon-button">
-            <MenuIcon />
-          </IconButton>
-        </div>
+        <IconButton
+          onClick={handleOpen}
+          color="inherit"
+          className={styles.mobileMenuButton}
+          data-testid="icon-button"
+        >
+          <MenuIcon />
+        </IconButton>
         <Drawer anchor="right" open={isDrawerOpen} onClose={handleClose}>
           <List data-testid="mobile-menu">
             {listItems.map((item) => (
@@ -69,7 +84,9 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <Typography variant="h1">MUI User Management</Typography>
+      <Typography variant="h1" className={styles.title}>
+        User Management
+      </Typography>
       {isMobile ? renderMobile() : renderDesktop()}
     </header>
   );
