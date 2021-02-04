@@ -18,12 +18,12 @@ const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_BREAKPOINT}px)` });
 
-  const styles = makeStyles(() => ({
+  const styles = makeStyles((theme) => ({
     title: {
       borderRight: isMobile ? 'none' : '0.0625rem solid #204361',
       display: 'inline-block',
-      paddingRight: '1.5rem',
-      paddingLeft: isMobile ? '2.25rem' : '2.5rem',
+      paddingRight: theme.spacing(6),
+      paddingLeft: theme.spacing(isMobile ? 9 : 10),
       flexGrow: isMobile ? 1 : 0,
       verticalAlign: 'top'
     },

@@ -21,8 +21,8 @@ const SelectInput: React.FC<SelectInputProps> = ({
 }) => {
   const styles = makeStyles((theme) => ({
     formControl: {
-      marginBottom: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginBottom: theme.spacing(2),
+      marginRight: theme.spacing(2),
       minWidth: 120
     }
   }))();

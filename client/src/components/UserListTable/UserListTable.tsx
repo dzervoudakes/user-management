@@ -9,7 +9,7 @@ const UserListTable: React.FC = () => {
 
   const styles = makeStyles((theme) => ({
     root: {
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(6),
       overflowX: 'auto',
       width: '100%'
     },

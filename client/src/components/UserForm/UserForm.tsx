@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Prompt, useHistory } from 'react-router-dom';
 import noop from 'lodash/noop';
+import omit from 'lodash/omit';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button } from '@material-ui/core';
@@ -11,6 +12,8 @@ import Api from '@src/api/Api';
 import { Gender } from '@src/context';
 import { useToast, useUser } from '@src/hooks';
 import './UserForm.scss';
+
+// @todo in backend, check that the 'username' doesn't exist first before creating a new user
 
 // @todo Yup validation schema doesn't seem to be working
 
@@ -63,7 +66,7 @@ const UserForm: React.FC<UserFormProps> = ({
     try {
       await (isUpdateVariant
         ? UserService.updateUser(values._id, values, source)
-        : UserService.createUser(values, source));
+        : UserService.createUser(omit(values, ['_id']), source));
 
       setUnblock(true);
 

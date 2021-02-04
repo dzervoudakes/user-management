@@ -3,10 +3,10 @@ import { CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const LoadingIndicator: React.FC = () => {
-  const styles = makeStyles(() => ({
+  const styles = makeStyles((theme) => ({
     progress: {
       marginLeft: 'calc(50% - 1.25rem)',
-      marginTop: '3.125rem'
+      marginTop: theme.spacing(13)
     }
   }))();
 

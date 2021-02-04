@@ -18,14 +18,14 @@ const Home: React.FC = () => {
   const [isAdminView, setIsAdminView] = useState(false);
   const { userList: users } = useUser();
 
-  const styles = makeStyles(() => ({
+  const styles = makeStyles((theme) => ({
     divider: {
       backgroundColor: 'transparent',
       border: '0.0625rem dotted #e1e1e1',
       borderBottom: 'none'
     },
     formGroup: {
-      maxWidth: '16rem'
+      maxWidth: theme.spacing(64)
     },
     formControlLabel: {
       color: '#777',

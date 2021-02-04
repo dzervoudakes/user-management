@@ -19,8 +19,7 @@ const Toast: React.FC = () => {
     info: InfoIcon
   };
 
-  // @todo apply the theme treatment to all other instances of 'makeStyles' for cleanliness and scalability
-  // @todo make sure all required colors, spacing, etc. is available
+  // @todo make sure all required colors, spacing, etc. is available in the theme
 
   const styles = makeStyles((theme) => ({
     success: {
@@ -40,7 +39,7 @@ const Toast: React.FC = () => {
     },
     iconVariant: {
       opacity: 0.9,
-      marginRight: theme.spacing(1)
+      marginRight: theme.spacing(2)
     },
     message: {
       alignItems: 'center',

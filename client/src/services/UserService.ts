@@ -14,7 +14,7 @@ export class UserService {
     return Api.get(BASE_URL, { source });
   }
 
-  static createUser(user: User, source?: CancelTokenSource): ApiResponse {
+  static createUser(user: Omit<User, '_id'>, source?: CancelTokenSource): ApiResponse {
     return Api.post(BASE_URL, user, { source });
   }
 

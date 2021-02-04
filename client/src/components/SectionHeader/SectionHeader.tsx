@@ -8,14 +8,14 @@ interface SectionHeaderProps {
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description }) => {
-  const styles = makeStyles(() => ({
+  const styles = makeStyles((theme) => ({
     sectionHeader: {
       borderBottom: '0.0625rem dotted #e1e1e1',
-      marginBottom: '1.5rem'
+      marginBottom: theme.spacing(6)
     },
     description: {
       fontWeight: 700,
-      paddingBottom: '0.25rem'
+      paddingBottom: theme.spacing(1)
     }
   }))();
 

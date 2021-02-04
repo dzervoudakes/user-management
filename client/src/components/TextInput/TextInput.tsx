@@ -19,7 +19,7 @@ const TextInput: React.FC<TextInputProps> = ({
 }) => {
   const styles = makeStyles((theme) => ({
     textField: {
-      marginRight: theme.spacing(1)
+      marginRight: theme.spacing(2)
     }
   }))();
 

@@ -7,10 +7,10 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, className }) => {
-  const styles = makeStyles(() => ({
+  const styles = makeStyles((theme) => ({
     layout: {
-      marginBottom: '2rem',
-      padding: '1.5rem 1.125rem'
+      marginBottom: theme.spacing(8),
+      padding: `${theme.spacing(6)}px ${theme.spacing(5)}px`
     }
   }))();
 
