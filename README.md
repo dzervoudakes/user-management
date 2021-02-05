@@ -12,12 +12,14 @@ technologies that I've adopted over time. Also the COVID-19 pandemic was a thing
 
 _**Disclaimer:** I have not tested this in Internet Explorer, nor do I really care to._
 
+<img src="demo.gif" height="350"/>
+
 ## Technologies Used
 
 - **Frontend:** React, TypeScript, Material UI
 - **Backend:** Node + Express, Overnight.js
 - **Database:** Docker, MongoDB
-- **CI/CD:** Github Actions
+- **CI/CD:** GitHub Actions
 
 ## Local Development
 
