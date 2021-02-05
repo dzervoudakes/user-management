@@ -1,4 +1,4 @@
-import { Admin, AdminType } from '../models';
+import { Admin, AdminType } from '@src/models';
 
 export class AdminDao {
   public async getAdmin({ username, password }: AdminType): Promise<AdminType | null> {

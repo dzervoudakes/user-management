@@ -1,6 +1,6 @@
 import mongoose, { Mongoose } from 'mongoose';
-import { AdminDao } from '../src/daos';
-import { Admin } from '../src/models';
+import { AdminDao } from '@src/daos';
+import { Admin } from '@src/models';
 
 describe('AdminDao', () => {
   let connection: Mongoose;

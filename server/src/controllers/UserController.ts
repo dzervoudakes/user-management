@@ -2,7 +2,7 @@ import { Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import { Controller, Delete, Get, Middleware, Post, Put } from '@overnightjs/core';
 import { JwtManager, ISecureRequest } from '@overnightjs/jwt';
-import { UserDao } from '../daos';
+import { UserDao } from '@src/daos';
 
 @Controller('api/users')
 export class UserController {

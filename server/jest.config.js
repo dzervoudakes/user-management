@@ -17,5 +17,9 @@ module.exports = {
   transform: {
     '^.+\\.(ts|js)$': require.resolve('ts-jest')
   },
-  moduleDirectories: ['node_modules']
+  moduleDirectories: ['node_modules'],
+  moduleNameMapper: {
+    '^@src[/](.+)': '<rootDir>/src/$1',
+    '^node_modules[/](.+)': '<rootDir>/node_modules/$1'
+  }
 };

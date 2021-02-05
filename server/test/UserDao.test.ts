@@ -1,6 +1,7 @@
 import mongoose, { Mongoose } from 'mongoose';
-import { UserDao } from '../src/daos';
-import { User, UserType } from '../src/models';
+import { UserDao } from '@src/daos';
+import { User } from '@src/models';
+import { mockUserOne, mockUserTwo } from './utils';
 
 describe('UserDao', () => {
   let connection: Mongoose;
@@ -15,22 +16,6 @@ describe('UserDao', () => {
   afterAll(async () => {
     await connection.disconnect();
   });
-
-  const mockUserOne = {
-    firstName: 'Eli',
-    lastName: 'Manning',
-    username: 'nyg10', // unique constraint
-    address: '1925 Giants Drive, East Rutherford, NJ 07071',
-    gender: 'male' as UserType['gender']
-  };
-
-  const mockUserTwo = {
-    firstName: 'Saquon',
-    lastName: 'Barkley',
-    username: 'nyg26', // unique constraint
-    address: '1925 Giants Drive, East Rutherford, NJ 07071',
-    gender: 'male' as UserType['gender']
-  };
 
   it('gets a list of users', async () => {
     const userDao = new UserDao();

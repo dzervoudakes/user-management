@@ -11,6 +11,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "dist",
+    "paths": {
+      "@src/*": ["src/*"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": false,
     "sourceMap": true,
