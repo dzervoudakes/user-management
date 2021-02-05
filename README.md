@@ -1,6 +1,7 @@
 # User Management
 > Full stack demo CRUD app built with Express, React and TypeScript.
 
+[![quality](https://app.codacy.com/project/badge/Grade/373b659cba7b4b8cb0f275db57c3ef38)](https://www.codacy.com/gh/dzervoudakes/user-management/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dzervoudakes/user-management&amp;utm_campaign=Badge_Grade)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
 ## Premise
