@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 import { AdminDao } from '../src/daos';
-import { Admin, AdminType } from '../src/models';
+import { Admin } from '../src/models';
 
 describe('AdminDao', () => {
-  let connection: any;
+  let connection: Mongoose;
 
   beforeAll(async () => {
     connection = await mongoose.connect(process.env.MONGO_URL || '', {
@@ -21,7 +21,7 @@ describe('AdminDao', () => {
     const mockAdmin = { username: 'admin', password: 'letmein' };
 
     await Admin.create(mockAdmin);
-    const result = await adminDao.getAdmin(mockAdmin as AdminType);
+    const result = await adminDao.getAdmin(mockAdmin);
 
     expect(result?.username).toEqual(mockAdmin.username);
     expect(result?.password).toEqual(mockAdmin.password);

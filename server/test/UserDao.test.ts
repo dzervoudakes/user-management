@@ -21,7 +21,7 @@ describe('UserDao', () => {
     lastName: 'Manning',
     username: 'nyg10', // unique constraint
     address: '1925 Giants Drive, East Rutherford, NJ 07071',
-    gender: 'male'
+    gender: 'male' as UserType['gender']
   };
 
   const mockUserTwo = {
@@ -29,7 +29,7 @@ describe('UserDao', () => {
     lastName: 'Barkley',
     username: 'nyg26', // unique constraint
     address: '1925 Giants Drive, East Rutherford, NJ 07071',
-    gender: 'male'
+    gender: 'male' as UserType['gender']
   };
 
   it('gets a list of users', async () => {
@@ -69,7 +69,7 @@ describe('UserDao', () => {
     const userDao = new UserDao();
     const payload = { ...mockUserOne, username: 'test3' };
 
-    const result = await userDao.createUser(payload as UserType);
+    const result = await userDao.createUser(payload);
 
     expect(result?.firstName).toEqual(mockUserOne.firstName);
     expect(result?.lastName).toEqual(mockUserOne.lastName);
@@ -86,7 +86,7 @@ describe('UserDao', () => {
     const result = await userDao.updateUser(user._id, {
       ...payload,
       firstName: 'Peyton'
-    } as UserType);
+    });
 
     expect(result?.firstName).toEqual('Peyton');
     expect(result?.lastName).toEqual(mockUserOne.lastName);

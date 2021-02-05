@@ -1,8 +1,6 @@
 import { Document, Schema, model } from 'mongoose';
 
-// @todo value to extending 'Document'?
-
-export interface UserType extends Document {
+export interface UserType {
   firstName: string;
   lastName: string;
   username: string;
@@ -10,7 +8,9 @@ export interface UserType extends Document {
   gender: 'male' | 'female' | 'other';
 }
 
-export const UserSchema = new Schema<UserType>({
+export interface UserDocument extends UserType, Document {}
+
+export const UserSchema = new Schema<UserDocument>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   username: { type: String, required: true, unique: true },
