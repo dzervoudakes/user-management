@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 import { UserDao } from '../src/daos';
-import { User } from '../src/models';
+import { User, UserType } from '../src/models';
 
 describe('UserDao', () => {
-  let connection: any;
+  let connection: Mongoose;
 
   beforeAll(async () => {
     connection = await mongoose.connect(process.env.MONGO_URL || '', {
@@ -16,22 +16,24 @@ describe('UserDao', () => {
     await connection.disconnect();
   });
 
+  const mockUserOne = {
+    firstName: 'Eli',
+    lastName: 'Manning',
+    username: 'nyg10', // unique constraint
+    address: '1925 Giants Drive, East Rutherford, NJ 07071',
+    gender: 'male'
+  };
+
+  const mockUserTwo = {
+    firstName: 'Saquon',
+    lastName: 'Barkley',
+    username: 'nyg26', // unique constraint
+    address: '1925 Giants Drive, East Rutherford, NJ 07071',
+    gender: 'male'
+  };
+
   it('gets a list of users', async () => {
     const userDao = new UserDao();
-    const mockUserOne = {
-      firstName: 'Eli',
-      lastName: 'Manning',
-      username: 'nyg10',
-      address: '1925 Giants Drive, East Rutherford, NJ 07071',
-      gender: 'male'
-    };
-    const mockUserTwo = {
-      firstName: 'Saquon',
-      lastName: 'Barkley',
-      username: 'nyg26',
-      address: '1925 Giants Drive, East Rutherford, NJ 07071',
-      gender: 'male'
-    };
 
     await User.create([mockUserOne, mockUserTwo]);
     const result = await userDao.getUsers();
@@ -47,5 +49,60 @@ describe('UserDao', () => {
     expect(result?.[1].username).toEqual(mockUserTwo.username);
     expect(result?.[1].address).toEqual(mockUserTwo.address);
     expect(result?.[1].gender).toEqual(mockUserTwo.gender);
+  });
+
+  it('gets a user by id', async () => {
+    const userDao = new UserDao();
+    const payload = { ...mockUserOne, username: 'test2' };
+
+    const user = await User.create(payload);
+    const result = await userDao.getUser(user._id);
+
+    expect(result?.firstName).toEqual(mockUserOne.firstName);
+    expect(result?.lastName).toEqual(mockUserOne.lastName);
+    expect(result?.username).toEqual('test2');
+    expect(result?.address).toEqual(mockUserOne.address);
+    expect(result?.gender).toEqual(mockUserOne.gender);
+  });
+
+  it('creates a user', async () => {
+    const userDao = new UserDao();
+    const payload = { ...mockUserOne, username: 'test3' };
+
+    const result = await userDao.createUser(payload as UserType);
+
+    expect(result?.firstName).toEqual(mockUserOne.firstName);
+    expect(result?.lastName).toEqual(mockUserOne.lastName);
+    expect(result?.username).toEqual('test3');
+    expect(result?.address).toEqual(mockUserOne.address);
+    expect(result?.gender).toEqual(mockUserOne.gender);
+  });
+
+  it('updates a user', async () => {
+    const userDao = new UserDao();
+    const payload = { ...mockUserOne, username: 'test4' };
+
+    const user = await User.create(payload);
+    const result = await userDao.updateUser(user._id, {
+      ...payload,
+      firstName: 'Peyton'
+    } as UserType);
+
+    expect(result?.firstName).toEqual('Peyton');
+    expect(result?.lastName).toEqual(mockUserOne.lastName);
+    expect(result?.username).toEqual('test4');
+    expect(result?.address).toEqual(mockUserOne.address);
+    expect(result?.gender).toEqual(mockUserOne.gender);
+  });
+
+  it('deletes a user', async () => {
+    const userDao = new UserDao();
+    const payload = { ...mockUserOne, username: 'test5' };
+
+    const user = await User.create(payload);
+    await userDao.deleteUser(user._id);
+
+    const result = await userDao.getUser(user._id);
+    expect(result).toBeNull();
   });
 });

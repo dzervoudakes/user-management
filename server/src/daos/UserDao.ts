@@ -17,7 +17,7 @@ export class UserDao {
   }
 
   public async updateUser(id: string, user: UserType): Promise<UserType | null> {
-    const result = await User.findByIdAndUpdate(id, user);
+    const result = await User.findByIdAndUpdate(id, user, { new: true });
     return result;
   }
 

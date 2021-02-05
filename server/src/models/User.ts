@@ -1,5 +1,7 @@
 import { Document, Schema, model } from 'mongoose';
 
+// @todo value to extending 'Document'?
+
 export interface UserType extends Document {
   firstName: string;
   lastName: string;
