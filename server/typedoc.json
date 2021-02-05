@@ -1,6 +1,6 @@
 {
   "entryPoints": ["./src"],
-  "exclude": ["./src/**/*.test.*", "./src/**/*.spec.*"],
+  "exclude": ["**/*.test.*", "**/*.spec.*"],
   "readme": "./README.md",
   "out": "docs"
 }
