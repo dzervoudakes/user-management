@@ -9,7 +9,11 @@
     "docs": "typedoc",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.(spec|test).ts' --exec 'ts-node' src/index.ts"
+    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.(spec|test).ts' --exec 'ts-node' src/index.ts",
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:verbose": "npm test -- --verbose",
+    "test:watch": "npm test -- --watchAll"
   },
   "repository": {
     "type": "git",
@@ -29,6 +33,7 @@
   "devDependencies": {
     "@dztools/eslint-config-typescript": "1.1.1",
     "@dztools/prettier-config": "1.0.3",
+    "@shelf/jest-mongodb": "1.2.3",
     "@types/cors": "2.8.9",
     "@types/express": "4.17.11",
     "@types/express-jwt": "6.0.0",
@@ -40,12 +45,16 @@
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jest": "24.1.3",
     "eslint-plugin-prettier": "3.3.1",
     "husky": "4.3.8",
+    "jest": "26.6.3",
     "lint-staged": "10.5.3",
+    "mongodb": "3.6.4",
     "nodemon": "2.0.7",
     "prettier": "2.2.1",
     "rimraf": "3.0.2",
+    "ts-jest": "26.5.0",
     "ts-node": "9.1.1",
     "typedoc": "0.20.20",
     "typescript": "4.1.3"

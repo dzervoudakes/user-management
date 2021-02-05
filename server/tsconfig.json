@@ -19,6 +19,6 @@
     "target": "es5"
   },
   "exclude": ["node_modules"],
-  "include": ["./src"],
+  "include": ["**/*.ts"],
   "typeRoots": ["node_modules/@types"]
 }

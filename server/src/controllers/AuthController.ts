@@ -18,8 +18,8 @@ export class AuthController {
         const token = JwtManager.jwt(req.body);
         res.status(StatusCodes.OK).json({ token });
       }
-    } catch (error) {
-      res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
+    } catch (err) {
+      res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
     }
   }
 }

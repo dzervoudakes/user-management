@@ -23,6 +23,26 @@ npm run lint
 npm run lint:fix
 ```
 
+### Run Unit Tests
+```
+npm test
+```
+
+### Run Unit Tests with Coverage Report
+```
+npm run test:coverage
+```
+
+### Run Unit Tests with Verbose Results
+```
+npm run test:verbose
+```
+
+### Run Unit Tests and Watch for Changes
+```
+npm run test:watch
+```
+
 ### Build for Production
 ```
 npm run build

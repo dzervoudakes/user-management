@@ -14,8 +14,8 @@ export class UserController {
     try {
       const users = await this.userDao.getUsers();
       res.status(StatusCodes.OK).json({ users });
-    } catch (error) {
-      res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
+    } catch (err) {
+      res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
     }
   }
 
@@ -29,8 +29,8 @@ export class UserController {
       } else {
         res.status(StatusCodes.OK).json({ user });
       }
-    } catch (error) {
-      res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
+    } catch (err) {
+      res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
     }
   }
 
@@ -40,8 +40,8 @@ export class UserController {
     try {
       const user = await this.userDao.createUser(req.body);
       res.status(StatusCodes.CREATED).json({ user });
-    } catch (error) {
-      res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
+    } catch (err) {
+      res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
     }
   }
 
@@ -55,8 +55,8 @@ export class UserController {
       } else {
         res.status(StatusCodes.OK).json({ user });
       }
-    } catch (error) {
-      res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
+    } catch (err) {
+      res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
     }
   }
 
@@ -70,8 +70,8 @@ export class UserController {
       } else {
         res.status(StatusCodes.OK).json({});
       }
-    } catch (error) {
-      res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
+    } catch (err) {
+      res.status(StatusCodes.BAD_REQUEST).json({ error: err.message });
     }
   }
 }
