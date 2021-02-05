@@ -1,33 +1,28 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import SelectInput from '..';
 
 describe('SelectInput', () => {
   const options = [
-    <option key="one" value="one">
-      one
-    </option>,
-    <option key="two" value="two">
-      two
-    </option>,
-    <option key="three" value="three">
-      three
-    </option>
+    {
+      text: 'one',
+      value: 'one'
+    },
+    {
+      text: 'two',
+      value: 'two'
+    },
+    {
+      text: 'three',
+      value: 'three'
+    }
   ];
 
   it('renders', () => {
     const { getByDisplayValue } = render(
       <Formik initialValues={{ test: 'input value' }} onSubmit={jest.fn()}>
-        {() => (
-          <Field
-            error="error text"
-            label="Label"
-            name="test"
-            options={options}
-            component={SelectInput}
-          />
-        )}
+        {() => <SelectInput name="test" label="Test" options={options} />}
       </Formik>
     );
 
@@ -39,16 +34,7 @@ describe('SelectInput', () => {
   it('renders the required state', () => {
     const { getByText } = render(
       <Formik initialValues={{ test: 'input value' }} onSubmit={jest.fn()}>
-        {() => (
-          <Field
-            error="error text"
-            label="Label"
-            name="test"
-            options={options}
-            required
-            component={SelectInput}
-          />
-        )}
+        {() => <SelectInput name="test" label="Test" options={options} required />}
       </Formik>
     );
 

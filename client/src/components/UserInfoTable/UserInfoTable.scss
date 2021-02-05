@@ -20,7 +20,7 @@
   }
 
   .user-info {
-    @media (min-width: $mobile-breakpoint) {
+    @media (min-width: $mobile-breakpoint + 1px) {
       margin-left: 1.5rem;
     }
 
@@ -67,8 +67,12 @@
     }
 
     > td:last-child {
-      @media (min-width: $mobile-breakpoint) {
+      @media (min-width: $mobile-breakpoint + 1px) {
         min-width: 31.25rem;
+      }
+
+      @media (max-width: $mobile-breakpoint) {
+        width: 100%;
       }
 
       padding: 0.3125rem 0.9375rem;

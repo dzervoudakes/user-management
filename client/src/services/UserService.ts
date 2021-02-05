@@ -18,7 +18,11 @@ export class UserService {
     return Api.post(BASE_URL, user, { source });
   }
 
-  static updateUser(id: string, user: User, source?: CancelTokenSource): ApiResponse {
+  static updateUser(
+    id: string,
+    user: Omit<User, '_id'>,
+    source?: CancelTokenSource
+  ): ApiResponse {
     return Api.put(`${BASE_URL}/${id}`, user, { source });
   }
 

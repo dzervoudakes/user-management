@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Prompt, useHistory } from 'react-router-dom';
 import noop from 'lodash/noop';
 import omit from 'lodash/omit';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button } from '@material-ui/core';
 import TextInput from '@src/components/TextInput';
@@ -12,9 +12,6 @@ import Api from '@src/api/Api';
 import { Gender } from '@src/context';
 import { useToast, useUser } from '@src/hooks';
 import './UserForm.scss';
-
-// @todo in backend, check that the 'username' doesn't exist first before creating a new user
-// @todo Yup validation schema doesn't seem to be working (fix this along with the unit tests)
 
 interface Values {
   _id: string;
@@ -37,7 +34,7 @@ const defaultInitialValues = {
   lastName: '',
   username: '',
   address: '',
-  gender: 'male' as Gender
+  gender: '' as Gender
 };
 
 const UserForm: React.FC<UserFormProps> = ({
@@ -64,7 +61,7 @@ const UserForm: React.FC<UserFormProps> = ({
   const handleSubmit = async (values: Values): Promise<void> => {
     try {
       await (isUpdateVariant
-        ? UserService.updateUser(values._id, values, source)
+        ? UserService.updateUser(values._id, omit(values, ['_id']), source)
         : UserService.createUser(omit(values, ['_id']), source));
 
       setUnblock(true);
@@ -113,7 +110,7 @@ const UserForm: React.FC<UserFormProps> = ({
       validateOnChange={false}
       validationSchema={validationSchema}
     >
-      {({ dirty, errors, values }) => (
+      {({ dirty, handleSubmit: formikHandleSubmit }) => (
         <>
           <Prompt
             when={dirty && !unblock}
@@ -122,71 +119,56 @@ const UserForm: React.FC<UserFormProps> = ({
           <Form className="user-form">
             <div className="form-row">
               <div className="form-item">
-                <Field
-                  name="firstName"
-                  label="First Name"
-                  placeholder="Fakey"
-                  error={errors.firstName}
-                  component={TextInput}
-                />
+                <TextInput name="firstName" label="First Name" placeholder="Fakey" />
                 <ErrorMessage name="firstName" component="p" />
               </div>
               <div className="form-item">
-                <Field
-                  name="lastName"
-                  label="Last Name"
-                  placeholder="McFakerson"
-                  error={errors.lastName}
-                  component={TextInput}
-                />
+                <TextInput name="lastName" label="Last Name" placeholder="McFakerson" />
                 <ErrorMessage name="lastName" component="p" />
               </div>
             </div>
             <div className="form-row">
               <div className="form-item">
-                <Field
-                  name="username"
-                  label="Username"
-                  placeholder="foobar123"
-                  error={errors.username}
-                  component={TextInput}
-                />
+                <TextInput name="username" label="Username" placeholder="foobar123" />
                 <ErrorMessage name="username" component="p" />
               </div>
               <div className="form-item">
-                <Field
+                <TextInput
                   name="address"
                   label="Address"
-                  placeholder="21 Jump St, Denver, CO 80203"
-                  error={errors.address}
-                  component={TextInput}
+                  placeholder="21 Jump St., Denver, CO 80203"
                 />
                 <ErrorMessage name="address" component="p" />
               </div>
             </div>
             <div className="form-row">
               <div className="form-item">
-                <Field
+                <SelectInput
                   name="gender"
                   label="Gender"
                   options={[
-                    <option key="male" value="male">
-                      Male
-                    </option>,
-                    <option key="female" value="female">
-                      Female
-                    </option>,
-                    <option key="other" value="other">
-                      Other
-                    </option>
+                    {
+                      text: '',
+                      value: ''
+                    },
+                    {
+                      text: 'Male',
+                      value: 'male'
+                    },
+                    {
+                      text: 'Female',
+                      value: 'female'
+                    },
+                    {
+                      text: 'Other',
+                      value: 'other'
+                    }
                   ]}
-                  error={errors.gender}
-                  component={SelectInput}
                 />
                 <ErrorMessage name="gender" component="p" />
               </div>
               <Button
-                onClick={() => handleSubmit(values)}
+                onClick={() => formikHandleSubmit()}
                 color="primary"
                 variant="outlined"
                 className="submit-button"

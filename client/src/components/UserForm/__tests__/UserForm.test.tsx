@@ -36,8 +36,7 @@ describe('UserForm', () => {
     lastName: 'Manning',
     username: 'nyg10',
     address: '1925 Giants Drive',
-    gender: 'male' as Gender,
-    _id: '12345'
+    gender: 'male' as Gender
   };
   const TestComponent: React.FC<UserFormProps> = (props) => (
     <MemoryRouter>
@@ -91,7 +90,11 @@ describe('UserForm', () => {
     const updatedUsername = 'emanning10';
     const spy = jest.spyOn(UserService, 'updateUser');
     const { container, getByText } = render(
-      <TestComponent variant="update" initialValues={payload} callback={mockCallback} />
+      <TestComponent
+        variant="update"
+        initialValues={{ ...payload, _id: '12345' }}
+        callback={mockCallback}
+      />
     );
 
     const usernameInput = container.querySelector('input[name="username"]')!;
@@ -114,12 +117,12 @@ describe('UserForm', () => {
     const { getByText } = render(
       <TestComponent
         initialValues={{
-          _id: (undefined as unknown) as string,
-          firstName: (undefined as unknown) as string,
-          lastName: (undefined as unknown) as string,
-          username: (undefined as unknown) as string,
-          address: (undefined as unknown) as string,
-          gender: (undefined as unknown) as Gender
+          _id: '',
+          firstName: '',
+          lastName: '',
+          username: '',
+          address: '',
+          gender: '' as Gender
         }}
       />
     );
@@ -127,8 +130,8 @@ describe('UserForm', () => {
     fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
-      expect(getByText('First Name is required.')).toBeInTheDocument();
-      expect(getByText('Last Name is required.')).toBeInTheDocument();
+      expect(getByText('First name is required.')).toBeInTheDocument();
+      expect(getByText('Last name is required.')).toBeInTheDocument();
       expect(getByText('Username is required.')).toBeInTheDocument();
       expect(getByText('Address is required.')).toBeInTheDocument();
       expect(getByText('Gender is required.')).toBeInTheDocument();
@@ -139,7 +142,9 @@ describe('UserForm', () => {
     UserService.createUser = jest
       .fn()
       .mockRejectedValue(() => new Error('there was an error'));
-    const { getByText } = render(<TestComponent initialValues={payload} />);
+    const { getByText } = render(
+      <TestComponent initialValues={{ ...payload, _id: '' }} />
+    );
 
     fireEvent.click(getByText('Submit'));
 
@@ -153,7 +158,7 @@ describe('UserForm', () => {
       .fn()
       .mockRejectedValue(() => new Error('there was an error'));
     const { getByText } = render(
-      <TestComponent variant="update" initialValues={payload} />
+      <TestComponent variant="update" initialValues={{ ...payload, _id: '12345' }} />
     );
 
     fireEvent.click(getByText('Submit'));
