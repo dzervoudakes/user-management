@@ -8,7 +8,7 @@
 npm install
 ```
 
-### Host Server on Port 3000
+### Start Server on Port 3000
 ```
 npm start
 ```

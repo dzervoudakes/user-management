@@ -18,7 +18,7 @@ _**Disclaimer:** I have not tested this in Internet Explorer, nor do I really ca
 ## Technologies Used
 
 - **Frontend:** React, TypeScript, Material UI
-- **Backend:** Node + Express, Overnight.js
+- **Backend:** Node + Express, OvernightJS
 - **Database:** Docker, MongoDB
 - **CI/CD:** GitHub Actions
 
