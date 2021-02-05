@@ -58,7 +58,10 @@ const UserForm: React.FC<UserFormProps> = ({
 
   const isUpdateVariant = variant === 'update';
 
-  const handleSubmit = async (values: Values): Promise<void> => {
+  const handleSubmit = async (
+    values: Values,
+    setFieldError: (field: string, message: string) => void
+  ): Promise<void> => {
     try {
       await (isUpdateVariant
         ? UserService.updateUser(values._id, omit(values, ['_id']), source)
@@ -85,6 +88,12 @@ const UserForm: React.FC<UserFormProps> = ({
             isUpdateVariant ? 'updating' : 'creating'
           } the user.`
         });
+
+        // unique error handling for anti-duplicate constraint
+        const { error: description } = err.response.data;
+        if (description.includes('E11000') && description.includes('username')) {
+          setFieldError('username', 'Username already exists.');
+        }
       }
     }
   };
@@ -104,7 +113,7 @@ const UserForm: React.FC<UserFormProps> = ({
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={(values, { setFieldError }) => handleSubmit(values, setFieldError)}
       enableReinitialize
       validateOnBlur={false}
       validateOnChange={false}
