@@ -21,7 +21,6 @@ module.exports = {
         devDependencies: [
           'webpack.config.js',
           'build/**',
-          'jest/**',
           'scripts/**',
           '**/*.test.*',
           '**/*.spec.*',
