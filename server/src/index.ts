@@ -47,4 +47,8 @@ class AppServer extends Server {
 
 const server = new AppServer();
 
-server.start();
+if (process.env.NODE_ENV !== 'test') {
+  server.start();
+}
+
+export default AppServer;
