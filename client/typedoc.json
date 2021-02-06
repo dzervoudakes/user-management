@@ -2,5 +2,6 @@
   "entryPoints": ["./scripts", "./src"],
   "exclude": ["./src/**/index.ts", "./src/**/*.test.*", "./src/**/*.spec.*"],
   "readme": "./README.md",
+  "name": "User Management Frontend",
   "out": "docs"
 }

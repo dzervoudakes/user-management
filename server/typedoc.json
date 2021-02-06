@@ -2,5 +2,6 @@
   "entryPoints": ["./src"],
   "exclude": ["**/*.test.*", "**/*.spec.*"],
   "readme": "./README.md",
+  "name": "User Management Backend",
   "out": "docs"
 }
