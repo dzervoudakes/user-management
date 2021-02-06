@@ -53,7 +53,7 @@ npm run build
 npm run docs
 ```
 
-### Remove All Output Directories
+### Remove Output Directories
 ```
 npm run clean
 ```
