@@ -27,9 +27,10 @@ _**Disclaimer:** I have not tested this in Internet Explorer, nor do I really ca
 ### Database and Server Setup
 
 - Ensure `Docker` is installed and running
+- In your terminal, `cd` into the `server` directory and run `npm install`
 - From the project root, open your terminal and run `docker-compose up`
   - Seed data for `admins` and `users` will be populated in the database automatically
-  - Server dependencies will be installed automatically and then the server will boot up on `http://localhost:3000`
+  - The server will be running on `http://localhost:3000`
 
 The `server/README.md` provides additional information on build scripts and environment variables.
 
