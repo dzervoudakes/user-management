@@ -1,7 +1,7 @@
 import supertest, { SuperTest, Test } from 'supertest';
 import StatusCodes from 'http-status-codes';
 import { Application } from 'express';
-import AppServer from '@src/index';
+import AppServer from '@src/AppServer';
 
 jest.mock('@overnightjs/jwt', () => ({
   JwtManager: { jwt: jest.fn().mockImplementation(() => 'i am a token') }

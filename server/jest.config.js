@@ -1,6 +1,10 @@
 module.exports = {
   preset: '@shelf/jest-mongodb',
-  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,js}', '!<rootDir>/src/**/*.d.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.{ts,js}',
+    '!<rootDir>/src/**/*.d.ts',
+    '!<rootDir>/src/**/index.ts'
+  ],
   coverageThreshold: {
     global: {
       branches: 80,
