@@ -11,12 +11,12 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import { MOBILE_BREAKPOINT } from '@src/constants';
+import { MOBILE_QUERY } from '@src/constants';
 import './Header.scss';
 
 const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_BREAKPOINT}px)` });
+  const isMobile = useMediaQuery(MOBILE_QUERY);
 
   const styles = makeStyles((theme) => ({
     title: {
