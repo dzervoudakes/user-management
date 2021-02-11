@@ -16,19 +16,20 @@ interface SelectInputProps {
   options: Option[];
 }
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    marginBottom: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    minWidth: 120
+  },
+  select: {
+    paddingLeft: theme.spacing(2)
+  }
+}));
+
 const SelectInput: React.FC<SelectInputProps> = (props) => {
   const [field, meta] = useField(props);
-
-  const styles = makeStyles((theme) => ({
-    formControl: {
-      marginBottom: theme.spacing(2),
-      marginRight: theme.spacing(2),
-      minWidth: 120
-    },
-    select: {
-      paddingLeft: theme.spacing(2)
-    }
-  }))();
+  const styles = useStyles();
 
   const { required, label, options } = props;
 

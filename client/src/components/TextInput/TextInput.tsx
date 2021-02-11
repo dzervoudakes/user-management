@@ -11,14 +11,15 @@ interface TextInputProps {
   required?: boolean;
 }
 
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    marginRight: theme.spacing(2)
+  }
+}));
+
 const TextInput: React.FC<TextInputProps> = (props) => {
   const [field, meta] = useField(props);
-
-  const styles = makeStyles((theme) => ({
-    textField: {
-      marginRight: theme.spacing(2)
-    }
-  }))();
+  const styles = useStyles();
 
   return (
     <TextField

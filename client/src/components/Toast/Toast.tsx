@@ -9,8 +9,35 @@ import { amber, green } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import { useToast } from '@src/hooks';
 
+const useStyles = makeStyles((theme) => ({
+  success: {
+    backgroundColor: green[600]
+  },
+  error: {
+    backgroundColor: theme.palette.error.main
+  },
+  info: {
+    backgroundColor: theme.palette.primary.main
+  },
+  warning: {
+    backgroundColor: amber[700]
+  },
+  icon: {
+    fontSize: 20
+  },
+  iconVariant: {
+    opacity: 0.9,
+    marginRight: theme.spacing(2)
+  },
+  message: {
+    alignItems: 'center',
+    display: 'flex'
+  }
+}));
+
 const Toast: React.FC = () => {
   const { isToastOpen, toastVariant, toastMessage, closeToast } = useToast();
+  const styles = useStyles();
 
   const variantIcon = {
     success: CheckCircleIcon,
@@ -18,32 +45,6 @@ const Toast: React.FC = () => {
     error: ErrorIcon,
     info: InfoIcon
   };
-
-  const styles = makeStyles((theme) => ({
-    success: {
-      backgroundColor: green[600]
-    },
-    error: {
-      backgroundColor: theme.palette.error.main
-    },
-    info: {
-      backgroundColor: theme.palette.primary.main
-    },
-    warning: {
-      backgroundColor: amber[700]
-    },
-    icon: {
-      fontSize: 20
-    },
-    iconVariant: {
-      opacity: 0.9,
-      marginRight: theme.spacing(2)
-    },
-    message: {
-      alignItems: 'center',
-      display: 'flex'
-    }
-  }))();
 
   const Icon = variantIcon[toastVariant];
 

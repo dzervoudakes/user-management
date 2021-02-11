@@ -7,17 +7,19 @@ interface SectionHeaderProps {
   description: string;
 }
 
+const useStyles = makeStyles((theme) => ({
+  sectionHeader: {
+    borderBottom: '0.0625rem dotted #e1e1e1',
+    marginBottom: theme.spacing(6)
+  },
+  description: {
+    fontWeight: 700,
+    paddingBottom: theme.spacing(1)
+  }
+}));
+
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description }) => {
-  const styles = makeStyles((theme) => ({
-    sectionHeader: {
-      borderBottom: '0.0625rem dotted #e1e1e1',
-      marginBottom: theme.spacing(6)
-    },
-    description: {
-      fontWeight: 700,
-      paddingBottom: theme.spacing(1)
-    }
-  }))();
+  const styles = useStyles();
 
   return (
     <div className={styles.sectionHeader}>

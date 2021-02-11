@@ -4,19 +4,20 @@ import Table from '@material-ui/core/Table';
 import { TableBody, TableCell, TableHead, TableRow, Paper } from '@material-ui/core';
 import { useUser } from '@src/hooks';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: theme.spacing(6),
+    overflowX: 'auto',
+    width: '100%'
+  },
+  table: {
+    minWidth: 650
+  }
+}));
+
 const UserListTable: React.FC = () => {
   const { userList: users } = useUser();
-
-  const styles = makeStyles((theme) => ({
-    root: {
-      marginTop: theme.spacing(6),
-      overflowX: 'auto',
-      width: '100%'
-    },
-    table: {
-      minWidth: 650
-    }
-  }))();
+  const styles = useStyles();
 
   return (
     <Paper className={styles.root}>

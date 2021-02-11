@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import classnames from 'classnames';
 import { useMediaQuery } from 'react-responsive';
 import {
   Drawer,
@@ -14,23 +15,28 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MOBILE_QUERY } from '@src/constants';
 import './Header.scss';
 
+const useStyles = makeStyles((theme) => ({
+  title: {
+    borderRight: '0.0625rem solid #204361',
+    display: 'inline-block',
+    paddingRight: theme.spacing(6),
+    paddingLeft: theme.spacing(10),
+    verticalAlign: 'top'
+  },
+  titleMobile: {
+    borderRight: 'none',
+    paddingLeft: theme.spacing(7),
+    flexGrow: 1
+  },
+  mobileMenuButton: {
+    flot: 'right'
+  }
+}));
+
 const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const isMobile = useMediaQuery(MOBILE_QUERY);
-
-  const styles = makeStyles((theme) => ({
-    title: {
-      borderRight: isMobile ? 'none' : '0.0625rem solid #204361',
-      display: 'inline-block',
-      paddingRight: theme.spacing(6),
-      paddingLeft: theme.spacing(isMobile ? 9 : 10),
-      flexGrow: isMobile ? 1 : 0,
-      verticalAlign: 'top'
-    },
-    mobileMenuButton: {
-      flot: 'right'
-    }
-  }))();
+  const styles = useStyles();
 
   const handleOpen = (): void => {
     setIsDrawerOpen(true);
@@ -84,7 +90,10 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <Typography variant="h1" className={styles.title}>
+      <Typography
+        variant="h1"
+        className={classnames(styles.title, isMobile && styles.titleMobile)}
+      >
         User Management
       </Typography>
       {isMobile ? renderMobile() : renderDesktop()}

@@ -14,26 +14,27 @@ import Layout from '@src/components/Layout';
 import SectionHeader from '@src/components/SectionHeader';
 import { useUser } from '@src/hooks';
 
+const useStyles = makeStyles((theme) => ({
+  divider: {
+    backgroundColor: 'transparent',
+    border: '0.0625rem dotted #e1e1e1',
+    borderBottom: 'none'
+  },
+  formGroup: {
+    maxWidth: theme.spacing(64)
+  },
+  formControlLabel: {
+    color: '#777',
+    display: 'inline-block',
+    fontSize: '0.875rem',
+    fontStyle: 'italic'
+  }
+}));
+
 const Home: React.FC = () => {
   const [isAdminView, setIsAdminView] = useState(false);
   const { userList: users } = useUser();
-
-  const styles = makeStyles((theme) => ({
-    divider: {
-      backgroundColor: 'transparent',
-      border: '0.0625rem dotted #e1e1e1',
-      borderBottom: 'none'
-    },
-    formGroup: {
-      maxWidth: theme.spacing(64)
-    },
-    formControlLabel: {
-      color: '#777',
-      display: 'inline-block',
-      fontSize: '0.875rem',
-      fontStyle: 'italic'
-    }
-  }))();
+  const styles = useStyles();
 
   const toggleAdminView = (): void => {
     setIsAdminView(!isAdminView);
