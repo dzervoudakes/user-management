@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     borderRight: '0.0625rem solid #204361',
     display: 'inline-block',
     paddingRight: theme.spacing(6),
-    paddingLeft: theme.spacing(10),
+    paddingLeft: theme.spacing(8),
     verticalAlign: 'top'
   },
   titleMobile: {
