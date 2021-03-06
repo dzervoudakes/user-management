@@ -1,16 +1,20 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import noop from 'lodash/noop';
 import { ModalContext } from '@src/context';
 import Modal from '..';
 
 describe('Modal', () => {
   const MockModalProvider: React.FC = ({ children }) => {
-    const modalContent = { title: 'Title', message: 'Message', action: noop };
+    const modalContent = { title: 'Title', message: 'Message', action: jest.fn() };
 
     return (
       <ModalContext.Provider
-        value={{ isModalOpen: true, openModal: noop, closeModal: noop, modalContent }}
+        value={{
+          isModalOpen: true,
+          openModal: jest.fn(),
+          closeModal: jest.fn(),
+          modalContent
+        }}
       >
         {children}
       </ModalContext.Provider>

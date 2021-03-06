@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import noop from 'lodash/noop';
 import { ToastContext } from '@src/context';
 import Toast from '..';
 
@@ -11,8 +10,8 @@ describe('Toast', () => {
         isToastOpen: true,
         toastVariant: 'success',
         toastMessage: 'Success',
-        openToast: noop,
-        closeToast: noop
+        openToast: jest.fn(),
+        closeToast: jest.fn()
       }}
     >
       {children}

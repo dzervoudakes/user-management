@@ -1,5 +1,4 @@
 import React from 'react';
-import noop from 'lodash/noop';
 import { render } from '@testing-library/react';
 import { UserContext, User } from '@src/context';
 import UserListTable from '..';
@@ -17,7 +16,7 @@ describe('UserListTable', () => {
           _id: '12345'
         }
       ] as User[],
-      getUsers: noop,
+      getUsers: jest.fn(),
       error: false
     };
     const { getByText } = render(

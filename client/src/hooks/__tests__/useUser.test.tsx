@@ -1,5 +1,4 @@
 import React from 'react';
-import noop from 'lodash/noop';
 import { renderHook } from '@testing-library/react-hooks';
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext, User } from '@src/context';
@@ -26,7 +25,7 @@ describe('useUser', () => {
       }
     ];
     const error = false;
-    const getUsers = noop;
+    const getUsers = jest.fn();
 
     return (
       <UserContext.Provider value={{ userList, error, getUsers }}>

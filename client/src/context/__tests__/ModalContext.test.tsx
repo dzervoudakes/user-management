@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import noop from 'lodash/noop';
 import { ModalContext, ModalProvider } from '..';
 
 describe('ModalContext', () => {
@@ -16,7 +15,7 @@ describe('ModalContext', () => {
               openModal({
                 title: 'Confirm',
                 message: 'Are you sure you would like to proceed?',
-                action: noop
+                action: jest.fn()
               })
             }
             type="button"

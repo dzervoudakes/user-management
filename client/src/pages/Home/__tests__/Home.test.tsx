@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
-import noop from 'lodash/noop';
 import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import { UserContext, User } from '@src/context';
@@ -35,7 +34,7 @@ describe('Home', () => {
   }) => {
     const mockContext = {
       userList,
-      getUsers: noop,
+      getUsers: jest.fn(),
       error: false
     };
 
