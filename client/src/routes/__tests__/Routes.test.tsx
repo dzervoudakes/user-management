@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Routes from '..';
 
 describe('Routes', () => {
-  it('renders home page', () => {
+  it('renders the home page', () => {
     const { getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <Routes />
@@ -14,7 +14,7 @@ describe('Routes', () => {
     expect(getByText('Current Users')).toBeInTheDocument();
   });
 
-  it('renders new user page', async () => {
+  it('renders the new user page', async () => {
     const { getByText } = render(
       <MemoryRouter initialEntries={['/new-user']}>
         <Routes />
