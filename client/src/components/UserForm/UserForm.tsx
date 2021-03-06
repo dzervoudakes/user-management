@@ -51,7 +51,7 @@ const UserForm: React.FC<UserFormProps> = ({
 
   useEffect(() => {
     return () => {
-      source.cancel();
+      source?.cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

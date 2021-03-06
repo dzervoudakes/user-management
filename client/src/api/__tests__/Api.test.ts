@@ -2,7 +2,12 @@ import axios, { AxiosRequestConfig } from 'axios';
 import Api from '..';
 
 jest.mock('axios', () => ({
-  isCancel: jest.fn(),
+  CancelToken: {
+    source: jest.fn().mockImplementation(() => ({
+      cancel: jest.fn()
+    }))
+  },
+  isCancel: jest.fn().mockImplementation(() => false),
   request: jest.fn()
 }));
 

@@ -2,7 +2,15 @@ import Api from '@src/api/Api';
 import { API_BASE_URL } from '@src/constants';
 import { AuthService } from '..';
 
-jest.mock('axios');
+jest.mock('axios', () => ({
+  CancelToken: {
+    source: jest.fn().mockImplementation(() => ({
+      cancel: jest.fn()
+    }))
+  },
+  isCancel: jest.fn().mockImplementation(() => false),
+  request: jest.fn()
+}));
 
 describe('AuthService', () => {
   const source = undefined;

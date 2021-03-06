@@ -10,7 +10,15 @@ import UserInfoTable from '..';
 
 const mockSource = { cancel: jest.fn() };
 
-jest.mock('axios');
+jest.mock('axios', () => ({
+  CancelToken: {
+    source: jest.fn().mockImplementation(() => ({
+      cancel: jest.fn()
+    }))
+  },
+  isCancel: jest.fn().mockImplementation(() => false),
+  request: jest.fn()
+}));
 jest.mock('@src/services/UserService');
 jest.mock('@src/services/AuthService');
 jest.mock('@src/api', () => ({
