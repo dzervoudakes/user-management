@@ -1,60 +1,72 @@
 # User Management Backend
+
 > Demo CRUD server made with Node + Express.
 
 ## Build Scripts
 
 ### Install Dependencies
-```
+
+```sh
 npm install
 ```
 
 ### Start Server on Port 3000
-```
+
+```sh
 npm start
 ```
 
 ### Run Linting
-```
+
+```sh
 npm run lint
 ```
 
 ### Run Linting with Fix
-```
+
+```sh
 npm run lint:fix
 ```
 
 ### Run Unit Tests
-```
+
+```sh
 npm test
 ```
 
 ### Run Unit Tests with Coverage Report
-```
+
+```sh
 npm run test:coverage
 ```
 
 ### Run Unit Tests with Verbose Results
-```
+
+```sh
 npm run test:verbose
 ```
 
 ### Run Unit Tests and Watch for Changes
-```
+
+```sh
 npm run test:watch
 ```
 
 ### Build for Production
-```
+
+```sh
 npm run build
 ```
 
 ### Generate Documentation
-```
+
+```sh
 npm run docs
 ```
 
 ### Remove Output Directories
-```
+
+```sh
 npm run clean
 ```
 

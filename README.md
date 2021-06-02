@@ -1,4 +1,5 @@
 # User Management
+
 > Full stack demo CRUD app built with Express, React and TypeScript.
 
 [![build](https://github.com/dzervoudakes/user-management/workflows/Build%20and%20Test/badge.svg)](https://github.com/dzervoudakes/user-management/actions)
@@ -15,7 +16,7 @@ technologies that I've adopted over time. Also the COVID-19 pandemic was a thing
 
 _**Disclaimer:** I have not tested this in Internet Explorer, nor do I really care to._
 
-<img src="demo.gif" height="350"/>
+![demo](demo.gif)
 
 ## Technologies Used
 
