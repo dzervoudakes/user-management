@@ -1,5 +1,5 @@
 /**
- * HOC that dynamically imports new component bundles when needed.
+ * HOC that dynamically imports component chunks.
  * @packageDocumentation
  */
 import React, { lazy, Suspense } from 'react';
