@@ -2,7 +2,8 @@
 
 > Full stack demo CRUD app built with Express, React and TypeScript.
 
-[![build](https://github.com/dzervoudakes/user-management/workflows/Build%20and%20Test/badge.svg)](https://github.com/dzervoudakes/user-management/actions)
+[![client](https://github.com/dzervoudakes/user-management/workflows/Client/badge.svg)](https://github.com/dzervoudakes/user-management/actions)
+[![server](https://github.com/dzervoudakes/user-management/workflows/Server/badge.svg)](https://github.com/dzervoudakes/user-management/actions)
 [![codecov](https://codecov.io/gh/dzervoudakes/user-management/branch/main/graph/badge.svg)](https://codecov.io/gh/dzervoudakes/user-management)
 [![quality](https://app.codacy.com/project/badge/Grade/373b659cba7b4b8cb0f275db57c3ef38)](https://www.codacy.com/gh/dzervoudakes/user-management/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dzervoudakes/user-management&amp;utm_campaign=Badge_Grade)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)

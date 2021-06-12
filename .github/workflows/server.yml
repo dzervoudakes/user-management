@@ -1,0 +1,106 @@
+name: Server
+
+on:
+  push:
+    paths:
+      - server/**
+
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    name: Install Dependencies
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: server-dependency-cache
+      with:
+        path: server/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      run: |
+        cd server
+        npm install
+
+  eslint:
+    runs-on: ubuntu-latest
+    name: ESLint
+    needs: [dependencies]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: server-dependency-cache
+      with:
+        path: server/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Lint all scripts
+      run: |
+        cd server
+        npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    name: Unit Tests
+    needs: [dependencies]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: server-dependency-cache
+      with:
+        path: server/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Run unit tests
+      run: |
+        cd server
+        npm run test:coverage
+    - name: Upload test coverage
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: server/coverage/lcov.info
+
+  documentation:
+    runs-on: ubuntu-latest
+    name: Generate Documentation
+    needs: [dependencies]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: server-dependency-cache
+      with:
+        path: server/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Generate documentation
+      run: |
+        cd server
+        npm run docs
+
+  build:
+    runs-on: ubuntu-latest
+    name: Bundle App
+    needs: [eslint, test, documentation]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: server-dependency-cache
+      with:
+        path: server/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Bundle app
+      env:
+        CLIENT_ORIGIN: ${{ secrets.CLIENT_ORIGIN }}
+        DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
+        OVERNIGHT_JWT_SECRET: ${{ secrets.OVERNIGHT_JWT_SECRET }}
+        OVERNIGHT_JWT_EXP: ${{ secrets.OVERNIGHT_JWT_EXP }}
+      run: |
+        cd server
+        npm run build

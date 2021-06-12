@@ -1,0 +1,123 @@
+name: Client
+
+on:
+  push:
+    paths:
+      - client/**
+
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    name: Install Dependencies
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: client-dependency-cache
+      with:
+        path: client/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      run: |
+        cd client
+        npm install
+
+  eslint:
+    runs-on: ubuntu-latest
+    name: ESLint
+    needs: [dependencies]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: client-dependency-cache
+      with:
+        path: client/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Lint all scripts
+      run: |
+        cd client
+        npm run lint
+
+  stylelint:
+    runs-on: ubuntu-latest
+    name: Stylelint
+    needs: [dependencies]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: client-dependency-cache
+      with:
+        path: client/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Lint all styles
+      run: |
+        cd client
+        npm run stylelint
+
+  test:
+    runs-on: ubuntu-latest
+    name: Unit Tests
+    needs: [dependencies]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: client-dependency-cache
+      with:
+        path: client/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Run unit tests
+      run: |
+        cd client
+        npm run test:coverage
+    - name: Upload test coverage
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: client/coverage/lcov.info
+
+  documentation:
+    runs-on: ubuntu-latest
+    name: Generate Documentation
+    needs: [dependencies]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: client-dependency-cache
+      with:
+        path: client/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Generate documentation
+      run: |
+        cd client
+        npm run docs
+
+  build:
+    runs-on: ubuntu-latest
+    name: Bundle App
+    needs: [eslint, stylelint, test, documentation]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore npm cache
+      uses: actions/cache@v2
+      env:
+        cache-name: client-dependency-cache
+      with:
+        path: client/node_modules
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Bundle app
+      env:
+        API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
+        AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
+      run: |
+        cd client
+        npm run build
