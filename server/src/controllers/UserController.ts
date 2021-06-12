@@ -25,7 +25,7 @@ export class UserController {
     try {
       const user = await this.userDao.getUser(req.params.id);
       if (user === null) {
-        res.status(404).json({ error: 'User not found.' });
+        res.status(StatusCodes.NOT_FOUND).json({ error: 'User not found.' });
       } else {
         res.status(StatusCodes.OK).json({ user });
       }
@@ -51,7 +51,7 @@ export class UserController {
     try {
       const user = await this.userDao.updateUser(req.params.id, req.body);
       if (user === null) {
-        res.status(404).json({ error: 'User not found.' });
+        res.status(StatusCodes.NOT_FOUND).json({ error: 'User not found.' });
       } else {
         res.status(StatusCodes.OK).json({ user });
       }
@@ -66,7 +66,7 @@ export class UserController {
     try {
       const user = await this.userDao.deleteUser(req.params.id);
       if (user === null) {
-        res.status(404).json({ error: 'User not found.' });
+        res.status(StatusCodes.NOT_FOUND).json({ error: 'User not found.' });
       } else {
         res.status(StatusCodes.OK).json({});
       }
