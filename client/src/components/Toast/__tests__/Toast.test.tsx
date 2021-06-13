@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { ToastContext } from '@src/context';
 import Toast from '..';
 
@@ -25,8 +25,8 @@ describe('Toast', () => {
   );
 
   it('renders the given content', () => {
-    const { getByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    expect(getByText('Success')).toBeInTheDocument();
+    expect(screen.getByText('Success')).toBeInTheDocument();
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { AuthService, UserService } from '@src/services';
 import App from '../App';
 
@@ -17,14 +17,14 @@ beforeEach(() => {
 
 describe('App', () => {
   it('renders the application', async () => {
-    const { getByText } = render(
+    render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
     );
 
     await waitFor(() => {
-      expect(getByText('Current Users')).toBeInTheDocument();
+      expect(screen.getByText('Current Users')).toBeInTheDocument();
     });
   });
 });

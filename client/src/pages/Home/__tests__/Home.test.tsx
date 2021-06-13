@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/no-container */
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { UserContext, User } from '@src/context';
 import Home from '..';
 
@@ -48,40 +50,43 @@ describe('Home', () => {
   };
 
   it('renders a list of users', () => {
-    const { getByText } = render(<TestComponent />);
+    render(<TestComponent />);
 
-    expect(getByText('Current Users')).toBeInTheDocument();
-    expect(getByText('2 users found.')).toBeInTheDocument();
-    expect(getByText('Eli')).toBeInTheDocument();
-    expect(getByText('Saquon')).toBeInTheDocument();
+    expect(screen.getByText('Current Users')).toBeInTheDocument();
+    expect(screen.getByText('2 users found.')).toBeInTheDocument();
+    expect(screen.getByText('Eli')).toBeInTheDocument();
+    expect(screen.getByText('Saquon')).toBeInTheDocument();
   });
 
   it('renders the empty state when no users are found', () => {
-    const { getByText } = render(<TestComponent userList={[]} />);
+    render(<TestComponent userList={[]} />);
 
-    expect(getByText('0 users found.')).toBeInTheDocument();
-    expect(getByText('click here').closest('a')).toHaveAttribute('href', '/new-user');
+    expect(screen.getByText('0 users found.')).toBeInTheDocument();
+    expect(screen.getByText('click here').closest('a')).toHaveAttribute(
+      'href',
+      '/new-user'
+    );
   });
 
   it('toggles admin view on click', () => {
-    const { getByText, container } = render(<TestComponent />);
+    const { container } = render(<TestComponent />);
 
-    expect(getByText('Admin mode disabled.')).toBeInTheDocument();
+    expect(screen.getByText('Admin mode disabled.')).toBeInTheDocument();
 
     const switchInput = container.querySelector('input[value="view"]')!;
     fireEvent.click(switchInput);
 
-    expect(getByText('Admin mode enabled.')).toBeInTheDocument();
+    expect(screen.getByText('Admin mode enabled.')).toBeInTheDocument();
   });
 
   it('toggles admin view on key press', () => {
-    const { getByText, container } = render(<TestComponent />);
+    const { container } = render(<TestComponent />);
 
-    expect(getByText('Admin mode disabled.')).toBeInTheDocument();
+    expect(screen.getByText('Admin mode disabled.')).toBeInTheDocument();
 
     const switchInput = container.querySelector('input[value="view"]')!;
     fireEvent.keyPress(switchInput, { key: 'Enter', charCode: 13 });
 
-    expect(getByText('Admin mode enabled.')).toBeInTheDocument();
+    expect(screen.getByText('Admin mode enabled.')).toBeInTheDocument();
   });
 });

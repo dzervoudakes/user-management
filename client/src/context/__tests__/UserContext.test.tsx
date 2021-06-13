@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { v4 as uuidv4 } from 'uuid';
 import { UserService } from '@src/services';
 import { UserContext, UserProvider } from '..';
@@ -51,23 +51,23 @@ describe('UserContext', () => {
 
   it('provides a list of users to context consumers', async () => {
     UserService.getUsers = jest.fn().mockResolvedValueOnce(mockUsersResponse);
-    const { getByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    await waitFor(() => getByText('Error: false'));
+    await screen.findByText('Error: false');
 
-    expect(getByText('John')).toBeInTheDocument();
-    expect(getByText('Jane')).toBeInTheDocument();
+    expect(screen.getByText('John')).toBeInTheDocument();
+    expect(screen.getByText('Jane')).toBeInTheDocument();
   });
 
   it('sets the error state when the call to getUsers fails', async () => {
     UserService.getUsers = jest
       .fn()
       .mockRejectedValueOnce(new Error('there was an error'));
-    const { getByText, queryByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    await waitFor(() => getByText('😬'));
+    await screen.findByText('😬');
 
-    expect(queryByText('John')).toBeNull();
-    expect(queryByText('Jane')).toBeNull();
+    expect(screen.queryByText('John')).toBeNull();
+    expect(screen.queryByText('Jane')).toBeNull();
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { ModalContext, ModalProvider } from '..';
 
 describe('ModalContext', () => {
@@ -37,24 +37,24 @@ describe('ModalContext', () => {
   );
 
   it('provides the current state of the modal', () => {
-    const { getByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    fireEvent.click(getByText('open modal'));
+    fireEvent.click(screen.getByText('open modal'));
 
-    expect(getByText('isModalOpen: true')).toBeInTheDocument();
-    expect(getByText('title: Confirm')).toBeInTheDocument();
+    expect(screen.getByText('isModalOpen: true')).toBeInTheDocument();
+    expect(screen.getByText('title: Confirm')).toBeInTheDocument();
     expect(
-      getByText('message: Are you sure you would like to proceed?')
+      screen.getByText('message: Are you sure you would like to proceed?')
     ).toBeInTheDocument();
   });
 
   it('closes the modal', () => {
-    const { getByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    fireEvent.click(getByText('open modal'));
-    expect(getByText('isModalOpen: true')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('open modal'));
+    expect(screen.getByText('isModalOpen: true')).toBeInTheDocument();
 
-    fireEvent.click(getByText('close modal'));
-    expect(getByText('isModalOpen: false')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('close modal'));
+    expect(screen.getByText('isModalOpen: false')).toBeInTheDocument();
   });
 });

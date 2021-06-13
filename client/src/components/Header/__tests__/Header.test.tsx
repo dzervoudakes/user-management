@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { useMediaQuery } from 'react-responsive';
 import Header from '..';
 
@@ -10,35 +10,35 @@ jest.mock('react-responsive', () => ({
 
 describe('Header', () => {
   it('renders the page title', () => {
-    const { getByText } = render(
+    render(
       <MemoryRouter>
         <Header />
       </MemoryRouter>
     );
 
-    expect(getByText('User Management')).toBeInTheDocument();
+    expect(screen.getByText('User Management')).toBeInTheDocument();
   });
 
   it('renders the desktop menu bar', () => {
     (useMediaQuery as jest.Mock).mockImplementation(() => false);
-    const { getByTestId } = render(
+    render(
       <MemoryRouter>
         <Header />
       </MemoryRouter>
     );
 
-    expect(getByTestId('desktop-menu')).toBeInTheDocument();
+    expect(screen.getByTestId('desktop-menu')).toBeInTheDocument();
   });
 
   it('renders the mobile menu drawer', () => {
     (useMediaQuery as jest.Mock).mockImplementation(() => true);
-    const { getByTestId } = render(
+    render(
       <MemoryRouter>
         <Header />
       </MemoryRouter>
     );
 
-    fireEvent.click(getByTestId('icon-button'));
-    expect(getByTestId('mobile-menu')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('icon-button'));
+    expect(screen.getByTestId('mobile-menu')).toBeInTheDocument();
   });
 });

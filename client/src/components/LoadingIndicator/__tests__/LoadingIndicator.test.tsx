@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import LoadingIndicator from '..';
 
 describe('LoadingIndicator', () => {
   it('renders the loading state', () => {
-    const { getByTestId } = render(<LoadingIndicator />);
+    render(<LoadingIndicator />);
 
-    expect(getByTestId('loading-indicator')).toBeInTheDocument();
+    expect(screen.getByTestId('loading-indicator')).toBeInTheDocument();
   });
 });

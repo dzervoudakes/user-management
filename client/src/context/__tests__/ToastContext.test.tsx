@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { ToastContext, ToastProvider } from '..';
 
 describe('ToastContext', () => {
@@ -33,22 +33,22 @@ describe('ToastContext', () => {
   );
 
   it('provides the current state of the toast', () => {
-    const { getByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    fireEvent.click(getByText('open toast'));
+    fireEvent.click(screen.getByText('open toast'));
 
-    expect(getByText('isToastOpen: true')).toBeInTheDocument();
-    expect(getByText('message: There was a warning.')).toBeInTheDocument();
-    expect(getByText('variant: warning')).toBeInTheDocument();
+    expect(screen.getByText('isToastOpen: true')).toBeInTheDocument();
+    expect(screen.getByText('message: There was a warning.')).toBeInTheDocument();
+    expect(screen.getByText('variant: warning')).toBeInTheDocument();
   });
 
   it('closes the toast', () => {
-    const { getByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    fireEvent.click(getByText('open toast'));
-    expect(getByText('isToastOpen: true')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('open toast'));
+    expect(screen.getByText('isToastOpen: true')).toBeInTheDocument();
 
-    fireEvent.click(getByText('close toast'));
-    expect(getByText('isToastOpen: false')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('close toast'));
+    expect(screen.getByText('isToastOpen: false')).toBeInTheDocument();
   });
 });

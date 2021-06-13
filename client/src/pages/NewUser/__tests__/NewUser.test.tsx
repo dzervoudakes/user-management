@@ -1,18 +1,22 @@
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/no-container */
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import NewUser from '..';
 
 describe('NewUser', () => {
   it('renders the page', () => {
-    const { getByText, container } = render(
+    const { container } = render(
       <MemoryRouter>
         <NewUser />
       </MemoryRouter>
     );
 
-    expect(getByText('Create a User')).toBeInTheDocument();
-    expect(getByText('Please fill out all form fields below.')).toBeInTheDocument();
+    expect(screen.getByText('Create a User')).toBeInTheDocument();
+    expect(
+      screen.getByText('Please fill out all form fields below.')
+    ).toBeInTheDocument();
     expect(container.querySelectorAll('input').length).toBeGreaterThan(0);
   });
 });

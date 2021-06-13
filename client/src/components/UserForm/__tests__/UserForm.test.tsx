@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/no-container */
 /* eslint-disable react/display-name */
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import Toast from '@src/components/Toast';
 import { ToastProvider, Gender } from '@src/context';
 import { UserService } from '@src/services';
@@ -48,21 +50,21 @@ describe('UserForm', () => {
   );
 
   it('renders', () => {
-    const { getAllByText, getByText } = render(<TestComponent />);
+    render(<TestComponent />);
 
     // MUI form fields create an odd structure that doesn't work with 'getByLabelText'.
     // Furthermore, MUI creates multiple DOM nodes with the same text in it... <Sigh />
-    expect(getAllByText('First Name').length).toBeGreaterThan(0);
-    expect(getAllByText('Last Name').length).toBeGreaterThan(0);
-    expect(getAllByText('Username').length).toBeGreaterThan(0);
-    expect(getAllByText('Address').length).toBeGreaterThan(0);
-    expect(getAllByText('Gender').length).toBeGreaterThan(0);
-    expect(getByText('Submit')).toBeInTheDocument();
+    expect(screen.getAllByText('First Name').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Last Name').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Username').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Address').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Gender').length).toBeGreaterThan(0);
+    expect(screen.getByText('Submit')).toBeInTheDocument();
   });
 
   it('submits user responses and creates a new user', async () => {
     const spy = jest.spyOn(UserService, 'createUser');
-    const { container, getByText } = render(<TestComponent />);
+    const { container } = render(<TestComponent />);
 
     const firstNameInput = container.querySelector('input[name="firstName"]')!;
     const lastNameInput = container.querySelector('input[name="lastName"]')!;
@@ -76,12 +78,12 @@ describe('UserForm', () => {
     fireEvent.change(addressInput, { target: { value: payload.address } });
     fireEvent.change(genderInput, { target: { value: payload.gender } });
 
-    fireEvent.click(getByText('Submit'));
+    fireEvent.click(screen.getByText('Submit'));
 
     await waitFor(() => {
       expect(spy).toHaveBeenCalledWith(payload, source);
       expect(mockHistoryPush).toHaveBeenCalledWith('/');
-      expect(getByText('User successfully created.')).toBeInTheDocument();
+      expect(screen.getByText('User successfully created.')).toBeInTheDocument();
     });
   });
 
@@ -89,7 +91,7 @@ describe('UserForm', () => {
     const mockCallback = jest.fn();
     const updatedUsername = 'emanning10';
     const spy = jest.spyOn(UserService, 'updateUser');
-    const { container, getByText } = render(
+    const { container } = render(
       <TestComponent
         variant="update"
         initialValues={{ ...payload, _id: '12345' }}
@@ -100,7 +102,7 @@ describe('UserForm', () => {
     const usernameInput = container.querySelector('input[name="username"]')!;
 
     fireEvent.change(usernameInput, { target: { value: updatedUsername } });
-    fireEvent.click(getByText('Submit'));
+    fireEvent.click(screen.getByText('Submit'));
 
     await waitFor(() => {
       expect(spy).toHaveBeenCalledWith(
@@ -109,12 +111,12 @@ describe('UserForm', () => {
         source
       );
       expect(mockCallback).toHaveBeenCalled();
-      expect(getByText('User successfully updated.')).toBeInTheDocument();
+      expect(screen.getByText('User successfully updated.')).toBeInTheDocument();
     });
   });
 
   it('renders the error messaging when submitting empty responses', async () => {
-    const { getByText } = render(
+    render(
       <TestComponent
         initialValues={{
           _id: '',
@@ -127,14 +129,14 @@ describe('UserForm', () => {
       />
     );
 
-    fireEvent.click(getByText('Submit'));
+    fireEvent.click(screen.getByText('Submit'));
 
     await waitFor(() => {
-      expect(getByText('First name is required.')).toBeInTheDocument();
-      expect(getByText('Last name is required.')).toBeInTheDocument();
-      expect(getByText('Username is required.')).toBeInTheDocument();
-      expect(getByText('Address is required.')).toBeInTheDocument();
-      expect(getByText('Gender is required.')).toBeInTheDocument();
+      expect(screen.getByText('First name is required.')).toBeInTheDocument();
+      expect(screen.getByText('Last name is required.')).toBeInTheDocument();
+      expect(screen.getByText('Username is required.')).toBeInTheDocument();
+      expect(screen.getByText('Address is required.')).toBeInTheDocument();
+      expect(screen.getByText('Gender is required.')).toBeInTheDocument();
     });
   });
 
@@ -142,14 +144,14 @@ describe('UserForm', () => {
     UserService.createUser = jest
       .fn()
       .mockRejectedValue(() => new Error('there was an error'));
-    const { getByText } = render(
-      <TestComponent initialValues={{ ...payload, _id: '' }} />
-    );
+    render(<TestComponent initialValues={{ ...payload, _id: '' }} />);
 
-    fireEvent.click(getByText('Submit'));
+    fireEvent.click(screen.getByText('Submit'));
 
     await waitFor(() => {
-      expect(getByText('There was an error creating the user.')).toBeInTheDocument();
+      expect(
+        screen.getByText('There was an error creating the user.')
+      ).toBeInTheDocument();
     });
   });
 
@@ -157,14 +159,16 @@ describe('UserForm', () => {
     UserService.updateUser = jest
       .fn()
       .mockRejectedValue(() => new Error('there was an error'));
-    const { getByText } = render(
+    render(
       <TestComponent variant="update" initialValues={{ ...payload, _id: '12345' }} />
     );
 
-    fireEvent.click(getByText('Submit'));
+    fireEvent.click(screen.getByText('Submit'));
 
     await waitFor(() => {
-      expect(getByText('There was an error updating the user.')).toBeInTheDocument();
+      expect(
+        screen.getByText('There was an error updating the user.')
+      ).toBeInTheDocument();
     });
   });
 });

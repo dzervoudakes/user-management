@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { AuthService, UserService } from '@src/services';
 import Providers from '..';
 
@@ -13,14 +13,14 @@ describe('Providers', () => {
       .mockResolvedValueOnce({ data: { token: 'i am a token' } });
     UserService.getUsers = jest.fn().mockResolvedValueOnce({ data: { users: [] } });
 
-    const { getByText } = render(
+    render(
       <Providers>
         <div>Foo</div>
       </Providers>
     );
 
     await waitFor(() => {
-      expect(getByText('Foo')).toBeInTheDocument();
+      expect(screen.getByText('Foo')).toBeInTheDocument();
     });
   });
 
@@ -29,7 +29,7 @@ describe('Providers', () => {
       .fn()
       .mockRejectedValueOnce(new Error('there was an error'));
 
-    const { getByText } = render(
+    render(
       <Providers>
         <div>Foo</div>
       </Providers>
@@ -37,7 +37,7 @@ describe('Providers', () => {
 
     await waitFor(() => {
       expect(
-        getByText('Unfortunately, we were unable to authenticate. No app for you!')
+        screen.getByText('Unfortunately, we were unable to authenticate. No app for you!')
       ).toBeInTheDocument();
     });
   });

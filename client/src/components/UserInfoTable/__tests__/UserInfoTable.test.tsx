@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { Gender } from '@src/context';
 import { AuthService, UserService } from '@src/services';
 import Providers from '@src/components/Providers';
@@ -55,45 +55,45 @@ describe('UserInfoTable', () => {
   );
 
   it('renders user information', async () => {
-    const { getByText, getByAltText } = render(<TestComponent />);
+    render(<TestComponent />);
 
     await waitFor(() => {
-      expect(getByAltText('nyg10 user icon')).toBeInTheDocument();
-      expect(getByText('Eli Manning')).toBeInTheDocument();
-      expect(getByText('nyg10')).toBeInTheDocument();
-      expect(getByText('1925 Giants Drive')).toBeInTheDocument();
-      expect(getByText('Male')).toBeInTheDocument();
-      expect(getByText('12345')).toBeInTheDocument();
+      expect(screen.getByAltText('nyg10 user icon')).toBeInTheDocument();
+      expect(screen.getByText('Eli Manning')).toBeInTheDocument();
+      expect(screen.getByText('nyg10')).toBeInTheDocument();
+      expect(screen.getByText('1925 Giants Drive')).toBeInTheDocument();
+      expect(screen.getByText('Male')).toBeInTheDocument();
+      expect(screen.getByText('12345')).toBeInTheDocument();
     });
   });
 
   it('toggles the edit view', async () => {
-    const { queryByText, getByText, getByTestId } = render(<TestComponent />);
+    render(<TestComponent />);
 
     await waitFor(() => {
-      expect(queryByText('Cancel')).toBe(null);
+      expect(screen.queryByText('Cancel')).toBe(null);
 
-      fireEvent.click(getByTestId('edit-button'));
-      expect(getByText('Cancel')).toBeInTheDocument();
+      fireEvent.click(screen.getByTestId('edit-button'));
+      expect(screen.getByText('Cancel')).toBeInTheDocument();
     });
   });
 
   it('deletes a user', async () => {
     const spy = jest.spyOn(UserService, 'deleteUser');
-    const { getByTestId, getByText } = render(<TestComponent />);
+    render(<TestComponent />);
 
     await waitFor(() => {
-      fireEvent.click(getByTestId('delete-button'));
-      expect(getByText('Are you sure?')).toBeInTheDocument();
+      fireEvent.click(screen.getByTestId('delete-button'));
+      expect(screen.getByText('Are you sure?')).toBeInTheDocument();
       expect(
-        getByText('You are about to delete a user. This action cannot be undone.')
+        screen.getByText('You are about to delete a user. This action cannot be undone.')
       ).toBeInTheDocument();
     });
 
-    fireEvent.click(getByText('Proceed'));
+    fireEvent.click(screen.getByText('Proceed'));
     expect(spy).toHaveBeenCalledWith(mockUser._id, mockSource);
     await waitFor(() => {
-      expect(getByText('User successfully deleted.')).toBeInTheDocument();
+      expect(screen.getByText('User successfully deleted.')).toBeInTheDocument();
     });
   });
 
@@ -101,15 +101,17 @@ describe('UserInfoTable', () => {
     UserService.deleteUser = jest
       .fn()
       .mockRejectedValueOnce(() => new Error('there was an error'));
-    const { getByTestId, getByText } = render(<TestComponent />);
+    render(<TestComponent />);
 
     await waitFor(() => {
-      fireEvent.click(getByTestId('delete-button'));
+      fireEvent.click(screen.getByTestId('delete-button'));
     });
 
-    fireEvent.click(getByText('Proceed'));
+    fireEvent.click(screen.getByText('Proceed'));
     await waitFor(() => {
-      expect(getByText('There was an error deleting the user.')).toBeInTheDocument();
+      expect(
+        screen.getByText('There was an error deleting the user.')
+      ).toBeInTheDocument();
     });
   });
 });

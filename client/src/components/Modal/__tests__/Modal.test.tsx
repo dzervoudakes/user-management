@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { ModalContext } from '@src/context';
 import Modal from '..';
 
@@ -28,11 +28,11 @@ describe('Modal', () => {
   );
 
   it('renders the given content', () => {
-    const { getByText } = render(<Wrapper />);
+    render(<Wrapper />);
 
-    expect(getByText('Title')).toBeInTheDocument();
-    expect(getByText('Message')).toBeInTheDocument();
-    expect(getByText('Proceed')).toBeInTheDocument();
-    expect(getByText('Close')).toBeInTheDocument();
+    expect(screen.getByText('Title')).toBeInTheDocument();
+    expect(screen.getByText('Message')).toBeInTheDocument();
+    expect(screen.getByText('Proceed')).toBeInTheDocument();
+    expect(screen.getByText('Close')).toBeInTheDocument();
   });
 });
