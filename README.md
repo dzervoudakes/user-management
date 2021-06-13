@@ -32,7 +32,7 @@ _**Disclaimer:** I have not tested this in Internet Explorer, nor do I really ca
 
 - Ensure `Docker` is installed and running
 - In your terminal, `cd` into the `server` directory and run `npm install`
-- From the project root, open your terminal and run `docker-compose up`
+- From the project root, open your terminal and run `docker compose up`
   - Seed data for `admins` and `users` will be populated in the database automatically
   - The server will be running on `http://localhost:3000`
 
