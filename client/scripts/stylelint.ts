@@ -15,7 +15,11 @@ process.on('unhandledRejection', (err) => {
   spinner.start();
 
   const fix = process.argv.indexOf('--fix') !== -1;
-  const results = await stylelint.lint({ files: '**/*.scss', fix, formatter: 'string' });
+  const results = await stylelint.lint({
+    files: ['**/*.scss', '**/*.css'],
+    fix,
+    formatter: 'string'
+  });
 
   spinner.stop();
   console.log(results.output);
