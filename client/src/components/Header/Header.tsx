@@ -46,23 +46,22 @@ const Header: React.FC = () => {
     setIsDrawerOpen(false);
   };
 
+  const listItems = [
+    { text: 'View All Users', route: '/' },
+    { text: 'New User', route: '/new-user' }
+  ];
+
   const renderDesktop = (): JSX.Element => (
     <ul className="desktop-menu" data-testid="desktop-menu">
-      <li>
-        <NavLink to="/">View All Users</NavLink>
-      </li>
-      <li>
-        <NavLink to="/new-user">New User</NavLink>
-      </li>
+      {listItems.map((item) => (
+        <li key={item.route}>
+          <NavLink to={item.route}>{item.text}</NavLink>
+        </li>
+      ))}
     </ul>
   );
 
   const renderMobile = (): JSX.Element => {
-    const listItems = [
-      { text: 'View All Users', route: '/' },
-      { text: 'New User', route: '/new-user' }
-    ];
-
     return (
       <>
         <IconButton
@@ -76,7 +75,7 @@ const Header: React.FC = () => {
         <Drawer anchor="right" open={isDrawerOpen} onClose={handleClose}>
           <List data-testid="mobile-menu">
             {listItems.map((item) => (
-              <ListItem button key={item.text} onClick={handleClose}>
+              <ListItem button key={item.route} onClick={handleClose}>
                 <NavLink to={item.route}>
                   <ListItemText primary={item.text} />
                 </NavLink>
