@@ -15,8 +15,6 @@ A simple User Management interface which lists current users in the system. Admi
 Originally commissioned as a take home assessment during a job interview, I've rebuilt this project to reflect new patterns and
 technologies that I've adopted over time. Also the COVID-19 pandemic was a thing, so I had some extra time on my hands. 🦠 ⏰
 
-_**Disclaimer:** I have not tested this in Internet Explorer, nor do I really care to._
-
 ![demo](demo.gif)
 
 ## Technologies Used
