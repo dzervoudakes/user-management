@@ -20,7 +20,7 @@ technologies that I've adopted over time. Also the COVID-19 pandemic was a thing
 ## Technologies Used
 
 - **Frontend:** React, TypeScript, Material UI
-- **Backend:** Node + Express, OvernightJS
+- **Backend:** Node + Express, OvernightJS, Mongoose
 - **Database:** Docker, MongoDB
 - **CI/CD:** GitHub Actions
 
