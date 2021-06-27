@@ -1,5 +1,5 @@
 // exclude test files from build
 {
   "extends": "./tsconfig.json",
-  "include": ["./src"],
+  "include": ["./src"]
 }
