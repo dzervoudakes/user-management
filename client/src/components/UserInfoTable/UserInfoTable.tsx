@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import EditIcon from '@material-ui/icons/EditOutlined';
 import TrashIcon from '@material-ui/icons/DeleteOutlined';
 import { Button, IconButton } from '@material-ui/core';

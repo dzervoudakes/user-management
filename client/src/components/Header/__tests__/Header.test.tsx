@@ -1,12 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Header from '..';
 
-jest.mock('react-responsive', () => ({
-  useMediaQuery: jest.fn()
-}));
+jest.mock('@material-ui/core/useMediaQuery');
 
 describe('Header', () => {
   it('renders the page title', () => {

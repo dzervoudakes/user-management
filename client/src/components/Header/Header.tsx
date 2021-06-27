@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
   Drawer,
   List,
@@ -61,31 +61,29 @@ const Header: React.FC = () => {
     </ul>
   );
 
-  const renderMobile = (): JSX.Element => {
-    return (
-      <>
-        <IconButton
-          onClick={handleOpen}
-          color="inherit"
-          className={styles.mobileMenuButton}
-          data-testid="icon-button"
-        >
-          <MenuIcon />
-        </IconButton>
-        <Drawer anchor="right" open={isDrawerOpen} onClose={handleClose}>
-          <List data-testid="mobile-menu">
-            {listItems.map((item) => (
-              <ListItem button key={item.route} onClick={handleClose}>
-                <NavLink to={item.route}>
-                  <ListItemText primary={item.text} />
-                </NavLink>
-              </ListItem>
-            ))}
-          </List>
-        </Drawer>
-      </>
-    );
-  };
+  const renderMobile = (): JSX.Element => (
+    <>
+      <IconButton
+        onClick={handleOpen}
+        color="inherit"
+        className={styles.mobileMenuButton}
+        data-testid="icon-button"
+      >
+        <MenuIcon />
+      </IconButton>
+      <Drawer anchor="right" open={isDrawerOpen} onClose={handleClose}>
+        <List data-testid="mobile-menu">
+          {listItems.map((item) => (
+            <ListItem button key={item.route} onClick={handleClose}>
+              <NavLink to={item.route}>
+                <ListItemText primary={item.text} />
+              </NavLink>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </>
+  );
 
   return (
     <header className="header">
