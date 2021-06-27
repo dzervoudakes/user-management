@@ -98,18 +98,18 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
       </table>
       <div className="actions">
         <IconButton
+          aria-label={`Delete entry for ${firstName} ${lastName}`}
           onClick={openDeleteModal}
           color="inherit"
           classes={{ colorInherit: 'delete-icon' }}
-          data-testid="delete-button"
         >
           <TrashIcon />
         </IconButton>
         <IconButton
+          aria-label={`Edit entry for ${firstName} ${lastName}`}
           onClick={toggleEditMode}
           color="inherit"
           classes={{ colorInherit: 'edit-icon' }}
-          data-testid="edit-button"
         >
           <EditIcon />
         </IconButton>

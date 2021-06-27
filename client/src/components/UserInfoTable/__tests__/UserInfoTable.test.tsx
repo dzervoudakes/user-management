@@ -73,7 +73,7 @@ describe('UserInfoTable', () => {
     await waitFor(() => {
       expect(screen.queryByText('Cancel')).toBe(null);
 
-      fireEvent.click(screen.getByTestId('edit-button'));
+      fireEvent.click(screen.getByLabelText('Edit entry for Eli Manning'));
       expect(screen.getByText('Cancel')).toBeInTheDocument();
     });
   });
@@ -83,7 +83,7 @@ describe('UserInfoTable', () => {
     render(<TestComponent />);
 
     await waitFor(() => {
-      fireEvent.click(screen.getByTestId('delete-button'));
+      fireEvent.click(screen.getByLabelText('Delete entry for Eli Manning'));
       expect(screen.getByText('Are you sure?')).toBeInTheDocument();
       expect(
         screen.getByText('You are about to delete a user. This action cannot be undone.')
@@ -104,7 +104,7 @@ describe('UserInfoTable', () => {
     render(<TestComponent />);
 
     await waitFor(() => {
-      fireEvent.click(screen.getByTestId('delete-button'));
+      fireEvent.click(screen.getByLabelText('Delete entry for Eli Manning'));
     });
 
     fireEvent.click(screen.getByText('Proceed'));
