@@ -12,8 +12,8 @@
 
 A simple User Management interface which lists current users in the system. Admins can add a new user, and update or delete existing users.
 
-Originally commissioned as a take home assessment during a job interview, I've rebuilt this project to reflect new patterns and
-technologies that I've adopted over time. Also the COVID-19 pandemic was a thing, so I had some extra time on my hands. 🦠 ⏰
+Originally written as a learning experience for React development, I've rebuilt this project to reflect new patterns and technologies
+that I've adopted over time. Also the COVID-19 pandemic was a thing, so I had some extra time on my hands. 🦠 ⏰
 
 ![demo](demo.gif)
 
