@@ -17,8 +17,8 @@ services:
       - DB_PORT=27017
       - DB_HOST=mongo
     volumes:
-      - $PWD/:$PWD
-    working_dir: $PWD/datastore
+      - ./datastore:/datastore
+    working_dir: /datastore
     links:
       - mongo
     depends_on:
@@ -27,8 +27,8 @@ services:
   server:
     image: 'node:14.6.0'
     volumes:
-      - $PWD/:$PWD
-    working_dir: $PWD/server
+      - ./server:/server
+    working_dir: /server
     ports:
       - "3000:3000"
     environment:
