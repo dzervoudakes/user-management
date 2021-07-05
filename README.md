@@ -28,7 +28,7 @@ that I've adopted over time. Also the COVID-19 pandemic was a thing, so I had so
 
 ### Database and Server Setup
 
-- Ensure `Docker` is installed and running
+- Ensure that `Docker` is installed and running
 - In your terminal, `cd` into the `server` directory and run `npm install`
 - From the project root, open your terminal and run `docker compose up`
   - Seed data for `admins` and `users` will be populated in the database automatically
