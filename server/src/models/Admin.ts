@@ -1,13 +1,11 @@
-import { Document, Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 export interface AdminType {
   username: string;
   password: string;
 }
 
-export interface AdminDocument extends AdminType, Document {}
-
-export const AdminSchema = new Schema<AdminDocument>({
+export const AdminSchema = new Schema<AdminType>({
   username: { type: String, required: true },
   password: { type: String, required: true }
 });

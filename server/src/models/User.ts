@@ -1,4 +1,4 @@
-import { Document, Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 export interface UserType {
   firstName: string;
@@ -8,9 +8,7 @@ export interface UserType {
   gender: 'male' | 'female' | 'other';
 }
 
-export interface UserDocument extends UserType, Document {}
-
-export const UserSchema = new Schema<UserDocument>({
+export const UserSchema = new Schema<UserType>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   username: { type: String, required: true, unique: true },
