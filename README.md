@@ -52,3 +52,7 @@ The `client/README.md` provides additional information on build scripts and envi
 
 > This application makes use of `ESLint`, `Stylelint` and `EditorConfig`. Each of these features requires
 > an extension be installed in order to work properly with IDEs and text editors such as VSCode.
+
+## Accessibility
+
+> This application has been tested for accessibility via the [axe DevTools - Web Accessibility Testing](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd) and [Accessibility Insights for Web](https://chrome.google.com/webstore/detail/accessibility-insights-fo/pbjjkligggfmakdaogkfomddhfmpjeni) Chrome extensions.

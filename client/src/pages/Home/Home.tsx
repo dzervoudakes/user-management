@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.spacing(64)
   },
   formControlLabel: {
-    color: '#777',
+    color: '#575757',
     display: 'inline-block',
     fontSize: '0.875rem',
     fontStyle: 'italic'

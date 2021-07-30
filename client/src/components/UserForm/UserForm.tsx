@@ -153,8 +153,9 @@ const UserForm: React.FC<UserFormProps> = ({
             <div className="form-row">
               <div className="form-item">
                 <SelectInput
-                  name="gender"
+                  id="gender"
                   label="Gender"
+                  name="gender"
                   options={[
                     {
                       text: '',

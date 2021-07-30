@@ -20,7 +20,7 @@ const UserListTable: React.FC = () => {
   const styles = useStyles();
 
   return (
-    <Paper className={styles.root}>
+    <Paper className={styles.root} tabIndex={0}>
       <Table className={styles.table}>
         <TableHead>
           <TableRow>
@@ -35,7 +35,7 @@ const UserListTable: React.FC = () => {
         <TableBody>
           {users.map((user) => (
             <TableRow key={user._id}>
-              <TableCell scope="row">{user.username}</TableCell>
+              <TableCell>{user.username}</TableCell>
               <TableCell align="right">{user._id}</TableCell>
               <TableCell align="right">{user.firstName}</TableCell>
               <TableCell align="right">{user.lastName}</TableCell>

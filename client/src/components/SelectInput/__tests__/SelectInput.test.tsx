@@ -22,7 +22,7 @@ describe('SelectInput', () => {
   it('renders', () => {
     render(
       <Formik initialValues={{ test: 'input value' }} onSubmit={jest.fn()}>
-        {() => <SelectInput name="test" label="Test" options={options} />}
+        {() => <SelectInput name="test" id="test" label="Test" options={options} />}
       </Formik>
     );
 
@@ -34,7 +34,9 @@ describe('SelectInput', () => {
   it('renders the required state', () => {
     render(
       <Formik initialValues={{ test: 'input value' }} onSubmit={jest.fn()}>
-        {() => <SelectInput name="test" label="Test" options={options} required />}
+        {() => (
+          <SelectInput name="test" id="test" label="test" options={options} required />
+        )}
       </Formik>
     );
 

@@ -68,10 +68,11 @@ const Header: React.FC = () => {
         color="inherit"
         className={styles.mobileMenuButton}
         data-testid="icon-button"
+        aria-label="toggle side menu"
       >
         <MenuIcon />
       </IconButton>
-      <Drawer anchor="right" open={isDrawerOpen} onClose={handleClose}>
+      <Drawer anchor="right" open={isDrawerOpen} onClose={handleClose} role="navigation">
         <List data-testid="mobile-menu">
           {listItems.map((item) => (
             <ListItem button key={item.route} onClick={handleClose}>

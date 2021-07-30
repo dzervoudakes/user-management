@@ -10,6 +10,7 @@ interface Option {
 }
 
 interface SelectInputProps {
+  id: string;
   name: string;
   label: string;
   required?: boolean;
@@ -31,17 +32,18 @@ const SelectInput: React.FC<SelectInputProps> = (props) => {
   const [field, meta] = useField(props);
   const styles = useStyles();
 
-  const { required, label, options } = props;
+  const { id, required, label, options } = props;
 
   return (
     <FormControl
       required={required}
       className={classnames(styles.formControl, 'form-input')}
     >
-      <InputLabel htmlFor="gender">{label}</InputLabel>
+      <InputLabel htmlFor={id}>{label}</InputLabel>
       <Select
         native
         {...field}
+        id={id}
         value={field.value || ''}
         error={Boolean(meta.error)}
         classes={{ root: styles.select }}
