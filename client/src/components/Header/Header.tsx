@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import classnames from 'classnames';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
@@ -16,6 +16,17 @@ import { MOBILE_QUERY } from '@src/constants';
 import './Header.scss';
 
 const useStyles = makeStyles((theme) => ({
+  listItem: {
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+    transition: 'color 0.2s',
+    '&:focus, &:hover': {
+      color: theme.palette.secondary.main
+    },
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transition: 'none'
+    }
+  },
   title: {
     borderRight: '0.0625rem solid #204361',
     display: 'inline-block',
@@ -35,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const history = useHistory();
   const isMobile = useMediaQuery(MOBILE_QUERY);
   const styles = useStyles();
 
@@ -75,10 +87,16 @@ const Header: React.FC = () => {
       <Drawer anchor="right" open={isDrawerOpen} onClose={handleClose} role="navigation">
         <List data-testid="mobile-menu">
           {listItems.map((item) => (
-            <ListItem button key={item.route} onClick={handleClose}>
-              <NavLink to={item.route}>
-                <ListItemText primary={item.text} />
-              </NavLink>
+            <ListItem
+              key={item.route}
+              className={styles.listItem}
+              onClick={() => {
+                history.push(item.route);
+                handleClose();
+              }}
+              tabIndex={0}
+            >
+              <ListItemText primary={item.text} />
             </ListItem>
           ))}
         </List>
