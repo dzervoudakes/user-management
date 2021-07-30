@@ -7,7 +7,7 @@ describe('Footer', () => {
     render(<Footer />);
 
     expect(
-      screen.getByText(`Copyright © ${new Date().getFullYear()} Dan Zervoudakes`)
+      screen.getByText(`Copyright © ${new Date().getFullYear()} User Management Corp.`)
     ).toBeInTheDocument();
   });
 });
