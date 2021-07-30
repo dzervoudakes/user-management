@@ -5,7 +5,7 @@ import './Footer.scss';
 const Footer: React.FC = () => (
   <footer className="footer">
     <Typography color="inherit">
-      Copyright &copy; {new Date().getFullYear()} Dan Zervoudakes
+      Copyright &copy; {new Date().getFullYear()} User Management Corp.
     </Typography>
   </footer>
 );
