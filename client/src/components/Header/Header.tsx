@@ -90,6 +90,12 @@ const Header: React.FC = () => {
             <ListItem
               key={item.route}
               className={styles.listItem}
+              onKeyPress={(event) => {
+                if (event.key === 'Enter') {
+                  history.push(item.route);
+                  handleClose();
+                }
+              }}
               onClick={() => {
                 history.push(item.route);
                 handleClose();
