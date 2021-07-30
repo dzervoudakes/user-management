@@ -22,7 +22,7 @@ export const defaultTheme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: '#387bb4'
+      main: '#1967d2'
     },
     secondary: {
       main: '#ff5000'
