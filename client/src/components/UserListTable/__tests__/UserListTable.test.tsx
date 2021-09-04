@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { UserContext, User } from '@src/context';
 import UserListTable from '..';

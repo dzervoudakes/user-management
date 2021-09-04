@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import { useField } from 'formik';
 import { TextField } from '@material-ui/core';

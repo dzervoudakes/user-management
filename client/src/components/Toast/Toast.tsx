@@ -1,4 +1,3 @@
-import React from 'react';
 import { Snackbar, SnackbarContent, IconButton } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import WarningIcon from '@material-ui/icons/Warning';

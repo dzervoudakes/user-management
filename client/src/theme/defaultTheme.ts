@@ -2,9 +2,9 @@
  * Default application theme for Material UI theme provider.
  * @packageDocumentation
  */
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-export const defaultTheme = createMuiTheme({
+export const defaultTheme = createTheme({
   spacing: 4,
   typography: {
     fontFamily: '"Droid Sans", sans-serif',

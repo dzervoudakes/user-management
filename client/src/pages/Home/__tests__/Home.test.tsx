@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-container */
-import React from 'react';
+
 import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { UserContext, User } from '@src/context';

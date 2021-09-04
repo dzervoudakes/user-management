@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import EditIcon from '@material-ui/icons/EditOutlined';
 import TrashIcon from '@material-ui/icons/DeleteOutlined';
@@ -45,7 +45,7 @@ const UserInfoTable: React.FC<UserInfoTableProps> = ({ user }) => {
       await getUsers();
       openToast({ variant: 'success', message: 'User successfully deleted.' });
     } catch (err) {
-      if (!Api.isCancel(err)) {
+      if (!Api.isCancel(err as Record<string, unknown>)) {
         openToast({ variant: 'error', message: 'There was an error deleting the user.' });
       }
     }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import LoadingIndicator from '@src/components/LoadingIndicator';
 import { UserProvider, ModalProvider, ToastProvider } from '@src/context';
@@ -27,7 +27,7 @@ const Providers: React.FC = ({ children }) => {
         setError(false);
         setLoading(false);
       } catch (err) {
-        if (!Api.isCancel(err)) {
+        if (!Api.isCancel(err as Record<string, unknown>)) {
           setError(true);
           setLoading(false);
         }

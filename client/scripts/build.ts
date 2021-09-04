@@ -21,7 +21,7 @@ webpack(webpackConfig, (err, stats) => {
   }
 
   process.stdout.write(
-    `${stats.toString({
+    `${stats?.toString({
       colors: true,
       modules: false,
       children: false,
@@ -30,7 +30,7 @@ webpack(webpackConfig, (err, stats) => {
     })}\n\n`
   );
 
-  if (stats.hasErrors()) {
+  if (stats?.hasErrors()) {
     console.log(chalk.red('Build failed with errors.\n'));
     process.exit(1);
   }

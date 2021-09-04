@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Prompt, useHistory } from 'react-router-dom';
 import noop from 'lodash/noop';
 import omit from 'lodash/omit';
@@ -81,7 +81,7 @@ const UserForm: React.FC<UserFormProps> = ({
         callback();
       }
     } catch (err) {
-      if (!Api.isCancel(err)) {
+      if (!Api.isCancel(err as Record<string, unknown>)) {
         openToast({
           variant: 'error',
           message: `There was an error ${
@@ -90,7 +90,8 @@ const UserForm: React.FC<UserFormProps> = ({
         });
 
         // unique error handling for anti-duplicate constraint
-        const { error: description } = err.response.data;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { error: description } = (err as any).response.data;
         if (description.includes('E11000') && description.includes('username')) {
           setFieldError('username', 'Username already exists.');
         }

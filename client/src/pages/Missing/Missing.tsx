@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import Layout from '@src/components/Layout';

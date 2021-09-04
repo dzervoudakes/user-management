@@ -2,7 +2,7 @@
  * Handle state of the Toast component.
  * @packageDocumentation
  */
-import React, { createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import noop from 'lodash/noop';
 
 export type ToastVariant = 'error' | 'info' | 'success' | 'warning';

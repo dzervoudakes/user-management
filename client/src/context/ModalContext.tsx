@@ -2,7 +2,7 @@
  * Handle state of the Modal component.
  * @packageDocumentation
  */
-import React, { createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import noop from 'lodash/noop';
 
 const defaultModalContent = {

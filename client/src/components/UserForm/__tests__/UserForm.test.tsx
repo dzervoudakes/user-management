@@ -2,7 +2,6 @@
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-container */
 /* eslint-disable react/display-name */
-import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import Toast from '@src/components/Toast';

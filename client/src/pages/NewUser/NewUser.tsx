@@ -1,4 +1,3 @@
-import React from 'react';
 import SectionHeader from '@src/components/SectionHeader';
 import Layout from '@src/components/Layout';
 import UserForm from '@src/components/UserForm';

@@ -28,9 +28,10 @@ module.exports = {
         ]
       }
     ],
-
     // MongoDB utilizes '_id' with a dangling underscore
-    'no-underscore-dangle': OFF
+    'no-underscore-dangle': OFF,
+    // jsx transform is enabled in this application: no need to enforce 'react-in-jsx-scope'
+    'react/react-in-jsx-scope': OFF
   },
   settings: {
     'import/resolver': {

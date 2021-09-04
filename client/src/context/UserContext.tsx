@@ -2,9 +2,8 @@
  * Retrieve and store a list of users from the backend.
  * @packageDocumentation
  */
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import noop from 'lodash/noop';
-import { AxiosResponse } from 'axios';
 import { Typography } from '@material-ui/core';
 import LoadingIndicator from '@src/components/LoadingIndicator';
 import { UserService } from '@src/services';
@@ -23,7 +22,7 @@ export interface User {
 
 export interface UserContextProps {
   userList: User[];
-  getUsers: () => Promise<AxiosResponse> | void;
+  getUsers: () => void;
   error: boolean;
 }
 
@@ -40,7 +39,7 @@ export const UserProvider: React.FC = ({ children }) => {
 
   const source = Api.source();
 
-  const getUsers = async (): Promise<AxiosResponse> => {
+  const getUsers = async (): Promise<void> => {
     try {
       const result = await UserService.getUsers(source);
       const { users } = result.data;
@@ -48,13 +47,11 @@ export const UserProvider: React.FC = ({ children }) => {
       setUserList(users as User[]);
       setError(false);
       setLoading(false);
-      return result;
     } catch (err) {
-      if (!Api.isCancel(err)) {
+      if (!Api.isCancel(err as Record<string, unknown>)) {
         setError(true);
         setLoading(false);
       }
-      return err;
     }
   };
 

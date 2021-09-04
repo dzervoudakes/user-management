@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Dialog,
   DialogActions,
@@ -23,7 +22,11 @@ const Modal: React.FC = () => {
 
   return (
     <Dialog
-      onBackdropClick={closeModal}
+      onClose={(event, reason) => {
+        if (reason === 'backdropClick') {
+          closeModal();
+        }
+      }}
       open={isModalOpen}
       classes={{ paper: styles.dialog }}
     >

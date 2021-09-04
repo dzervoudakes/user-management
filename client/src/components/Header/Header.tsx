@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import classnames from 'classnames';
 import useMediaQuery from '@material-ui/core/useMediaQuery';

@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import { useField } from 'formik';
 import { InputLabel, FormControl, Select } from '@material-ui/core';
