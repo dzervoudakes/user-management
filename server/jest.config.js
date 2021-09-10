@@ -21,5 +21,10 @@ module.exports = {
   moduleNameMapper: {
     '^@src[/](.+)': '<rootDir>/src/$1',
     '^node_modules[/](.+)': '<rootDir>/node_modules/$1'
+  },
+  globals: {
+    'ts-jest': {
+      isolatedModules: true
+    }
   }
 };
