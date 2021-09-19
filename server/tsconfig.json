@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "outDir": "dist",
     "paths": {
@@ -20,6 +20,11 @@
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es6"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts"],
