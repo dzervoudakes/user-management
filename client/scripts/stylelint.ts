@@ -2,9 +2,9 @@
  * Build script that runs stylelint against all application style files.
  * @packageDocumentation
  */
-import stylelint from 'stylelint';
 import chalk from 'chalk';
 import ora from 'ora';
+import stylelint from 'stylelint';
 
 process.on('unhandledRejection', (err) => {
   throw err;

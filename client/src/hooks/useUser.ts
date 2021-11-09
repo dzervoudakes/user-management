@@ -3,6 +3,7 @@
  * @packageDocumentation
  */
 import { useContext } from 'react';
+
 import { UserContext, UserContextProps } from '@src/context';
 
 export const useUser = (): UserContextProps => {

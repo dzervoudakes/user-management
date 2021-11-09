@@ -1,10 +1,12 @@
-import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+
+import Modal from '@src/components/Modal';
+import Providers from '@src/components/Providers';
+import Toast from '@src/components/Toast';
 import { Gender } from '@src/context';
 import { AuthService, UserService } from '@src/services';
-import Providers from '@src/components/Providers';
-import Modal from '@src/components/Modal';
-import Toast from '@src/components/Toast';
+
 import UserInfoTable from '..';
 
 const mockSource = { cancel: jest.fn() };

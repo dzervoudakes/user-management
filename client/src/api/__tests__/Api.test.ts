@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+
 import Api from '..';
 
 jest.mock('axios', () => ({

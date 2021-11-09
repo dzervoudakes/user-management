@@ -1,5 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import { Formik } from 'formik';
+
 import SelectInput from '..';
 
 describe('SelectInput', () => {

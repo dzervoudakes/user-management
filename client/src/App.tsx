@@ -1,10 +1,11 @@
 import { Container } from '@material-ui/core';
-import Providers from '@src/components/Providers';
-import Routes from '@src/routes';
-import Modal from '@src/components/Modal';
-import Toast from '@src/components/Toast';
-import Header from '@src/components/Header';
+
 import Footer from '@src/components/Footer';
+import Header from '@src/components/Header';
+import Modal from '@src/components/Modal';
+import Providers from '@src/components/Providers';
+import Toast from '@src/components/Toast';
+import Routes from '@src/routes';
 
 const App: React.FC = () => (
   <Providers>

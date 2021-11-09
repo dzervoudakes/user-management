@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+
 import Missing from '..';
 
 describe('Missing', () => {

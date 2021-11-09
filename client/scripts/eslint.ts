@@ -2,8 +2,8 @@
  * Build script that runs eslint against all application script files.
  * @packageDocumentation
  */
-import { ESLint } from 'eslint';
 import chalk from 'chalk';
+import { ESLint } from 'eslint';
 import ora from 'ora';
 
 process.on('unhandledRejection', (err) => {

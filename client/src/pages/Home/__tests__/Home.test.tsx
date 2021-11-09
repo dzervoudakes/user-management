@@ -2,9 +2,11 @@
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-container */
 
-import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+
 import { UserContext, User } from '@src/context';
+
 import Home from '..';
 
 describe('Home', () => {

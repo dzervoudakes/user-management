@@ -1,5 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
+
 import { AuthService, UserService } from '@src/services';
+
 import Providers from '..';
 
 jest.mock('@src/services/AuthService');

@@ -2,11 +2,13 @@
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-container */
 /* eslint-disable react/display-name */
-import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+
 import Toast from '@src/components/Toast';
 import { ToastProvider, Gender } from '@src/context';
 import { UserService } from '@src/services';
+
 import UserForm, { UserFormProps } from '..';
 
 const MockSelect: React.FC = (props) => <select {...props} />;

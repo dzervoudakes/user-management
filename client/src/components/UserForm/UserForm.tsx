@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Prompt, useHistory } from 'react-router-dom';
+
+import { Button } from '@material-ui/core';
+import { Formik, Form, ErrorMessage } from 'formik';
 import noop from 'lodash/noop';
 import omit from 'lodash/omit';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Prompt, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
-import { Button } from '@material-ui/core';
-import TextInput from '@src/components/TextInput';
-import SelectInput from '@src/components/SelectInput';
-import { UserService } from '@src/services';
+
 import Api from '@src/api/Api';
+import SelectInput from '@src/components/SelectInput';
+import TextInput from '@src/components/TextInput';
 import { Gender } from '@src/context';
 import { useToast, useUser } from '@src/hooks';
+import { UserService } from '@src/services';
 import './UserForm.scss';
 
 interface Values {

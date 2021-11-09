@@ -1,6 +1,7 @@
-import { MemoryRouter } from 'react-router-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+
 import Header from '..';
 
 jest.mock('@material-ui/core/useMediaQuery');

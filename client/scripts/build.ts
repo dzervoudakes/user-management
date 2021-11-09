@@ -2,9 +2,10 @@
  * Build script that compiles the application for production.
  * @packageDocumentation
  */
-import webpack from 'webpack';
 import chalk from 'chalk';
 import ora from 'ora';
+import webpack from 'webpack';
+
 import webpackConfig from '../webpack.config';
 
 process.on('unhandledRejection', (err) => {

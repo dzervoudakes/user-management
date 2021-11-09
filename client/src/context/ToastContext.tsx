@@ -3,6 +3,7 @@
  * @packageDocumentation
  */
 import { createContext, useState } from 'react';
+
 import noop from 'lodash/noop';
 
 export type ToastVariant = 'error' | 'info' | 'success' | 'warning';

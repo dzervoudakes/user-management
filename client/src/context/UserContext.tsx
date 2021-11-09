@@ -3,11 +3,13 @@
  * @packageDocumentation
  */
 import { createContext, useEffect, useState } from 'react';
-import noop from 'lodash/noop';
+
 import { Typography } from '@material-ui/core';
+import noop from 'lodash/noop';
+
+import Api from '@src/api';
 import LoadingIndicator from '@src/components/LoadingIndicator';
 import { UserService } from '@src/services';
-import Api from '@src/api';
 
 export type Gender = 'male' | 'female' | 'other';
 

@@ -1,8 +1,9 @@
-import express from 'express';
-import cors from 'cors';
 import { Server } from '@overnightjs/core';
-import mongoose from 'mongoose';
 import chalk from 'chalk';
+import cors from 'cors';
+import express from 'express';
+import mongoose from 'mongoose';
+
 import { AuthController, UserController } from './controllers';
 
 class AppServer extends Server {

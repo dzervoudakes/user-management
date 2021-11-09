@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
-import Home from '@src/pages/Home';
+
 import { dynamicImport } from '@src/hocs';
+import Home from '@src/pages/Home';
 
 const Routes: React.FC = () => (
   <Switch>

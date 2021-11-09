@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+
 import { ModalContext } from '@src/context';
+
 import Modal from '..';
 
 describe('Modal', () => {

@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+
 import { UserContext, User } from '@src/context';
+
 import UserListTable from '..';
 
 describe('UserListTable', () => {

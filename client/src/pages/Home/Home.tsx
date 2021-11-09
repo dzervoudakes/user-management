@@ -1,5 +1,5 @@
 import { Fragment, useState, KeyboardEvent } from 'react';
-import { Link } from 'react-router-dom';
+
 import {
   FormGroup,
   FormControlLabel,
@@ -8,10 +8,12 @@ import {
   Divider
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import UserInfoTable from '@src/components/UserInfoTable';
-import UserListTable from '@src/components/UserListTable';
+import { Link } from 'react-router-dom';
+
 import Layout from '@src/components/Layout';
 import SectionHeader from '@src/components/SectionHeader';
+import UserInfoTable from '@src/components/UserInfoTable';
+import UserListTable from '@src/components/UserListTable';
 import { useUser } from '@src/hooks';
 
 const useStyles = makeStyles((theme) => ({

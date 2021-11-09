@@ -1,5 +1,5 @@
-import express, { Application } from 'express';
 import { Server } from '@overnightjs/core';
+import express, { Application } from 'express';
 
 export class TestServer extends Server {
   constructor() {

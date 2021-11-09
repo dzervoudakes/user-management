@@ -2,6 +2,7 @@
  * @fileoverview Configuration file for Webpack development and production builds.
  */
 const { merge } = require('webpack-merge');
+
 const baseConfig = require('./build/webpack.base');
 
 const envs = {

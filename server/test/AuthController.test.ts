@@ -1,6 +1,8 @@
-import supertest, { SuperTest, Test } from 'supertest';
 import StatusCodes from 'http-status-codes';
+import supertest, { SuperTest, Test } from 'supertest';
+
 import { AuthController } from '@src/controllers';
+
 import { mockUserOne, TestServer } from './utils';
 
 jest.mock('@overnightjs/jwt', () => ({

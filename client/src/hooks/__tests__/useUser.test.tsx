@@ -1,6 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { v4 as uuidv4 } from 'uuid';
+
 import { UserContext, User } from '@src/context';
+
 import { useUser } from '..';
 
 describe('useUser', () => {

@@ -3,6 +3,7 @@
  * @packageDocumentation
  */
 import { useContext } from 'react';
+
 import { ToastContext, ToastContextProps } from '@src/context';
 
 export const useToast = (): ToastContextProps => {

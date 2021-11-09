@@ -1,4 +1,5 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+
 import { dynamicImport } from '..';
 
 describe('dynamicImport', () => {

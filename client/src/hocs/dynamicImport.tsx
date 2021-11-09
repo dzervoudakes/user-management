@@ -3,6 +3,7 @@
  * @packageDocumentation
  */
 import { lazy, Suspense } from 'react';
+
 import LoadingIndicator from '@src/components/LoadingIndicator';
 
 type ImportComponentType = () => Promise<{ default: React.ComponentType }>;

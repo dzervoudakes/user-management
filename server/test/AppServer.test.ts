@@ -1,7 +1,9 @@
-import supertest, { SuperTest, Test } from 'supertest';
-import StatusCodes from 'http-status-codes';
 import { Application } from 'express';
+import StatusCodes from 'http-status-codes';
+import supertest, { SuperTest, Test } from 'supertest';
+
 import AppServer from '@src/AppServer';
+
 import { mockUserOne, mockUserTwo } from './utils';
 
 jest.mock('@overnightjs/core', () => ({

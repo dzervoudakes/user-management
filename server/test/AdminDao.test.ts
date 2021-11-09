@@ -1,4 +1,5 @@
 import mongoose, { Mongoose } from 'mongoose';
+
 import { AdminDao } from '@src/daos';
 import { Admin } from '@src/models';
 

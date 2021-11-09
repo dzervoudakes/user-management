@@ -1,6 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
 import { TableBody, TableCell, TableHead, TableRow, Paper } from '@material-ui/core';
+import Table from '@material-ui/core/Table';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { useUser } from '@src/hooks';
 
 const useStyles = makeStyles((theme) => ({

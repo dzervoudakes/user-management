@@ -31,7 +31,7 @@
     "mongoose": "5.12.13"
   },
   "devDependencies": {
-    "@dztools/eslint-config-typescript": "1.1.2",
+    "@dztools/eslint-config-typescript": "1.2.0",
     "@dztools/prettier-config": "1.0.4",
     "@shelf/jest-mongodb": "1.2.5",
     "@types/cors": "2.8.12",

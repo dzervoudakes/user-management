@@ -3,9 +3,9 @@
  * - Default config: https://github.com/dzervoudakes/dztools/blob/main/packages/bundling/webpack-config-react-typescript/config/webpack.base.js
  * - Notes on customizing/extending: https://github.com/dzervoudakes/dztools/tree/main/packages/bundling/webpack-config-react-typescript#readme
  */
-const { merge } = require('webpack-merge');
-const { EnvironmentPlugin } = require('webpack');
 const { webpackBaseConfig } = require('@dztools/webpack-config-react-typescript');
+const { EnvironmentPlugin } = require('webpack');
+const { merge } = require('webpack-merge');
 
 module.exports = merge(webpackBaseConfig, {
   plugins: [

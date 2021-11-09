@@ -1,5 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
+
 import { ToastContext } from '@src/context';
+
 import { useToast } from '..';
 
 describe('useToast', () => {

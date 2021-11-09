@@ -1,5 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
+
 import { ModalContext } from '@src/context';
+
 import { useModal } from '..';
 
 describe('useModal', () => {

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+
 import { Typography } from '@material-ui/core';
+
+import Api from '@src/api';
 import LoadingIndicator from '@src/components/LoadingIndicator';
+import { AUTH_USERNAME, AUTH_PASSWORD } from '@src/constants';
 import { UserProvider, ModalProvider, ToastProvider } from '@src/context';
 import { AuthService } from '@src/services';
-import { AUTH_USERNAME, AUTH_PASSWORD } from '@src/constants';
-import Api from '@src/api';
 
 const Providers: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(true);

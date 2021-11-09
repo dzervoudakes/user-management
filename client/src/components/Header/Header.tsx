@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
-import classnames from 'classnames';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import {
   Drawer,
   List,
@@ -10,8 +8,12 @@ import {
   IconButton,
   Typography
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import MenuIcon from '@material-ui/icons/Menu';
+import classnames from 'classnames';
+import { NavLink, useHistory } from 'react-router-dom';
+
 import { MOBILE_QUERY } from '@src/constants';
 import './Header.scss';
 

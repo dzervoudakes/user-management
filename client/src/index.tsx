@@ -1,7 +1,9 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import { defaultTheme } from '@src/theme';
+
 import App from './App';
 import './scss/style.scss';
 

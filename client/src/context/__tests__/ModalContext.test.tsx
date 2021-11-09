@@ -1,4 +1,5 @@
 import { render, fireEvent, screen } from '@testing-library/react';
+
 import { ModalContext, ModalProvider } from '..';
 
 describe('ModalContext', () => {

@@ -7,6 +7,7 @@ import {
   Button
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
 import { useModal } from '@src/hooks';
 
 const useStyles = makeStyles(() => ({

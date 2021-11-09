@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+
 import LoadingIndicator from '..';
 
 describe('LoadingIndicator', () => {

@@ -3,6 +3,7 @@
  * @packageDocumentation
  */
 import { useContext } from 'react';
+
 import { ModalContext, ModalContextProps } from '@src/context';
 
 export const useModal = (): ModalContextProps => {

@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import EditIcon from '@material-ui/icons/EditOutlined';
-import TrashIcon from '@material-ui/icons/DeleteOutlined';
+
 import { Button, IconButton } from '@material-ui/core';
-import maleIcon from '@src/assets/male-icon.png';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import TrashIcon from '@material-ui/icons/DeleteOutlined';
+import EditIcon from '@material-ui/icons/EditOutlined';
+
+import Api from '@src/api';
 import femaleIcon from '@src/assets/female-icon.png';
+import maleIcon from '@src/assets/male-icon.png';
+import UserForm from '@src/components/UserForm';
+import { MOBILE_QUERY } from '@src/constants';
 import { User } from '@src/context';
 import { useModal, useToast, useUser } from '@src/hooks';
 import { UserService } from '@src/services';
-import UserForm from '@src/components/UserForm';
-import Api from '@src/api';
-import { MOBILE_QUERY } from '@src/constants';
 import './UserInfoTable.scss';
 
 interface UserInfoTableProps {
