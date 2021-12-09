@@ -23,8 +23,7 @@ module.exports = {
           'build/**',
           'scripts/**',
           '**/*.test.*',
-          '**/*.spec.*',
-          'src/jest-dom.d.ts'
+          '**/*.spec.*'
         ]
       }
     ],
